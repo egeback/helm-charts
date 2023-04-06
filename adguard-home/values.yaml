@@ -7,7 +7,7 @@
 
 controller:
   # -- Number of pods to load balance between
-  replicas: 3
+  replicas: 1
 
 initContainers:
 # -- Configures an initContainer that copies the configmap to the AdGuardHome conf directory
