@@ -37,6 +37,38 @@ entries:
           description: Initial version based on bjw-s common chart 1.0.1
     apiVersion: v2
     appVersion: v1.27.1
+    created: "2023-04-06T20:40:03.429108204Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.0.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.2
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 080172bb4830cea7338bc44d23c9b924b93d3d6ae6c34a304d9786d313390b6a
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/teslamate
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/793px-Tesla_Motors.svg.png
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-0.0.2/teslamate-0.0.2.tgz
+    version: 0.0.2
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Initial version based on bjw-s common chart 1.0.1
+    apiVersion: v2
+    appVersion: v1.27.1
     created: "2023-04-06T20:12:18.53836783Z"
     dependencies:
     - name: common
@@ -63,4 +95,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/teslamate-0.0.1/teslamate-0.0.1.tgz
     version: 0.0.1
-generated: "2023-04-06T20:12:18.53837663Z"
+generated: "2023-04-06T20:40:03.429121605Z"
