@@ -11,7 +11,7 @@ home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/teslamate
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/793px-Tesla_Motors.svg.png
 sources:
   - https://github.com/adriankumpf/teslamate
-  - https://github.com/k8s-at-home/charts/tree/master/charts/stable/teslamate
+  - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
