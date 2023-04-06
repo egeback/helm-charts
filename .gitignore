@@ -28,3 +28,7 @@ Temporary Items
 #Other
 values/
 */.DS_Store
+charts/teslamate/charts/
+charts/adguard/charts/
+charts/teslamate/Chart.lock
+charts/adguard/Chart.lock
