@@ -36,16 +36,18 @@ env:
   # -- Set the container timezone
   TZ: UTC
   # -- Postgres database hostname
-  DATABASE_HOST: '{{ include "common.names.fullname" .}}-postgresql'
+  DATABASE_HOST: '{{ include "bjw-s.common.lib.chart.names.fullname" .}}-postgresql'
   # -- Postgres database user name
-  DATABASE_USER: '{{ include "Values.postgresql.auth.username" .}}-postgresql'
+  DATABASE_USER: '{{ "Values.postgresql.auth.username" | default "postgres" }}'
   # -- Postgres database password
-  DATABASE_PASS: "{{ include .Values.postgresql.auth.postgresPassword }}"
+  DATABASE_PASS: "{{ .Values.postgresql.auth.password }}"
   # -- Postgres database password
-  DATABASE_NAME: postgres #"{{ include .Values.postgresql.auth.database }}"
+  DATABASE_NAME: "{{ .Values.postgresql.auth.database }}"
   # -- Disables the MQTT feature if `true`
   DISABLE_MQTT: "false"
+  # -- MQTT server host
   MQTT_HOST: ""
+  # -- Teslamate encryption key
   ENCRYPTION_KEY: "MySuperSecretEncryptionKey"
 
 # -- Configures service settings for the chart.
@@ -76,9 +78,9 @@ postgresql:
   enabled: false
   auth:
     postgresPassword: teslamate-pass
-    #password: teslamate-pass
+    password: teslamate-pass
     database: teslamate
-    #username: password
+    username: teslamate
   primary:
     persistence:
       enabled: false
