@@ -6,14 +6,34 @@ on:
       checkoutCommit:
         required: true
         type: string
-      chartChangesDetected:
+      isRenovatePR:
+        required: true
+        default: 'false'
+        type: string
+      chartsToLint:
+        description: >
+          A JSON encoded array of charts to lint
         required: true
         type: string
+      overrideDeps:
+        description: >
+          A JSON encoded array of dependencies to override before linting
+        type: string
+        required: false
+        default: '[]'
+
+env:
+  HELM_VERSION: 3.9.2
 
 jobs:
-  lint:
-    name: Lint charts
-    runs-on: ubuntu-latest
+  lint-chart:
+    if: ${{ inputs.chartsToLint != '[]' }}
+    name: Lint chart
+    strategy:
+      matrix:
+        chart: ${{ fromJSON(inputs.chartsToLint) }}
+      fail-fast: false
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -21,33 +41,48 @@ jobs:
           fetch-depth: 0
           ref: ${{ inputs.checkoutCommit }}
 
+      - name: Verify chart version
+        uses: bjw-s/helm-charts-actions/verify-chart-version@main
+        id: verify-chart-version
+        with:
+          chart: "charts/${{ matrix.chart }}"
+
+      - name: Verify chart changelog
+        uses: bjw-s/helm-charts-actions/verify-chart-changelog@main
+        if: inputs.isRenovatePR != 'true'
+        id: verify-chart-changelog
+        with:
+          chart: "charts/${{ matrix.chart }}"
+
       - name: Install Kubernetes tools
-        uses: yokawasa/action-setup-kube-tools@v0.8.2
+        uses: yokawasa/action-setup-kube-tools@v0.9.3
         with:
           setup-tools: |
             helmv3
-          helm: "3.8.0"
-
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
+          helm: "${{ env.HELM_VERSION }}"
 
       - name: Set up chart-testing
-        uses: helm/chart-testing-action@v2.3.0
+        uses: helm/chart-testing-action@v2.4.0
 
-      - name: Collect changes
-        id: list-changed
-        if: inputs.chartChangesDetected == 'true'
-        run: |
-          EXCLUDED=$(yq eval -o=json '.excluded-charts // []' .github/ct-lint.yaml)
-          CHARTS=$(ct list-changed --config .github/ct-lint.yaml)
-          CHARTS_JSON=$(echo "${CHARTS}" | jq -R -s -c 'split("\n")[:-1]')
-          OUTPUT_JSON=$(echo "{\"excluded\": ${EXCLUDED}, \"all\": ${CHARTS_JSON}}" | jq -c '.all-.excluded')
-          echo ::set-output name=charts::${OUTPUT_JSON}
-          if [[ $(echo ${OUTPUT_JSON} | jq -c '. | length') -gt 0 ]]; then
-            echo "::set-output name=detected::true"
-          fi
+      - name: Override chart dependencies
+        uses: ./.github/actions/override-chart-deps
+        if: ${{ inputs.overrideDeps != '[]' }}
+        with:
+          chart: ${{ matrix.chart }}
+          overrides: ${{ inputs.overrideDeps }}
+
       - name: Run chart-testing (lint)
-        id: lint
-        if: steps.list-changed.outputs.detected == 'true'
-        run: ct lint --config .github/ct-lint.yaml
+        run: ct lint --config .ci/ct/ct.yaml --charts "charts/${{ matrix.chart }}"
+
+  # Summarize matrix https://github.community/t/status-check-for-a-matrix-jobs/127354/7
+  lint_success:
+    needs:
+      - lint-chart
+    if: |
+      always()
+    name: Lint successful
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check lint matrix status
+        if: ${{ (inputs.chartsToLint != '' && inputs.chartsToLint != '[]') && (needs.lint-chart.result != 'success') }}
+        run: exit 1
