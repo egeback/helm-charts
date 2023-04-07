@@ -25,15 +25,23 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-#Other
-values/
-*/.DS_Store
-charts/teslamate/charts/
-charts/adguard/charts/
-charts/uptime-kuma/charts/
+# Developer dependencies
+.bin
 
-# Chart dependencies
-**/charts/*.tgz
-**/Chart.Lock
+# IDE resources
+.vscode
+.idea
+.devcontainer/
+
+# Helm resources
+charts/**/Chart.lock
+charts/**/charts
+
+# Other resources
+.env
+.envrc
+Gemfile.lock
+angel.yaml
+*/.DS_Store
 
 .history
