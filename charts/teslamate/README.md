@@ -1,6 +1,6 @@
 # teslamate
 
-![Version: 0.0.2](https://img.shields.io/badge/Version-0.0.2-informational?style=flat-square) ![AppVersion: v1.27.1](https://img.shields.io/badge/AppVersion-v1.27.1-informational?style=flat-square)
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: v1.27.1](https://img.shields.io/badge/AppVersion-v1.27.1-informational?style=flat-square)
 
 A self-hosted data logger for your Tesla 🚘
 
@@ -83,6 +83,7 @@ N/A
 | env.DISABLE_MQTT | string | `"false"` | Disables the MQTT feature if `true` |
 | env.ENCRYPTION_KEY | string | `"MySuperSecretEncryptionKey"` | Teslamate encryption key |
 | env.MQTT_HOST | string | `""` | MQTT server host |
+| env.MQTT_PORT | int | `1883` | MQTT server port |
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | image.repository | string | `"teslamate/teslamate"` | image repository |
@@ -94,7 +95,7 @@ N/A
 
 ## Changelog
 
-### Version 0.0.2
+### Version 1.0.0
 
 ### Older versions
 
