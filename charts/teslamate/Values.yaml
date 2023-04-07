@@ -47,6 +47,8 @@ env:
   DISABLE_MQTT: "false"
   # -- MQTT server host
   MQTT_HOST: ""
+  # -- MQTT server port
+  MQTT_PORT: 1883
   # -- Teslamate encryption key
   ENCRYPTION_KEY: "MySuperSecretEncryptionKey"
 
@@ -84,5 +86,4 @@ postgresql:
   primary:
     persistence:
       enabled: false
-      # storageClass: ""
-      # size: 8Gi
+ 
