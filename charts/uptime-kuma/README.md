@@ -1,14 +1,14 @@
-# adguard-home
+# uptime-kuma
 
 ![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: v0.107.27](https://img.shields.io/badge/AppVersion-v0.107.27-informational?style=flat-square)
 
-DNS proxy as ad-blocker for local network
+A fancy self-hosted monitoring tool for your websites and applications
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised [here](https://github.com/egeback/helm-charts/issues/new/choose)**
 
 ## Source Code
 
-* <https://github.com/AdguardTeam/AdGuardHome>
+* <https://github.com/louislam/uptime-kuma>
 
 ## Requirements
 
@@ -25,23 +25,23 @@ Kubernetes: `>=1.16.0-0`
 ```console
 helm repo add egeback https://github.com/egeback/helm-charts
 helm repo update
-helm install adguard-home egeback/adguard-home
+helm install uptime-kuma egeback/uptime-kuma
 ```
 
 ## Installing the Chart
 
-To install the chart with the release name `adguard-home`
+To install the chart with the release name `uptime-kuma`
 
 ```console
-helm install adguard-home egeback/adguard-home
+helm install uptime-kuma egeback/uptime-kuma
 ```
 
 ## Uninstalling the Chart
 
-To uninstall the `adguard-home` deployment
+To uninstall the `uptime-kuma` deployment
 
 ```console
-helm uninstall adguard-home
+helm uninstall uptime-kuma
 ```
 
 The command removes all the Kubernetes components associated with the chart **including persistent volumes** and deletes the release.
@@ -54,15 +54,15 @@ Other values may be used from the [values.yaml](https://github.com/bjw-s/helm-ch
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
 
 ```console
-helm install adguard-home \
+helm install uptime-kuma \
   --set env.TZ="America/New York" \
-    egeback/adguard-home
+    egeback/uptime-kuma
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart.
 
 ```console
-helm install adguard-home egeback/adguard-home -f values.yaml
+helm install uptime-kuma egeback/uptime-kuma -f values.yaml
 ```
 
 ## Custom configuration
@@ -75,15 +75,12 @@ N/A
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| args | list | `["--config","/opt/adguardhome/conf/AdGuardHome.yaml","--work-dir","/opt/adguardhome/work","--no-check-update"]` | arguments passed to the adguard-home command line. |
-| config | string | See values.yaml | AdGuard Home configuration. For a full list of options see https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration. |
-| controller.replicas | int | `1` | Number of pods to load balance between |
-| env | object | See below | environment variables. |
 | env.TZ | string | `"UTC"` | Set the container timezone |
+| env.UPTIME_KUMA_DISABLE_FRAME_SAMEORIGIN | int | `0` | Set the frame same-origin policy (int) |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
-| image.repository | string | `"adguard/adguardhome"` | image repository |
-| image.tag | string | `nil` |  |
-| initContainers.copy-configmap | object | See values.yaml | Configures an initContainer that copies the configmap to the AdGuardHome conf directory It does NOT overwrite when the file already exists. |
+| image.repository | string | `"louislam/uptime-kuma"` | image repository |
+| image.tag | string | chart.appVersion | image tag |
+| ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
 | service | object | See values.yaml | Configures service settings for the chart. |
 
@@ -93,7 +90,7 @@ N/A
 
 ### Older versions
 
-A historical overview of changes can be found on [ArtifactHUB](https://artifacthub.io/packages/helm/egeback/adguard-home?modal=changelog)
+A historical overview of changes can be found on [ArtifactHUB](https://artifacthub.io/packages/helm/egeback/uptime-kuma?modal=changelog)
 
 ## Support
 - Open an [issue](https://github.com/egeback/helm-charts/issues/new/choose)

@@ -31,3 +31,9 @@ values/
 charts/teslamate/charts/
 charts/adguard/charts/
 charts/uptime-kuma/charts/
+
+# Chart dependencies
+**/charts/*.tgz
+**/Chart.Lock
+
+.history
