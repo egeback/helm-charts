@@ -7,7 +7,7 @@ version: 0.0.1
 keywords:
   - teslamate
   - tesla
-home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/teslamate
+home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/793px-Tesla_Motors.svg.png
 sources:
   - https://github.com/adriankumpf/teslamate
@@ -15,9 +15,9 @@ sources:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
-    version: 1.0.1
+    version: 1.3.2
   - name: postgresql
-    version: 12.1.2 # 11.6.12
+    version: 12.2.7
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
 maintainers:

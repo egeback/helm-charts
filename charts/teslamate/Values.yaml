@@ -9,9 +9,26 @@ image:
   # -- image repository
   repository: teslamate/teslamate
   # -- image tag
-  tag: 1.27.1
+  tag: v1.27.2
   # -- image pull policy
   pullPolicy: IfNotPresent
+
+
+# additionalContainers:
+#   teslamateapi:
+#     #enabled: false
+#     name: teslamateapi
+#     image: tobiasehlert/teslamateapi
+#     tag: 1.16.0
+#     env:
+#       - ENCRYPTION_KEY="{{ include .Values.env.ENCRYPTION_KEY }}"
+#       - DATABASE_USER='{{ include "Values.postgresql.auth.username" .}}-postgresql'
+#       - DATABASE_PASS="{{ include .Values.postgresql.auth.postgresPassword }}"
+#       - DATABASE_NAME="{{ include .Values.postgresql.auth.database }}"
+#       - DATABASE_HOST='{{ include "common.names.fullname" .}}-postgresql'
+#       - MQTT_HOST="{{ include .Values.env.MQTT_HOST }}"
+#       - TZ="{{ include .Values.env.TZ }}"
+
 
 # -- environment variables. See [teslamate docs](https://docs.teslamate.org/docs/configuration/environment_variables) for more details.
 # @default -- See below
@@ -21,13 +38,15 @@ env:
   # -- Postgres database hostname
   DATABASE_HOST: '{{ include "common.names.fullname" .}}-postgresql'
   # -- Postgres database user name
-  DATABASE_USER: postgres
+  DATABASE_USER: '{{ include "Values.postgresql.auth.username" .}}-postgresql'
   # -- Postgres database password
-  DATABASE_PASS: "{{ .Values.postgresql.auth.postgresPassword }}"
+  DATABASE_PASS: "{{ include .Values.postgresql.auth.postgresPassword }}"
   # -- Postgres database password
-  DATABASE_NAME: "{{ .Values.postgresql.auth.database }}"
+  DATABASE_NAME: postgres #"{{ include .Values.postgresql.auth.database }}"
   # -- Disables the MQTT feature if `true`
   DISABLE_MQTT: "false"
+  MQTT_HOST: ""
+  ENCRYPTION_KEY: "MySuperSecretEncryptionKey"
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -57,7 +76,9 @@ postgresql:
   enabled: false
   auth:
     postgresPassword: teslamate-pass
+    #password: teslamate-pass
     database: teslamate
+    #username: password
   primary:
     persistence:
       enabled: false
