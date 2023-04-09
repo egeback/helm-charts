@@ -1,0 +1,28 @@
+apiVersion: v2
+appVersion: v7.3.83
+description: Ubiquiti Network's Unifi Controller
+name: unifi
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - ubiquiti
+  - unifi
+home: https://github.com/egeback/charts/tree/master/charts/stable/unifi
+icon: https://prd-www-cdn.ubnt.com/static/favicon-152.png
+sources:
+  - https://github.com/jacobalberty/unifi-docker
+maintainers:
+  - name: egeback
+    email: marky@egeback.se
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 1.3.2
+  - name: mongodb
+    version: 12.1.31
+    repository: https://charts.bitnami.com/bitnami
+    condition: mongodb.enabled
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: Initial version
