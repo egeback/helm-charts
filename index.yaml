@@ -30,7 +30,73 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/adguard-home-1.0.0/adguard-home-1.0.0.tgz
     version: 1.0.0
+  heimdall:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Initial version
+    apiVersion: v2
+    appVersion: 2.5.6
+    created: "2023-04-09T10:59:23.835586009Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.3.2
+    description: An Application dashboard and launcher
+    digest: 1b539f056c0d060e78e71e9a98ef167200bb36e7eff044629b36bc8a7fe9cc29
+    home: https://github.com/egeback/helm-charts/charts/heimdall
+    icon: https://i.imgur.com/mM4tcO5.png
+    keywords:
+    - heimdall
+    - dashboard
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: heimdall
+    sources:
+    - https://hub.docker.com/r/linuxserver/heimdall/
+    - https://github.com/linuxserver/heimdall
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/heimdall-1.0.0/heimdall-1.0.0.tgz
+    version: 1.0.0
   teslamate:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Initial version based on bjw-s common chart 1.0.1
+        - kind: changed
+          description: Add MQTT port to configuration option
+        - kind: changed
+          description: Fix teslamate version tag
+    apiVersion: v2
+    appVersion: v1.27.1
+    created: "2023-04-09T10:59:24.05722828Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.3.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.2.7
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 744d25787d042a4a7455a5e1d4e678628a0f4fe87f1e05b2fc0630e481d43737
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/793px-Tesla_Motors.svg.png
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-1.0.2/teslamate-1.0.2.tgz
+    version: 1.0.2
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
@@ -223,4 +289,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-09T07:07:14.136440028Z"
+generated: "2023-04-09T10:59:24.05725628Z"
