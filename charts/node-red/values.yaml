@@ -7,7 +7,7 @@
 
 image:
   # -- image repository
-  repository: node-red/node-red
+  repository: nodered/node-red
   # -- image tag
   # @default -- chart.appVersion
   tag:
