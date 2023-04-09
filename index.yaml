@@ -60,6 +60,37 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/heimdall-1.0.0/heimdall-1.0.0.tgz
     version: 1.0.0
+  node-red:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Initial version
+        - kind: added
+          description: Update README.md
+    apiVersion: v2
+    appVersion: 3.0.2
+    created: "2023-04-09T11:47:02.664874566Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.3.2
+    description: Node-RED is low-code programming for event-driven applications
+    digest: 16dba3c13fac1c08651cd2c9d0b8e2eec38467f3f9891ea329aac834a60dae44
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-1.0.1/node-red-1.0.1.tgz
+    version: 1.0.1
   teslamate:
   - annotations:
       artifacthub.io/changes: |-
@@ -289,4 +320,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-09T10:59:24.05725628Z"
+generated: "2023-04-09T11:47:02.664893867Z"
