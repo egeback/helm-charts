@@ -1,14 +1,15 @@
 # node-red
 
-![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: 3.0.2](https://img.shields.io/badge/AppVersion-3.0.2-informational?style=flat-square)
 
-node-red helm package
+Node-RED is low-code programming for event-driven applications
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised [here](https://github.com/egeback/helm-charts/issues/new/choose)**
 
 ## Source Code
 
 * <https://github.com/node-red/node-red-docker>
+* <https://github.com/egeback/charts/tree/master/charts/node-red>
 
 ## Requirements
 
@@ -18,7 +19,7 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://library-charts.k8s-at-home.com | common | 4.5.2 |
+| https://bjw-s.github.io/helm-charts | common | 1.3.2 |
 
 ## TL;DR
 
@@ -86,7 +87,7 @@ N/A
 
 ## Changelog
 
-### Version 1.2.2
+### Version 1.0.0
 
 ### Older versions
 

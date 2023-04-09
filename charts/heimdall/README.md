@@ -1,14 +1,15 @@
 # heimdall
 
-![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: 2.5.6](https://img.shields.io/badge/AppVersion-2.5.6-informational?style=flat-square)
 
-heimdall helm package
+An Application dashboard and launcher
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised [here](https://github.com/egeback/helm-charts/issues/new/choose)**
 
 ## Source Code
 
-* <https://github.com/heimdall/heimdall-docker>
+* <https://hub.docker.com/r/linuxserver/heimdall/>
+* <https://github.com/linuxserver/heimdall>
 
 ## Requirements
 
@@ -18,7 +19,7 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://library-charts.k8s-at-home.com | common | 4.5.2 |
+| https://bjw-s.github.io/helm-charts | common | 1.3.2 |
 
 ## TL;DR
 
@@ -75,10 +76,12 @@ N/A
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| env | object | See below | environment variables. See more environment variables in the [heimdall documentation](https://heimdall.org/docs). |
+| env | object | See below | environment variables. See more environment variables in the [heimdall documentation](https://github.com/linuxserver/docker-heimdall#parameters). |
+| env.PGID | string | `"1000"` | Set the container group id |
+| env.PUID | string | `"1000"` | Set the container user id |
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
-| image.repository | string | `"heimdall/heimdall"` | image repository |
+| image.repository | string | `"linuxserver/heimdall"` | image repository |
 | image.tag | string | chart.appVersion | image tag |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
@@ -86,7 +89,7 @@ N/A
 
 ## Changelog
 
-### Version 1.2.2
+### Version 1.0.0
 
 ### Older versions
 

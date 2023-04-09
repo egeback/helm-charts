@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: v1.27.1
+appVersion: 1.27.2
 description: "A self-hosted data logger for your Tesla \U0001F698"
 name: teslamate
-version: 1.0.2
+version: 1.0.3
 keywords:
   - teslamate
   - tesla
@@ -31,3 +31,5 @@ annotations:
       description: Add MQTT port to configuration option
     - kind: changed
       description: Fix teslamate version tag
+    - kind: changed
+      description: Add additonal containers information and step teslamate

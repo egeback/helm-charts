@@ -9,25 +9,47 @@ image:
   # -- image repository
   repository: teslamate/teslamate
   # -- image tag
-  tag: 1.27.2
+  # @default -- chart.appVersion
+  tag:
   # -- image pull policy
   pullPolicy: IfNotPresent
 
 
+#
+# Additional containers to enhance
+#
 # additionalContainers:
 #   teslamateapi:
-#     #enabled: false
 #     name: teslamateapi
-#     image: tobiasehlert/teslamateapi
-#     tag: 1.16.0
+#     image: tobiasehlert/teslamateapi:1.16.0
 #     env:
-#       - ENCRYPTION_KEY="{{ include .Values.env.ENCRYPTION_KEY }}"
-#       - DATABASE_USER='{{ include "Values.postgresql.auth.username" .}}-postgresql'
-#       - DATABASE_PASS="{{ include .Values.postgresql.auth.postgresPassword }}"
-#       - DATABASE_NAME="{{ include .Values.postgresql.auth.database }}"
-#       - DATABASE_HOST='{{ include "common.names.fullname" .}}-postgresql'
-#       - MQTT_HOST="{{ include .Values.env.MQTT_HOST }}"
-#       - TZ="{{ include .Values.env.TZ }}"
+#       ENCRYPTION_KEY: "{{ .Values.env.ENCRYPTION_KEY }}"
+#       DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
+#       DATABASE_PASS: "{{ .Values.postgresql.auth.postgresPassword }}"
+#       DATABASE_NAME: "{{ .Values.postgresql.auth.database }}"
+#       DATABASE_HOST: "{{ .Values.env.DATABASE_HOST }}"
+#       MQTT_HOST: "{{ .Values.env.MQTT_HOST }}"
+#       TZ: "{{ .Values.env.TZ }}"
+#   teslamateagile:
+#     image: mattjeanes/teslamateagile:v1.11.3
+#     env:
+#       DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
+#       DATABASE_PASS: "{{ .Values.postgresql.auth.postgresPassword }}"
+#       DATABASE_NAME: "{{ .Values.postgresql.auth.database }}"
+#       DATABASE_HOST: "{{ .Values.env.DATABASE_HOST }}"
+#       TeslaMate__UpdateIntervalSeconds: 300
+#       TeslaMate__GeofenceId: 1
+#       TeslaMate__EnergyProvider: Tibber
+#       Tibber__AccessToken: MyAccessToken
+#       TeslaMate__FeePerKilowattHour: 0
+#       TZ: "{{ .Values.env.TZ }}"
+#   teslamate-abrp:
+#     image: fetzu/teslamate-abrp:latest
+#     env:
+#       MQTT_SERVER: "{{ .Values.env.MQTT_HOST }}"
+#       CAR_NUMBER: 2
+#       CAR_MODEL: tesla:my:19:bt37:awd
+#       USER_TOKEN: 3ec94b70-db8b-4f83-b012-25bcb66f8a1c
 
 
 # -- environment variables. See [teslamate docs](https://docs.teslamate.org/docs/configuration/environment_variables) for more details.
@@ -59,12 +81,29 @@ service:
     ports:
       http:
         port: 4000
+  # teslamate-api:
+  #   ports:
+  #     http2:
+  #       port: 8080
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
   # @default -- See values.yaml
   main:
     enabled: false
+
+  #
+  # Add ingress for teslamate-api
+  # teslamate-api:
+  #   enabled: true
+  #   hosts:
+  #     - host: teslamate-api.example.com
+  #       paths:
+  #         - path: /
+  #           pathType: Prefix
+  #           service:
+  #             name: teslamate-teslamate-api
+  #             port: 8080
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
@@ -86,4 +125,3 @@ postgresql:
   primary:
     persistence:
       enabled: false
- 
