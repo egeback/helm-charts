@@ -321,6 +321,36 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update uptime kuma version to 1.21.3
+    apiVersion: v2
+    appVersion: 1.21.3
+    created: "2023-05-15T20:12:12.585225253Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.3.2
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: 61f8687c7e0201b98fcec06cd88e2c0a05e6dd1da435358f86bc90a400eab8ae
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/incubator/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.1/uptime-kuma-1.0.1.tgz
+    version: 1.0.1
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Initial version based on bjw-s common chart 1.3.2
     apiVersion: v2
     appVersion: v0.107.27
@@ -348,4 +378,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-09T12:31:15.120191692Z"
+generated: "2023-05-15T20:12:12.585243553Z"
