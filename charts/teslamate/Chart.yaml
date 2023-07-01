@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: 1.27.2
+appVersion: 1.27.3
 description: "A self-hosted data logger for your Tesla \U0001F698"
 name: teslamate
-version: 1.0.3
+version: 1.0.4
 keywords:
   - teslamate
   - tesla
@@ -26,10 +26,4 @@ maintainers:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Initial version based on bjw-s common chart 1.0.1
-    - kind: changed
-      description: Add MQTT port to configuration option
-    - kind: changed
-      description: Fix teslamate version tag
-    - kind: changed
-      description: Add additonal containers information and step teslamate
+      description: Update teslamate to version 1.27.3
