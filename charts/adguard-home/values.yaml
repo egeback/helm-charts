@@ -49,7 +49,6 @@ env:
 
 # -- arguments passed to the adguard-home command line.
 args:
-- /opt/adguardhome/AdGuardHome
 - "--config"
 - "/opt/adguardhome/conf/AdGuardHome.yaml"
 - "--work-dir"
