@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: v7.3.83
+appVersion: v7.4.162
 description: Ubiquiti Network's Unifi Controller
 name: unifi
-version: 1.0.0
+version: 1.0.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ubiquiti
@@ -24,5 +24,5 @@ dependencies:
     condition: mongodb.enabled
 annotations:
   artifacthub.io/changes: |
-    - kind: added
-      description: Initial version
+    - kind: changed
+      description: Updated docker image to version v7.4.162
