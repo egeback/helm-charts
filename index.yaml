@@ -4,6 +4,37 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update adguard to version v0.107.35
+        - kind: changed
+          description: Step base chart to 1.5.1
+    apiVersion: v2
+    appVersion: v0.107.35
+    created: "2023-07-27T07:09:51.867586774Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    description: DNS proxy as ad-blocker for local network
+    digest: 82ae63b9d300747bd0dfc1459c501fc9295164c96b680d649de6b465e9e7760c
+    home: https://github.com/egeback/helm-charts/blob/main/charts/adguard-home
+    icon: https://avatars3.githubusercontent.com/u/8361145?s=200&v=4?sanitize=true
+    keywords:
+    - adguard-home
+    - adblock
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: adguard-home
+    sources:
+    - https://github.com/AdguardTeam/AdGuardHome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/adguard-home-1.0.4/adguard-home-1.0.4.tgz
+    version: 1.0.4
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update adguard to version v0.107.34
         - kind: changed
           description: Remove /opt/adguardhome/AdGuardHome as arg based on change in image
@@ -566,4 +597,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2023-07-26T11:19:11.708926013Z"
+generated: "2023-07-27T07:09:51.867622675Z"
