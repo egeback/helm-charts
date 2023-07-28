@@ -21,7 +21,7 @@ image:
 # additionalContainers:
 #   teslamateapi:
 #     name: teslamateapi
-#     image: tobiasehlert/teslamateapi:1.16.1
+#     image: tobiasehlert/teslamateapi:1.16.2
 #     env:
 #       ENCRYPTION_KEY: "{{ .Values.env.ENCRYPTION_KEY }}"
 #       DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
