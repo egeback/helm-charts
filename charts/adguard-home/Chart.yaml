@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: v0.107.35
+appVersion:  v0.107.36
 description: DNS proxy as ad-blocker for local network
 name: adguard-home
-version: 1.0.4
+version: 1.0.5
 kubeVersion: ">=1.16.0-0"
 keywords:
   - adguard-home
@@ -23,6 +23,4 @@ maintainers:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Update adguard to version v0.107.35
-    - kind: changed
-      description: Step base chart to 1.5.1
+      description: Update adguard to version v0.107.36
