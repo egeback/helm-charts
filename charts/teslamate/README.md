@@ -17,7 +17,7 @@ A self-hosted data logger for your Tesla 🚘
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts | common | 1.3.2 |
+| https://bjw-s.github.io/helm-charts | common | 1.5.1 |
 | https://charts.bitnami.com/bitnami | postgresql | 12.2.7 |
 
 ## TL;DR
