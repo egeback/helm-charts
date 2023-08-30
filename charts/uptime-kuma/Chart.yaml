@@ -1,16 +1,16 @@
 ---
 apiVersion: v2
-appVersion: 1.23.0-alpine
+appVersion: 1.23.1-alpine
 description: A fancy self-hosted monitoring tool for your websites and applications
 name: uptime-kuma
-version: 1.0.4
+version: 1.0.5
 kubeVersion: ">=1.16.0-0"
 keywords:
   - uptime-kuma
   - status
   - status-page
   - monitoring
-home: https://github.com/k8s-at-home/charts/tree/master/charts/incubator/uptime-kuma
+home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
 icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
 sources:
   - https://github.com/louislam/uptime-kuma
@@ -24,6 +24,4 @@ maintainers:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Update uptime kuma version to 1.23.0-alpine
-    - kind: changed
-      description: Update base helm chart to version 1.5.1
+      description: Update uptime kuma version to 1.23.1-alpine
