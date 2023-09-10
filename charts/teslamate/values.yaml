@@ -31,7 +31,7 @@ image:
 #       MQTT_HOST: "{{ .Values.env.MQTT_HOST }}"
 #       TZ: "{{ .Values.env.TZ }}"
 #   teslamateagile:
-#     image: mattjeanes/teslamateagile:v1.12.0
+#     image: mattjeanes/teslamateagile:v1.12.1
 #     env:
 #       DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
 #       DATABASE_PASS: "{{ .Values.postgresql.auth.postgresPassword }}"
