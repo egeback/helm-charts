@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: 1.23.1-alpine
+appVersion: 1.23.3-alpine
 description: A fancy self-hosted monitoring tool for your websites and applications
 name: uptime-kuma
-version: 1.0.6
+version: 1.0.7
 kubeVersion: ">=1.16.0-0"
 keywords:
   - uptime-kuma
