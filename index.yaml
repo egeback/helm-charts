@@ -658,6 +658,40 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
+          description: Updated docker image to version v7.4.176
+        - kind: changed
+          description: Update base chart to 2.0.3
+    apiVersion: v2
+    appVersion: v7.5.176
+    created: "2023-10-22T13:17:41.281486477Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.0.3
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.31
+    description: Ubiquiti Network's Unifi Controller
+    digest: 265e495cef9d68d82dee7024cf5ae50186d73e6ff8282c2d7a68c3c09ade5019
+    home: https://github.com/egeback/charts/tree/master/charts/stable/unifi
+    icon: https://prd-www-cdn.ubnt.com/static/favicon-152.png
+    keywords:
+    - ubiquiti
+    - unifi
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: unifi
+    sources:
+    - https://github.com/jacobalberty/unifi-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/unifi-1.0.4/unifi-1.0.4.tgz
+    version: 1.0.4
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
           description: Updated docker image to version v7.4.174
         - kind: changed
           description: Update base chart to 1.5.1
@@ -972,4 +1006,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2023-10-14T12:56:46.717335232Z"
+generated: "2023-10-22T13:17:41.281832882Z"
