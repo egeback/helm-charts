@@ -11,4 +11,5 @@ global:
 {{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
 
 {{/* Render the templates */}}
-{{ include "bjw-s.common.loader.generate" . }}
+{{ include "bjw-s.common.loader.all" . }}
+{{- include "egeback.common.lib.chart.notes" . -}}
