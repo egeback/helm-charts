@@ -4,6 +4,35 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update adguard to version v0.107.41
+    apiVersion: v2
+    appVersion: v0.107.41
+    created: "2023-11-16T20:36:21.597481829Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    description: DNS proxy as ad-blocker for local network
+    digest: ea0fe1bab4d5fb93e15c0bd63bb9ac3f461ccc4d7acef5c29c978f81c1952d25
+    home: https://github.com/egeback/helm-charts/blob/main/charts/adguard-home
+    icon: https://avatars3.githubusercontent.com/u/8361145?s=200&v=4?sanitize=true
+    keywords:
+    - adguard-home
+    - adblock
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: adguard-home
+    sources:
+    - https://github.com/AdguardTeam/AdGuardHome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/adguard-home-1.0.10/adguard-home-1.0.10.tgz
+    version: 1.0.10
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update adguard to version v0.107.40
     apiVersion: v2
     appVersion: v0.107.40
@@ -357,6 +386,38 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/node-red-1.0.1/node-red-1.0.1.tgz
     version: 1.0.1
   teslamate:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update teslamate to 1.27.4
+    apiVersion: v2
+    appVersion: 1.27.4
+    created: "2023-11-16T20:36:21.756018648Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.2.7
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 640e35b5e1bd31e9c5c6e7e3a5e2439b1d4f87b9450beca2d1e88bbe9a26a0a0
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/793px-Tesla_Motors.svg.png
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-1.0.10/teslamate-1.0.10.tgz
+    version: 1.0.10
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
@@ -920,6 +981,36 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update uptime kuma version to 1.23.4-alpine
+    apiVersion: v2
+    appVersion: 1.23.4-alpine
+    created: "2023-11-16T20:36:21.913389766Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: 05eb3d15ea60ffb0e19845a035d0407878cf0b4c6c1982b831ed0d21ab885a0c
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.8/uptime-kuma-1.0.8.tgz
+    version: 1.0.8
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Fix values.yaml to use app version in chart.yaml
         - kind: changed
           description: Update uptime kuma version to 1.23.1-alpine
@@ -1101,4 +1192,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2023-10-22T18:06:37.478682959Z"
+generated: "2023-11-16T20:36:21.913505401Z"
