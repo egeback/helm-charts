@@ -266,6 +266,34 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/adguard-home-1.0.0/adguard-home-1.0.0.tgz
     version: 1.0.0
+  esphome:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: added
+          description: Initial version
+    apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-11-25T11:41:43.138652563Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.0.3
+    description: ESP Home helm package
+    digest: 2699d9f85469a3e5722665bc7686f24602d9142d09d096042d962265a1b46251
+    home: https://github.com/egeback/helm-charts/charts/${CHARTNAME}
+    icon: https://${CHARTNAME}.org/icon
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@$egeback.com
+      name: Marky Egebäck
+    name: esphome
+    sources:
+    - https://github.com/${CHARTNAME}/${CHARTNAME}-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-1.0.0/esphome-1.0.0.tgz
+    version: 1.0.0
   heimdall:
   - annotations:
       artifacthub.io/changes: |
@@ -1232,4 +1260,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2023-11-21T18:45:28.889425505Z"
+generated: "2023-11-25T11:41:43.138754653Z"
