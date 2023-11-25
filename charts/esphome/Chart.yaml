@@ -1,0 +1,23 @@
+apiVersion: v2
+appVersion: 1.0.0
+description: ESP Home helm package
+name: esphome
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - ESPHOME
+home: https://github.com/egeback/helm-charts/charts/${CHARTNAME}
+icon: https://${CHARTNAME}.org/icon
+sources:
+  - https://github.com/${CHARTNAME}/${CHARTNAME}-docker
+maintainers:
+  - name: Marky Egebäck
+    email: marky@$egeback.com
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 2.0.3
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: Initial version
