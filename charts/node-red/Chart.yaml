@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: 3.1
+appVersion: 3.1.1
 description: Node-RED is low-code programming for event-driven applications
 name: node-red
-version: 1.0.3
+version: 1.0.4
 kubeVersion: ">=1.16.0-0"
 keywords:
   - node-red
@@ -21,6 +21,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Update node red version to 3.1
-    - kind: changed
-      description: Step base chart to 1.5.1
+      description: Update node red version to 3.1.1
