@@ -4,6 +4,35 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update adguard to version v0.107.42
+    apiVersion: v2
+    appVersion: v0.107.42
+    created: "2023-12-09T17:42:07.400463649Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    description: DNS proxy as ad-blocker for local network
+    digest: 3856ecb134e3ed25365a8d0490f5076285d9aab6ddeb6ae237ce113c6d86d6d4
+    home: https://github.com/egeback/helm-charts/blob/main/charts/adguard-home
+    icon: https://avatars3.githubusercontent.com/u/8361145?s=200&v=4?sanitize=true
+    keywords:
+    - adguard-home
+    - adblock
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: adguard-home
+    sources:
+    - https://github.com/AdguardTeam/AdGuardHome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/adguard-home-1.0.11/adguard-home-1.0.11.tgz
+    version: 1.0.11
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update adguard to version v0.107.41
     apiVersion: v2
     appVersion: v0.107.41
@@ -325,6 +354,45 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/heimdall-1.0.0/heimdall-1.0.0.tgz
     version: 1.0.0
   home-assistant:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update home assistant to 2023.12.1
+    apiVersion: v2
+    appVersion: 2023.12.1
+    created: "2023-12-09T17:42:07.548816505Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.0.3
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.2.11
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.1.2
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 5.10.2
+    description: Home Assistant helm package
+    digest: 6839a63c3face6adaf1bdac01c8ca15017a69c1f172f49071af0302356d359ff
+    home: https://github.com/egeback/helm-charts/charts/home-assistant
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: Marky Egebäck
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-1.0.2/home-assistant-1.0.2.tgz
+    version: 1.0.2
   - annotations:
       artifacthub.io/changes: |-
         - kind: added
@@ -1387,4 +1455,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2023-12-03T17:32:40.464505723Z"
+generated: "2023-12-09T17:42:07.548903387Z"
