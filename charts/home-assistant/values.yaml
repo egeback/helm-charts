@@ -23,6 +23,25 @@ controllers:
           env:
             # -- Set the container timezone
             TZ: UTC
+      code:
+        enabled: false
+        image:
+          env:
+            TZ: Europe/Stockholm
+          repository: causticlab/hass-configurator-docker
+          tag: 0.5.2
+
+defaultPodOptions:
+  automountServiceAccountToken: false
+  dnsPolicy: ClusterFirstWithHostNet
+  hostNetwork: true
+  podSecurityContext:
+    fsGroup: 1000
+  securityContext:
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
+    runAsGroup: 1000
+    runAsUser: 1000
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -137,94 +156,3 @@ metrics:
       #   for: 5m
       #   labels:
       #     severity: critical
-additionalContainers:
-  codeserver:
-    # -- Enable running a code-server container in the pod
-    enabled: false
-
-    image:
-      # -- Specify the code-server image
-      repository: ghcr.io/coder/code-server
-      # -- Specify the code-server image tag
-      tag: 4.19.0
-      # -- Specify the code-server image pull policy
-      pullPolicy: IfNotPresent
-
-    # -- Set any environment variables for code-server here
-    env: {}
-      # TZ: UTC
-
-    # -- Set codeserver command line arguments.
-    # Consider setting --user-data-dir to a persistent location to preserve code-server setting changes
-    args:
-      - --auth
-      - none
-      # - --user-data-dir
-      # - "/config/.vscode"
-
-    # -- Specify a list of volumes that get mounted in the code-server container.
-    # At least 1 volumeMount is required!
-    volumeMounts: []
-    # - name: config
-    #   mountPath: /data/config
-
-    # -- Specify the working dir that will be opened when code-server starts
-    # If not given, the app will default to the mountpah of the first specified volumeMount
-    workingDir: ""
-
-    # -- Optionally allow access a Git repository by passing in a private SSH key
-    # @default -- See below
-    git:
-      # -- Raw SSH private key
-      deployKey: ""
-      # -- Base64-encoded SSH private key. When both variables are set, the raw SSH key takes precedence.
-      deployKeyBase64: ""
-      # -- Existing secret containing SSH private key
-      # The chart expects it to be present under the `id_rsa` key.
-      deployKeySecret: ""
-
-    service:
-      # -- Enable a service for the code-server add-on.
-      enabled: true
-      type: ClusterIP
-      # Specify the default port information
-      ports:
-        codeserver:
-          port: 12321
-          enabled: true
-          protocol: TCP
-          targetPort: codeserver
-          ## Specify the nodePort value for the LoadBalancer and NodePort service types.
-          ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
-          ##
-          # nodePort:
-      annotations: {}
-      labels: {}
-
-    ingress:
-      # -- Enable an ingress for the code-server add-on.
-      enabled: false
-
-      annotations: {}
-        # kubernetes.io/ingress.class: nginx
-        # kubernetes.io/tls-acme: "true"
-
-      labels: {}
-
-      # -- Set the ingressClass that is used for this ingress.
-      # Requires Kubernetes >=1.19
-      ingressClassName:  # "nginx"
-
-      hosts:
-        - host: code.chart-example.local
-          paths:
-            - path: /
-              # Ignored if not kubeVersion >= 1.14-0
-              pathType: Prefix
-      tls: []
-      #  - secretName: chart-example-tls
-      #    hosts:
-      #      - code.chart-example.local
-
-    securityContext:
-      runAsUser: 0
