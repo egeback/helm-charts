@@ -1,0 +1,22 @@
+---
+apiVersion: v2
+appVersion:  v0.107.43
+description: Cert manager webhook for anx.se
+name: cert-manager-webhook-anxdns
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - anx.se
+  - cert-manager-webbook
+  - dns
+home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
+sources:
+  - https://github.com/egeback/cert-manager-webhook-anx
+maintainers:
+  - name: egeback
+    email: marky@egeback.se
+annotations:
+  artifacthub.io/changes: |-
+    - kind: added
+      description: Initial version
+
