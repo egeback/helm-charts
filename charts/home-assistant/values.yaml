@@ -14,7 +14,7 @@ controllers:
           repository: ghcr.io/home-assistant/home-assistant
           # -- image tag
           # @default -- chart.appVersion
-          tag:
+          tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
 
