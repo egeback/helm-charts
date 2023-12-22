@@ -21,7 +21,7 @@ image:
 # additionalContainers:
 #   teslamateapi:
 #     name: teslamateapi
-#     image: tobiasehlert/teslamateapi:1.16.5
+#     image: tobiasehlert/teslamateapi:1.16.6
 #     env:
 #       ENCRYPTION_KEY: "{{ .Values.env.ENCRYPTION_KEY }}"
 #       DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
@@ -44,9 +44,11 @@ image:
 #       TeslaMate__FeePerKilowattHour: 0
 #       TZ: "{{ .Values.env.TZ }}"
 #   teslamate-abrp:
-#     image: fetzu/teslamate-abrp:latest
+#     image: fetzu/teslamate-abrp:2.0.0
 #     env:
 #       MQTT_SERVER: "{{ .Values.env.MQTT_HOST }}"
+#       MQTT_PASSWORD: '{{ .Values.env.MQTT_PASSWORD }}'
+#       MQTT_USERNAME: '{{ .Values.env.MQTT_USERNAME }}'
 #       CAR_NUMBER: 2
 #       CAR_MODEL: tesla:my:19:bt37:awd
 #       USER_TOKEN: 3ec94b70-db8b-4f83-b012-25bcb66f8a1c
