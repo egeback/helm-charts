@@ -35,7 +35,7 @@ controllers:
           # -- image repository
           repository: jacobalberty/unifi
           # @default -- chart.appVersion
-          tag:
+          tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
 

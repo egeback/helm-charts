@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: v7.5.176
+appVersion:  v8.0.24
 description: Ubiquiti Network's Unifi Controller
 name: unifi
-version: 1.0.5
+version: 1.0.6
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ubiquiti
@@ -17,7 +17,7 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
-    version: 2.0.3
+    version: 2.4.0
   - name: mongodb
     version: 12.1.31
     repository: https://charts.bitnami.com/bitnami
@@ -25,6 +25,6 @@ dependencies:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Fixed default values to work with new base chart version
+      description: Update Unifi version to v8.0.24
     - kind: changed
-      description: Update base chart to 2.0.3
+      description: Update base chart to 2.4.0
