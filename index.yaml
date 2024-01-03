@@ -1584,6 +1584,36 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update uptime kuma version to 1.23.11-alpine
+    apiVersion: v2
+    appVersion: 1.23.11-alpine
+    created: "2024-01-03T21:17:41.831515121Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: 2cd9f0c8b5f29b0ee47a4896cc1122dfa0ca2c85e9c241178cdbf640aa6c05a4
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.12/uptime-kuma-1.0.12.tgz
+    version: 1.0.12
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update uptime kuma version to 1.23.10-alpine
     apiVersion: v2
     appVersion: 1.23.10-alpine
@@ -1885,4 +1915,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-01-03T21:12:14.767347835Z"
+generated: "2024-01-03T21:17:41.831654655Z"
