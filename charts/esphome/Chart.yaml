@@ -1,23 +1,25 @@
 apiVersion: v2
-appVersion: 1.0.0
+appVersion: 2023.12.5
 description: ESP Home helm package
 name: esphome
-version: 1.0.0
+version: 1.0.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ESPHOME
-home: https://github.com/egeback/helm-charts/charts/${CHARTNAME}
-icon: https://${CHARTNAME}.org/icon
+home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+icon: https://esphome.io/_images/logo.svg
 sources:
-  - https://github.com/${CHARTNAME}/${CHARTNAME}-docker
+  - https://github.com/esphome
 maintainers:
   - name: Marky Egebäck
     email: marky@$egeback.com
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
-    version: 2.0.3
+    version: 2.4.0
 annotations:
   artifacthub.io/changes: |
-    - kind: added
-      description: Initial version
+    - kind: changed
+      description: Update esp-home to 2023.15.5
+    - kind: changed
+      description: Update base helm chart to 2.4.0
