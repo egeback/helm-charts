@@ -10,7 +10,7 @@ image:
   repository: esphome/esphome
   # -- image tag
   # @default -- chart.appVersion
-  tag:
+  tag: "{{ .Chart.AppVersion }}"
   # -- image pull policy
   pullPolicy: IfNotPresent
 
