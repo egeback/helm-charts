@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: 2024.1.0
+appVersion: 2024.1.2
 description: Home Assistant helm package
 name: home-assistant
-version: 1.0.8
+version: 1.0.9
 kubeVersion: ">=1.16.0-0"
 keywords:
   - home-assistant
@@ -32,6 +32,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Update home assistant to 2023.12.3
-    - kind: changed
-      description: Update base helm to 2.4.0
+      description: Update home assistant to 2024.1.2
