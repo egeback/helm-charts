@@ -331,6 +331,34 @@ entries:
           description: Fix to values.yaml
         - kind: changed
     apiVersion: v2
+    appVersion: 2023.12.6
+    created: "2024-01-17T19:46:42.406006468Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.4.0
+    description: ESP Home helm package
+    digest: 10932ae834bd60c253248a035e40be8eacae4521e7d5bd77977ad06e5e15ec86
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@$egeback.com
+      name: Marky Egebäck
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-1.0.3/esphome-1.0.3.tgz
+    version: 1.0.3
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Fix to values.yaml
+        - kind: changed
+    apiVersion: v2
     appVersion: 2023.12.5
     created: "2024-01-03T21:32:24.731939227Z"
     dependencies:
@@ -440,6 +468,45 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/heimdall-1.0.0/heimdall-1.0.0.tgz
     version: 1.0.0
   home-assistant:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Fix bug in default value for env
+    apiVersion: v2
+    appVersion: 2024.1.3
+    created: "2024-01-17T19:46:42.57081859Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.4.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.2.11
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.1.2
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 5.10.2
+    description: Home Assistant helm package
+    digest: 705b15177b84aeccff9b1af065a59faabe66149d4973c9fff016a11fcd133463
+    home: https://github.com/egeback/helm-charts/charts/home-assistant
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: Marky Egebäck
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-1.0.11/home-assistant-1.0.11.tgz
+    version: 1.0.11
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
@@ -997,6 +1064,38 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/node-red-1.0.1/node-red-1.0.1.tgz
     version: 1.0.1
   teslamate:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update base chart to 2.4.0
+    apiVersion: v2
+    appVersion: 1.28.2
+    created: "2024-01-17T19:46:42.719186754Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.4.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.12.10
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: ee3892ad19b831cdb84aef0d11e4a55e194f63f97b24c206ac777b306b874891
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/793px-Tesla_Motors.svg.png
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-1.0.13/teslamate-1.0.13.tgz
+    version: 1.0.13
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
@@ -2053,4 +2152,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-01-12T20:46:23.712530619Z"
+generated: "2024-01-17T19:46:42.719424192Z"
