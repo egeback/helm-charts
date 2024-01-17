@@ -331,6 +331,34 @@ entries:
           description: Fix to values.yaml
         - kind: changed
     apiVersion: v2
+    appVersion: 2023.12.7
+    created: "2024-01-17T19:50:26.892407563Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.4.0
+    description: ESP Home helm package
+    digest: 6190bb414aaf932bcc036426d43635cef4a0f1571a4e783b642d4fc5eca7a79e
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@$egeback.com
+      name: Marky Egebäck
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-1.0.4/esphome-1.0.4.tgz
+    version: 1.0.4
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Fix to values.yaml
+        - kind: changed
+    apiVersion: v2
     appVersion: 2023.12.6
     created: "2024-01-17T19:46:42.406006468Z"
     dependencies:
@@ -2152,4 +2180,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-01-17T19:46:42.719424192Z"
+generated: "2024-01-17T19:50:26.892523339Z"
