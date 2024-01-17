@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 1.28.2
 description: "A self-hosted data logger for your Tesla \U0001F698"
 name: teslamate
-version: 1.0.12
+version: 1.0.13
 keywords:
   - teslamate
   - tesla
@@ -15,9 +15,9 @@ sources:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
-    version: 1.5.1
+    version: 2.4.0
   - name: postgresql
-    version: 12.2.7
+    version: 12.12.10
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
 maintainers:
@@ -26,4 +26,4 @@ maintainers:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Update teslamate to 1.27.4
+      description: Update base chart to 2.4.0
