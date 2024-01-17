@@ -25,9 +25,9 @@ controllers:
           TZ: UTC
       code:
         enabled: false
+        env:
+          TZ: Europe/Stockholm
         image:
-          env:
-            TZ: Europe/Stockholm
           repository: causticlab/hass-configurator-docker
           tag: 0.5.2
 
