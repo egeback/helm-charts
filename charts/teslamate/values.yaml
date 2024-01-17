@@ -5,8 +5,6 @@
 # https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
-
-
 controllers:
   main:
     containers:
@@ -35,12 +33,14 @@ controllers:
             # -- Disables the MQTT feature if `true`
             DISABLE_MQTT: "false"
             # -- MQTT server host
-            MQTT_HOST: ""
+            MQTT_HOST: "mosquitto"
             # -- MQTT server port
             MQTT_PORT: 1883
+            # -- MQTT username
+            # MQTT_USERNAME:
+            # -- MQTT password
+            # MQTT_PASSWORD:
             # -- Teslamate encryption key
-            MQTT_USERNAME:
-            MQTT_PASSWORD:
             ENCRYPTION_KEY: "MySuperSecretEncryptionKey"
       teslamateapi:
         enabled: false
@@ -55,6 +55,10 @@ controllers:
           DATABASE_NAME: "{{ .Values.postgresql.auth.database }}"
           DATABASE_HOST: "{{ .Values.controllers.main.containers.main.DATABASE_HOST }}"
           MQTT_HOST: "{{ .Values.controllers.main.containers.main.MQTT_HOST }}"
+          # -- MQTT username
+          # MQTT_USERNAME:
+          # -- MQTT password
+          # MQTT_PASSWORD:
           TZ: "{{ .Values.controllers.main.containers.main.env.TZ }}"
       teslamateagile:
         enabled: false
