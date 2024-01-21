@@ -384,6 +384,33 @@ entries:
         - kind: changed
           description: Update to version 2023.12.7
     apiVersion: v2
+    appVersion: 2023.12.8
+    created: "2024-01-21T18:08:05.892978277Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.4.0
+    description: ESP Home helm package
+    digest: 385859e4fd3ed0e4947fb426986b91e236309daa2721e205a44c56d9315058dc
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@$egeback.com
+      name: Marky Egebäck
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-1.0.6/esphome-1.0.6.tgz
+    version: 1.0.6
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Update to version 2023.12.7
+    apiVersion: v2
     appVersion: 2023.12.7
     created: "2024-01-17T21:33:31.609356037Z"
     dependencies:
@@ -608,6 +635,45 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/heimdall-1.0.0/heimdall-1.0.0.tgz
     version: 1.0.0
   home-assistant:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Fix bug in default value for env
+    apiVersion: v2
+    appVersion: 2024.1.5
+    created: "2024-01-21T18:08:06.036791136Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.4.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.2.11
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.1.2
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 5.10.2
+    description: Home Assistant helm package
+    digest: ac62b8978832b3c629877bf9346f3ce5af07ff5b3548d98548fe0e31f76e3f6a
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: Marky Egebäck
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-1.0.14/home-assistant-1.0.14.tgz
+    version: 1.0.14
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
@@ -2522,4 +2588,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-01-18T20:49:43.217110102Z"
+generated: "2024-01-21T18:08:06.036993475Z"
