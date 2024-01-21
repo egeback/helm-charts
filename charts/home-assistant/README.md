@@ -1,10 +1,10 @@
 # home-assistant
 
-![Version: 1.0.11](https://img.shields.io/badge/Version-1.0.11-informational?style=flat-square) ![AppVersion: 2024.1.3](https://img.shields.io/badge/AppVersion-2024.1.3-informational?style=flat-square)
+![Version: 1.0.14](https://img.shields.io/badge/Version-1.0.14-informational?style=flat-square) ![AppVersion: 2024.1.5](https://img.shields.io/badge/AppVersion-2024.1.5-informational?style=flat-square)
 
 Home Assistant helm package
 
-**Homepage:** <https://github.com/egeback/helm-charts/charts/home-assistant>
+**Homepage:** <https://github.com/egeback/helm-charts/tree/main/charts/home-assistant>
 
 ## Maintainers
 
