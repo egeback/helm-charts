@@ -667,6 +667,45 @@ entries:
         - kind: changed
           description: Fix bug in default value for env
     apiVersion: v2
+    appVersion: 2024.1.6
+    created: "2024-01-31T14:25:59.248606633Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.4.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.2.11
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.1.2
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 5.10.2
+    description: Home Assistant helm package
+    digest: 455eebf2fab0af5f4360d073e9de63289aa553ad8d3b7406f6b54e1bb3bdd4c5
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: Marky Egebäck
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-1.0.15/home-assistant-1.0.15.tgz
+    version: 1.0.15
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Fix bug in default value for env
+    apiVersion: v2
     appVersion: 2024.1.5
     created: "2024-01-21T18:08:06.036791136Z"
     dependencies:
@@ -2615,4 +2654,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-01-26T18:54:44.207132243Z"
+generated: "2024-01-31T14:25:59.248782231Z"
