@@ -1,6 +1,6 @@
 # unifi
 
-![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![AppVersion: v8.0.26](https://img.shields.io/badge/AppVersion-v8.0.26-informational?style=flat-square)
+![Version: 1.0.9](https://img.shields.io/badge/Version-1.0.9-informational?style=flat-square) ![AppVersion: v8.0.28](https://img.shields.io/badge/AppVersion-v8.0.28-informational?style=flat-square)
 
 Ubiquiti Network's Unifi Controller
 
@@ -22,7 +22,7 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts | common | 2.4.0 |
+| https://bjw-s.github.io/helm-charts | common | 2.5.0 |
 | https://charts.bitnami.com/bitnami | mongodb | 12.1.31 |
 
 ## Values
