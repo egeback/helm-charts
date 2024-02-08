@@ -4,6 +4,35 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update adguard to version v0.107.44
+    apiVersion: v2
+    appVersion: v0.107.44
+    created: "2024-02-08T06:07:41.300595909Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    description: DNS proxy as ad-blocker for local network
+    digest: 862f1a05386d7c0748c5da98186ddcaf831ee4c7722f14fc7c3a1de52d854dca
+    home: https://github.com/egeback/helm-charts/blob/main/charts/adguard-home
+    icon: https://avatars3.githubusercontent.com/u/8361145?s=200&v=4?sanitize=true
+    keywords:
+    - adguard-home
+    - adblock
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: adguard-home
+    sources:
+    - https://github.com/AdguardTeam/AdGuardHome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/adguard-home-1.0.14/adguard-home-1.0.14.tgz
+    version: 1.0.14
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update adguard to version v0.107.43
     apiVersion: v2
     appVersion: v0.107.43
@@ -662,6 +691,45 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/heimdall-1.0.0/heimdall-1.0.0.tgz
     version: 1.0.0
   home-assistant:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Update to home-assistant version 2024.2.0
+    apiVersion: v2
+    appVersion: 2024.2.0
+    created: "2024-02-08T06:07:41.444057177Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.5.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.2.11
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.1.2
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 5.10.2
+    description: Home Assistant helm package
+    digest: 99a4e76b885613ecb4dee1caf7ab8b0da07804ff52ca226ce6a0723413e7d39c
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: Marky Egebäck
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-1.0.16/home-assistant-1.0.16.tgz
+    version: 1.0.16
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
@@ -1996,6 +2064,38 @@ entries:
         - kind: changed
           description: Update Unifi version to v8.0.24
     apiVersion: v2
+    appVersion: v8.0.28
+    created: "2024-02-08T06:07:41.609231458Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.5.0
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.31
+    description: Ubiquiti Network's Unifi Controller
+    digest: f2444e9dce4be9f2e7ee0063054b0da6669fecc6e4d691feff3675f432ab4a25
+    home: https://github.com/egeback/charts/tree/master/charts/stable/unifi
+    icon: https://prd-www-cdn.ubnt.com/static/favicon-152.png
+    keywords:
+    - ubiquiti
+    - unifi
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: unifi
+    sources:
+    - https://github.com/jacobalberty/unifi-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/unifi-1.0.9/unifi-1.0.9.tgz
+    version: 1.0.9
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Update Unifi version to v8.0.24
+    apiVersion: v2
     appVersion: v8.0.26
     created: "2024-01-17T21:33:32.249746834Z"
     dependencies:
@@ -2654,4 +2754,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-01-31T14:25:59.248782231Z"
+generated: "2024-02-08T06:07:41.609423767Z"
