@@ -1,6 +1,6 @@
 # teslamate
 
-![Version: 1.0.13](https://img.shields.io/badge/Version-1.0.13-informational?style=flat-square) ![AppVersion: 1.28.2](https://img.shields.io/badge/AppVersion-1.28.2-informational?style=flat-square)
+![Version: 1.0.15](https://img.shields.io/badge/Version-1.0.15-informational?style=flat-square) ![AppVersion: 1.28.3](https://img.shields.io/badge/AppVersion-1.28.3-informational?style=flat-square)
 
 A self-hosted data logger for your Tesla 🚘
 
@@ -21,7 +21,7 @@ A self-hosted data logger for your Tesla 🚘
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts | common | 2.4.0 |
+| https://bjw-s.github.io/helm-charts | common | 2.5.0 |
 | https://charts.bitnami.com/bitnami | postgresql | 12.12.10 |
 
 ## Values
