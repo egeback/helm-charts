@@ -23,17 +23,17 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts | common | 1.5.1 |
+| https://bjw-s.github.io/helm-charts | common | 2.4.0 |
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| env | object | See below | environment variables. See more environment variables in the [node-red documentation](https://node-red.org/docs). |
-| env.TZ | string | `"UTC"` | Set the container timezone |
-| image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
-| image.repository | string | `"nodered/node-red"` | image repository |
-| image.tag | string | chart.appVersion | image tag |
+| controllers.main.containers.main.env | object | See below | environment variables. See more environment variables in the [node-red documentation](https://node-red.org/docs). |
+| controllers.main.containers.main.env.TZ | string | `"UTC"` | Set the container timezone |
+| controllers.main.containers.main.image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
+| controllers.main.containers.main.image.repository | string | `"nodered/node-red"` | image repository |
+| controllers.main.containers.main.image.tag | string | chart.appVersion | image tag |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
 | service | object | See values.yaml | Configures service settings for the chart. |

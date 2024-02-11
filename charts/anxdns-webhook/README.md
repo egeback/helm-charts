@@ -1,6 +1,6 @@
 # cert-manager-webhook-anxdns
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: v0.107.43](https://img.shields.io/badge/AppVersion-v0.107.43-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![AppVersion: v0.107.43](https://img.shields.io/badge/AppVersion-v0.107.43-informational?style=flat-square)
 
 Cert manager webhook for anx.se
 
