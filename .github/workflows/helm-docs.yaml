@@ -2,7 +2,7 @@ name: Generate helm docs
 on:
   push:
     branches:
-      - main
+      - pull_request
 jobs:
   docs:
     runs-on: ubuntu-latest
