@@ -388,6 +388,30 @@ entries:
         - kind: added
           description: Initial version
     apiVersion: v2
+    appVersion: v1.0.1
+    created: "2024-02-24T20:51:54.694671337Z"
+    description: Cert manager webhook for anx.se
+    digest: cf855963a04df04d5783f280e8082f01e9f0a40e8bd13522f942c24ed8c72a61
+    home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
+    keywords:
+    - anx.se
+    - cert-manager-webbook
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: cert-manager-webhook-anxdns
+    sources:
+    - https://github.com/egeback/cert-manager-webhook-anx
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.4/cert-manager-webhook-anxdns-1.0.4.tgz
+    version: 1.0.4
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: added
+          description: Initial version
+    apiVersion: v2
     appVersion: v0.107.43
     created: "2024-02-24T10:53:39.738492583Z"
     description: Cert manager webhook for anx.se
@@ -2954,4 +2978,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-02-24T10:53:40.081809797Z"
+generated: "2024-02-24T20:51:54.694906307Z"
