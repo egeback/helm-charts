@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: v0.107.43
 description: Cert manager webhook for anx.se
 name: cert-manager-webhook-anxdns
-version: 1.0.2
+version: 1.0.3
 kubeVersion: ">=1.16.0-0"
 keywords:
   - anx.se
