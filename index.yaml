@@ -389,6 +389,30 @@ entries:
           description: Initial version
     apiVersion: v2
     appVersion: v0.107.43
+    created: "2024-02-24T10:53:39.738492583Z"
+    description: Cert manager webhook for anx.se
+    digest: 67f9c34cb3c9e3d4235c5836663911328f35723236ba1b87f02abc6bfe2bdcca
+    home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
+    keywords:
+    - anx.se
+    - cert-manager-webbook
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: cert-manager-webhook-anxdns
+    sources:
+    - https://github.com/egeback/cert-manager-webhook-anx
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.3/cert-manager-webhook-anxdns-1.0.3.tgz
+    version: 1.0.3
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: added
+          description: Initial version
+    apiVersion: v2
+    appVersion: v0.107.43
     created: "2024-01-17T21:33:31.487262278Z"
     description: Cert manager webhook for anx.se
     digest: 9047a9e767dfbeb4eb0095e18aad7ba4aff1fca0669457e970cc0777a77c81e9
@@ -638,6 +662,37 @@ entries:
           description: Update README.md
     apiVersion: v2
     appVersion: 2.5.8
+    created: "2024-02-24T10:53:39.905267994Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.3.2
+    description: An Application dashboard and launcher
+    digest: ac62a2fe798b70ec4c5f15041d85d7e8174d3b5a1ea6cc65d0ab747b85234095
+    home: https://github.com/egeback/helm-charts/tree/main/charts/heimdall
+    icon: https://i.imgur.com/mM4tcO5.png
+    keywords:
+    - heimdall
+    - dashboard
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: heimdall
+    sources:
+    - https://hub.docker.com/r/linuxserver/heimdall/
+    - https://github.com/linuxserver/heimdall
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/heimdall-1.0.4/heimdall-1.0.4.tgz
+    version: 1.0.4
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Initial version
+        - kind: added
+          description: Update README.md
+    apiVersion: v2
+    appVersion: 2.5.8
     created: "2024-02-11T21:36:13.807977135Z"
     dependencies:
     - name: common
@@ -722,6 +777,47 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/heimdall-1.0.0/heimdall-1.0.0.tgz
     version: 1.0.0
   home-assistant:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update to home-assistant version 2024.2.3
+        - kind: changed
+          description: Update base chart to 2.6.0
+    apiVersion: v2
+    appVersion: 2024.2.3
+    created: "2024-02-24T10:53:40.08153868Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.6.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.2.11
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.1.2
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 5.10.2
+    description: Home Assistant helm package
+    digest: 0e804bc91b58ac8c16d91e7a49581c6bfa5d2360409e8bcd98979bfc5b075a56
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: Marky Egebäck
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-1.0.19/home-assistant-1.0.19.tgz
+    version: 1.0.19
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
@@ -2858,4 +2954,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-02-24T10:22:01.276625889Z"
+generated: "2024-02-24T10:53:40.081809797Z"
