@@ -1,16 +1,12 @@
-name: Generate helm docs
+name: Generate Helm documentation
 on:
   - pull_request
 jobs:
-  docs:
+  generate:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
       with:
         ref: ${{ github.event.pull_request.head.ref }}
-
-    - name: Render helm docs inside the README.md and push changes back to PR branch
-      uses: shaybentk/helm-docs-action@v0.0.1
-      with:
-        working-dir: charts
-        git-push: "true"
+      - name: Run helm-docs
+        uses: losisin/helm-docs-github-action@v1
