@@ -12,5 +12,5 @@ jobs:
     - name: Render helm docs inside the README.md and push changes back to PR branch
       uses: shaybentk/helm-docs-action@v0.0.1
       with:
-        input: values.yaml
-        git-push: true
+        working-dir: charts
+        git-push: "true"
