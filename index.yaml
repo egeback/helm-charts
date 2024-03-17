@@ -1956,6 +1956,38 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Fixed generic credentials for abrp
+    apiVersion: v2
+    appVersion: 1.28.3
+    created: "2024-03-17T12:37:44.5305931Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.5.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.12.10
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 4657e3890feed3da52b1d6e02cdddeda9bd69c1522697f505360629216202382
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/793px-Tesla_Motors.svg.png
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-1.0.18/teslamate-1.0.18.tgz
+    version: 1.0.18
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Fixed issues with abrp where port number needs to be set
         - kind: changed
           description: Update teslamateapi to 1.17.1
@@ -3269,4 +3301,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-03-17T08:56:53.35245329Z"
+generated: "2024-03-17T12:37:44.530798304Z"
