@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 1.28.3
 description: "A self-hosted data logger for your Tesla \U0001F698"
 name: teslamate
-version: 1.0.15
+version: 1.0.16
 keywords:
   - teslamate
   - tesla
@@ -26,7 +26,8 @@ maintainers:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Update base chart to 2.5.0
+      description: Fixed issues with abrp where port number needs to be set
     - kind: changed
-      description: Update teslamate to 1.28.3
-
+      description: Update teslamateapi to 1.17.1
+    - kind: changed
+      description: Update teslamate-abrp to 3.0.0
