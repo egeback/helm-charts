@@ -88,7 +88,7 @@ controllers:
           MQTT_USERNAME: '{{ .Values.controllers.main.containers.main.env.MQTT_USERNAME }}'
           CAR_NUMBER: 2
           CAR_MODEL: tesla:my:19:bt37:awd #Tesla Model Y Longrange https://api.iternio.com/1/tlm/get_carmodels_list
-          USER_TOKEN: 3ec94b70-db8b-4f83-b012-25bcb66f8a1c
+          USER_TOKEN: y0ur-4p1-k3y
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
