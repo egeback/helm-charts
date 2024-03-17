@@ -1,6 +1,6 @@
 # teslamate
 
-![Version: 1.0.16](https://img.shields.io/badge/Version-1.0.16-informational?style=flat-square) ![AppVersion: 1.28.3](https://img.shields.io/badge/AppVersion-1.28.3-informational?style=flat-square)
+![Version: 1.0.17](https://img.shields.io/badge/Version-1.0.17-informational?style=flat-square) ![AppVersion: 1.28.3](https://img.shields.io/badge/AppVersion-1.28.3-informational?style=flat-square)
 
 A self-hosted data logger for your Tesla 🚘
 
@@ -48,7 +48,7 @@ A self-hosted data logger for your Tesla 🚘
 | controllers.main.containers.teslamate-abrp.env.MQTT_PORT | string | `"{{ .Values.controllers.main.containers.main.env.MQTT_PORT }}"` |  |
 | controllers.main.containers.teslamate-abrp.env.MQTT_SERVER | string | `"{{ .Values.controllers.main.containers.main.env.MQTT_HOST }}"` |  |
 | controllers.main.containers.teslamate-abrp.env.MQTT_USERNAME | string | `"{{ .Values.controllers.main.containers.main.env.MQTT_USERNAME }}"` |  |
-| controllers.main.containers.teslamate-abrp.env.USER_TOKEN | string | `"3ec94b70-db8b-4f83-b012-25bcb66f8a1c"` |  |
+| controllers.main.containers.teslamate-abrp.env.USER_TOKEN | string | `"y0ur-4p1-k3y"` |  |
 | controllers.main.containers.teslamate-abrp.image.repository | string | `"fetzu/teslamate-abrp"` |  |
 | controllers.main.containers.teslamate-abrp.image.tag | string | `"3.0.0"` |  |
 | controllers.main.containers.teslamateagile.enabled | bool | `false` |  |
