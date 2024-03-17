@@ -47,7 +47,7 @@ controllers:
         name: teslamateapi
         image:
           repository: tobiasehlert/teslamateapi
-          tag: 1.16.6
+          tag: 1.17.1
         env:
           ENCRYPTION_KEY: "{{ .Values.controllers.main.containers.main.env.ENCRYPTION_KEY }}"
           DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
@@ -80,13 +80,14 @@ controllers:
         enabled: false
         image:
           repository: fetzu/teslamate-abrp
-          tag: 2.0.0
+          tag: 3.0.0
         env:
           MQTT_SERVER: "{{ .Values.controllers.main.containers.main.env.MQTT_HOST }}"
+          MQTT_PORT: '{{ .Values.controllers.main.containers.main.env.MQTT_PORT }}'
           MQTT_PASSWORD: '{{ .Values.controllers.main.containers.main.env.MQTT_PASSWORD }}'
           MQTT_USERNAME: '{{ .Values.controllers.main.containers.main.env.MQTT_USERNAME }}'
           CAR_NUMBER: 2
-          CAR_MODEL: tesla:my:19:bt37:awd
+          CAR_MODEL: tesla:my:19:bt37:awd #Tesla Model Y Longrange https://api.iternio.com/1/tlm/get_carmodels_list
           USER_TOKEN: 3ec94b70-db8b-4f83-b012-25bcb66f8a1c
 
 # -- Configures service settings for the chart.
