@@ -1,17 +1,14 @@
-{{/* Make sure all variables are set properly */}}
-{{- include "bjw-s.common.values.init" . }}
+---
+{{- include "bjw-s.common.loader.init" . }}
 
-{{/* Append the configMap volume to the volumes */}}
-{{- define "adguard-home.configVolume" -}}
-enabled: "true"
-mountPath: "/tmp/AdGuardHome.yaml"
-subPath: "AdGuardHome.yaml"
-type: "custom"
-volumeSpec:
-  configMap:
-    name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-config
+{{- define "app-template.hardcodedValues" -}}
+# Set the nameOverride based on the release name if no override has been set
+{{ if not .Values.global.nameOverride }}
+global:
+  nameOverride: "{{ .Release.Name }}"
+{{ end }}
 {{- end -}}
-{{- $_ := set .Values.persistence "adguard-home-config" (include "adguard-home.configVolume" . | fromYaml) -}}
+{{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
 
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.generate" . }}
