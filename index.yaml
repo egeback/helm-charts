@@ -4,6 +4,35 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update adguard to 0.107.46
+    apiVersion: v2
+    appVersion: v0.107.45
+    created: "2024-03-24T08:29:20.821712125Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.0.4
+    description: DNS proxy as ad-blocker for local network
+    digest: 87385ff014361057364e8229fb491e899e01adb6e105b0748b5493afef2c7af1
+    home: https://github.com/egeback/helm-charts/blob/main/charts/adguard-home
+    icon: https://avatars3.githubusercontent.com/u/8361145?s=200&v=4?sanitize=true
+    keywords:
+    - adguard-home
+    - adblock
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: adguard-home
+    sources:
+    - https://github.com/AdguardTeam/AdGuardHome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/adguard-home-1.0.18/adguard-home-1.0.18.tgz
+    version: 1.0.18
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update adguard to version v0.107.44
     apiVersion: v2
     appVersion: v0.107.44
@@ -1820,6 +1849,34 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update node red version to 3.1.7
+    apiVersion: v2
+    appVersion: 3.1.7
+    created: "2024-03-24T08:29:20.925516172Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 2.4.0
+    description: Node-RED is low-code programming for event-driven applications
+    digest: ebfad933ec3fcdfad94ae1fd1dc735a003007f71f4e0a262f03a0321057389d6
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-1.0.7/node-red-1.0.7.tgz
+    version: 1.0.7
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update node red version to 3.1.3
         - kind: changed
           description: Update base chart
@@ -3372,4 +3429,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-03-23T18:21:52.884759962Z"
+generated: "2024-03-24T08:29:20.925765241Z"
