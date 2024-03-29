@@ -1878,6 +1878,34 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Fix controller name in service
+    apiVersion: v2
+    appVersion: 3.1.8
+    created: "2024-03-29T12:14:34.35976727Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.0.4
+    description: Node-RED is low-code programming for event-driven applications
+    digest: 805b27a68b3df58e88acd32d7adc452ba887bf07f53346e6840503a9f5dcad70
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-1.0.10/node-red-1.0.10.tgz
+    version: 1.0.10
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update base chart to 3.0.4
     apiVersion: v2
     appVersion: 3.1.8
@@ -3546,4 +3574,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-03-29T12:08:01.498337505Z"
+generated: "2024-03-29T12:14:34.360012345Z"
