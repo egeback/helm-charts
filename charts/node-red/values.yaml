@@ -27,6 +27,7 @@ controllers:
 # @default -- See values.yaml
 service:
   main:
+    controller: main
     ports:
       http:
         port: 1880
