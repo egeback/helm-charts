@@ -5,31 +5,38 @@
 # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
 #
 
-image:
-  # -- image repository
-  repository: louislam/uptime-kuma
-  # -- image tag
-  # @default -- chart.appVersion
-  tag:
-  # -- image pull policy
-  pullPolicy: IfNotPresent
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: louislam/uptime-kuma
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: "{{ .Chart.AppVersion }}"
+          # -- image pull policy
+          pullPolicy: IfNotPresent
 
-    # -- environment variables. See [application docs](https://github.com/louislam/uptime-kuma/wiki/Environment-Variables) for more details.
-# @default -- See below
-env:
-  # -- Set the container timezone
-  TZ: UTC
-  # -- Set the custom ssl cert path (string)
-  # UPTIME_KUMA_SSL_CERT:
-  # -- Set the custom ssl key path (string)
-  # UPTIME_KUMA_SSL_KEY:
-  # -- Set the frame same-origin policy (int)
-  UPTIME_KUMA_DISABLE_FRAME_SAMEORIGIN: 0
+            # -- environment variables. See [application docs](https://github.com/louislam/uptime-kuma/wiki/Environment-Variables) for more details.
+        # @default -- See below
+        env:
+          # -- Set the container timezone
+          TZ: UTC
+          # -- Set the custom ssl cert path (string)
+          # UPTIME_KUMA_SSL_CERT:
+          # -- Set the custom ssl key path (string)
+          # UPTIME_KUMA_SSL_KEY:
+          # -- Set the frame same-origin policy (int)
+          UPTIME_KUMA_DISABLE_FRAME_SAMEORIGIN: 0
+          # -- Set the data dir
+          DATA_DIR: /data
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
   main:
+    controller: main
     ports:
       http:
         port: 3001
