@@ -8,7 +8,7 @@
 controllers:
   main:
     containers:
-      ${CHARTNAME}:
+      app:
           # -- image repository
           repository: ${CHARTNAME}/${CHARTNAME}
           # -- image tag
@@ -54,7 +54,7 @@ ingress:
               name: main
               ## Overrides the service port reference for this path
               port: portal-https
-              identifier: ${CHARTNAME}
+              identifier: app
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml

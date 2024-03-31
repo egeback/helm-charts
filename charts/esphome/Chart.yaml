@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: 2023.12.9
+appVersion: 2024.3.1
 description: ESP Home helm package
 name: esphome
 version: 1.0.7
@@ -16,8 +16,10 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
-    version: 2.4.0
+    version: 3.0.4
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Update to version 2023.12.7
+      description: Update base helm to 3.0.4
+    - kind: changed
+      description: Update app to version 2024.3.1
