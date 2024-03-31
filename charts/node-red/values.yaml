@@ -37,6 +37,14 @@ ingress:
   # @default -- See values.yaml
   main:
     enabled: false
+    # hosts:
+    #   - host: nodered.example.com
+    #     paths:
+    #       - path: /
+    #         pathType: Prefix
+    #         service:
+    #           identifier: main
+    #           port: http
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
