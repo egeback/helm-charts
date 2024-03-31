@@ -47,7 +47,7 @@ controllers:
         name: teslamateapi
         image:
           repository: tobiasehlert/teslamateapi
-          tag: 1.17.1
+          tag: 1.17.2
         env:
           ENCRYPTION_KEY: "{{ .Values.controllers.main.containers.main.env.ENCRYPTION_KEY }}"
           DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
@@ -94,10 +94,12 @@ controllers:
 # @default -- See values.yaml
 service:
   main:
+    controller: main
     ports:
       http:
         port: 4000
   teslamate-api:
+    controller: main
     enabled: false
     controller: main
     ports:
@@ -127,6 +129,7 @@ ingress:
           - path: /
             pathType: Prefix
             service:
+              identifier: teslamate-api
               name: teslamate-api
               port: 8080
 
