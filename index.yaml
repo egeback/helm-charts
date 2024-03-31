@@ -815,6 +815,37 @@ entries:
   heimdall:
   - annotations:
       artifacthub.io/changes: |
+        - kind: changes
+          description: Update app version to 2.6.1
+        - kind: changed
+          description: Update base helm chart to 3.0.4
+    apiVersion: v2
+    appVersion: 2.6.1
+    created: "2024-03-31T10:14:40.151911434Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.0.4
+    description: An Application dashboard and launcher
+    digest: 53f45d25193771c369f07fd697aae6f80f167292310273cead281c301def120b
+    home: https://github.com/egeback/helm-charts/tree/main/charts/heimdall
+    icon: https://i.imgur.com/mM4tcO5.png
+    keywords:
+    - heimdall
+    - dashboard
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: heimdall
+    sources:
+    - https://hub.docker.com/r/linuxserver/heimdall/
+    - https://github.com/linuxserver/heimdall
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/heimdall-1.1.1/heimdall-1.1.1.tgz
+    version: 1.1.1
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: Initial version
         - kind: added
@@ -3627,4 +3658,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-03-31T09:34:49.346871733Z"
+generated: "2024-03-31T10:14:40.152208391Z"
