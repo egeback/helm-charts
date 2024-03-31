@@ -1,6 +1,6 @@
 # teslamate
 
-![Version: 1.0.19](https://img.shields.io/badge/Version-1.0.19-informational?style=flat-square) ![AppVersion: 1.28.5](https://img.shields.io/badge/AppVersion-1.28.5-informational?style=flat-square)
+![Version: 1.0.20](https://img.shields.io/badge/Version-1.0.20-informational?style=flat-square) ![AppVersion: 1.28.5](https://img.shields.io/badge/AppVersion-1.28.5-informational?style=flat-square)
 
 A self-hosted data logger for your Tesla 🚘
 
@@ -21,7 +21,7 @@ A self-hosted data logger for your Tesla 🚘
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts | common | 2.5.0 |
+| https://bjw-s.github.io/helm-charts | common | 3.0.4 |
 | https://charts.bitnami.com/bitnami | postgresql | 12.12.10 |
 
 ## Values
@@ -73,13 +73,14 @@ A self-hosted data logger for your Tesla 🚘
 | controllers.main.containers.teslamateapi.env.MQTT_HOST | string | `"{{ .Values.controllers.main.containers.main.MQTT_HOST }}"` |  |
 | controllers.main.containers.teslamateapi.env.TZ | string | `"{{ .Values.controllers.main.containers.main.env.TZ }}"` | MQTT password MQTT_PASSWORD: |
 | controllers.main.containers.teslamateapi.image.repository | string | `"tobiasehlert/teslamateapi"` |  |
-| controllers.main.containers.teslamateapi.image.tag | string | `"1.17.1"` |  |
+| controllers.main.containers.teslamateapi.image.tag | string | `"1.17.2"` |  |
 | controllers.main.containers.teslamateapi.name | string | `"teslamateapi"` |  |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | ingress.teslamate-api.enabled | bool | `false` |  |
 | ingress.teslamate-api.hosts[0].host | string | `"teslamate-api.example.com"` |  |
 | ingress.teslamate-api.hosts[0].paths[0].path | string | `"/"` |  |
 | ingress.teslamate-api.hosts[0].paths[0].pathType | string | `"Prefix"` |  |
+| ingress.teslamate-api.hosts[0].paths[0].service.identifier | string | `"teslamate-api"` |  |
 | ingress.teslamate-api.hosts[0].paths[0].service.name | string | `"teslamate-api"` |  |
 | ingress.teslamate-api.hosts[0].paths[0].service.port | int | `8080` |  |
 | persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
