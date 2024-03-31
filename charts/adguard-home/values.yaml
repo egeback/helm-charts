@@ -7,11 +7,36 @@
 
 defaultPodOptions:
   hostNetwork: true
+  # Uncomment to allocate one instance of adguard to one host
+  # affinity:
+  #   podAffinity: {}
+  #   podAntiAffinity:
+  #     preferredDuringSchedulingIgnoredDuringExecution:
+  #       - podAffinityTerm:
+  #           labelSelector:
+  #             matchExpressions:
+  #               - key: app.kubernetes.io/name
+  #                 operator: In
+  #                 values:
+  #                   - adguard-home
+  #           topologyKey: kubernetes.io/hostname
+  #         weight: 100
 
 controllers:
   main:
     # -- Number of pods to load balance between
     replicas: 1
+    
+    # Uncomment to define adguard as a statefulset and allocate data volume
+    # type: statefulset
+    # statefulset:
+    #   volumeClaimTemplates: 
+    #   - name: data
+    #     storageClass: "nfs-client"
+    #     accessMode: "ReadWriteOnce"
+    #     size: "500Mi"
+    #     globalMounts:
+    #       - path: /opt/adguardhome/work
     initContainers:
     # -- Configures an initContainer that copies the configmap to the AdGuardHome conf directory
     # It does NOT overwrite when the file already exists.

@@ -5,25 +5,29 @@
 # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
 #
 
-image:
-  # -- image repository
-  repository: ${CHARTNAME}/${CHARTNAME}
-  # -- image tag
-  # @default -- chart.appVersion
-  tag:
-  # -- image pull policy
-  pullPolicy: IfNotPresent
+controllers:
+  main:
+    containers:
+      ${CHARTNAME}:
+          # -- image repository
+          repository: ${CHARTNAME}/${CHARTNAME}
+          # -- image tag
+          # @default -- chart.appVersion
+          tag:
+          # -- image pull policy
+          pullPolicy: IfNotPresent
 
-# -- environment variables. See more environment variables in the [${CHARTNAME} documentation](https://${CHARTNAME}.org/docs).
-# @default -- See below
-env:
-  # -- Set the container timezone
-  TZ: UTC
+        # -- environment variables. See more environment variables in the [${CHARTNAME} documentation](https://${CHARTNAME}.org/docs).
+        # @default -- See below
+        env:
+          # -- Set the container timezone
+          TZ: UTC
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
   main:
+    controller: app
     ports:
       http:
         port: 1880
@@ -33,6 +37,24 @@ ingress:
   # @default -- See values.yaml
   main:
     enabled: false
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+
+    hosts:
+      -  ## Host address. Helm template can be passed.
+        host:
+        ## Configure the paths for the host
+        paths:
+          -  ## Path. Helm template can be passed.
+            path: /
+            ## Ignored if not kubeVersion >= 1.14-0
+            pathType: Prefix
+            service:
+              ## Overrides the service name reference for this path
+              name: main
+              ## Overrides the service port reference for this path
+              port: portal-https
+              identifier: ${CHARTNAME}
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
