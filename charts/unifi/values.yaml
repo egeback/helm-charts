@@ -126,7 +126,7 @@ ingress:
             pathType: Prefix
             service:
               ## Overrides the service name reference for this path
-              name: main
+              identifier: main
               ## Overrides the service port reference for this path
               port: portal-https
 

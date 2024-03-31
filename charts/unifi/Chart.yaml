@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: v8.1.113
 description: Ubiquiti Network's Unifi Controller
 name: unifi
-version: 1.0.11
+version: 1.1.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ubiquiti
@@ -17,7 +17,7 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
-    version: 2.5.0
+    version: 3.0.4
   - name: mongodb
     version: 12.1.31
     repository: https://charts.bitnami.com/bitnami
@@ -25,4 +25,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Update Unifi version to v8.1.113
+      description: Update base helm chart to 3.0.4
