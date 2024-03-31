@@ -1,6 +1,6 @@
 # home-assistant
 
-![Version: 1.0.25](https://img.shields.io/badge/Version-1.0.25-informational?style=flat-square) ![AppVersion: 2024.3.3](https://img.shields.io/badge/AppVersion-2024.3.3-informational?style=flat-square)
+![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![AppVersion: 2024.3.3](https://img.shields.io/badge/AppVersion-2024.3.3-informational?style=flat-square)
 
 Home Assistant helm package
 
@@ -22,19 +22,19 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts | common | 2.6.0 |
-| https://charts.bitnami.com/bitnami | influxdb | 5.10.2 |
-| https://charts.bitnami.com/bitnami | mariadb | 14.1.2 |
-| https://charts.bitnami.com/bitnami | postgresql | 13.2.11 |
+| https://bjw-s.github.io/helm-charts | common | 3.0.4 |
+| https://charts.bitnami.com/bitnami | influxdb | 6.0.3 |
+| https://charts.bitnami.com/bitnami | mariadb | 17.0.1 |
+| https://charts.bitnami.com/bitnami | postgresql | 15.1.4 |
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | controllers.main.containers.code.enabled | bool | `false` |  |
-| controllers.main.containers.code.env.TZ | string | `"Europe/Stockholm"` |  |
-| controllers.main.containers.code.image.repository | string | `"causticlab/hass-configurator-docker"` |  |
-| controllers.main.containers.code.image.tag | string | `"0.5.2"` |  |
+| controllers.main.containers.code.env | object | See below | environment variables. See more environment variables in the [home-assistant documentation](https://home-assistant.org/docs). |
+| controllers.main.containers.code.image.repository | string | `"causticlab/hass-configurator-docker"` | image repository |
+| controllers.main.containers.code.image.tag | string | `"0.5.2"` | image tag |
 | controllers.main.containers.main.env | object | See below | environment variables. See more environment variables in the [home-assistant documentation](https://home-assistant.org/docs). |
 | controllers.main.containers.main.env.TZ | string | `"UTC"` | Set the container timezone |
 | controllers.main.containers.main.image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
