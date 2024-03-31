@@ -3,7 +3,7 @@ Default NOTES.txt content.
 */}}
 {{- define "egeback.common.lib.chart.notes" -}}
 
-{{- $primaryIngress := get .Values.ingress (include "bjw-s.common.lib.ingress.primary" .) -}}
+{{- $primaryIngress := get .Values.ingress (include "egeback.common.lib.ingress.primary" .) -}}
 {{- $primaryService := get .Values.service (include "bjw-s.common.lib.service.primaryForController" .) -}}
 {{- $primaryPort := "" -}}
 {{- if $primaryService -}}
