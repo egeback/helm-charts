@@ -970,6 +970,47 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
+          description: Update to helm chart base to 3.1.0
+        - kind: changed
+          description: Update to home-assistant version 2024.4
+    apiVersion: v2
+    appVersion: "2024.4"
+    created: "2024-04-04T19:50:07.737965504Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.1.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.1.4
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 17.0.1
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.0.3
+    description: Home Assistant helm package
+    digest: 352e58f283dd514b99fb64163c710e1780a89eef32888c484fba407c828c27f3
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: Marky Egebäck
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-1.1.2/home-assistant-1.1.2.tgz
+    version: 1.1.2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
           description: Update to helm chart base to 3.0.4
         - kind: changed
           description: Update to postgres chart to 15.1.4
@@ -3405,6 +3446,36 @@ entries:
           description: Update base helm chart
     apiVersion: v2
     appVersion: 1.23.11-alpine
+    created: "2024-04-04T19:50:07.893396225Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.1.0
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: 8ffcda0becdf4ef6a6c5274e14feed49d244a9f516cc8613881f97ac04e60ecd
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.1.2/uptime-kuma-1.1.2.tgz
+    version: 1.1.2
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update base helm chart
+    apiVersion: v2
+    appVersion: 1.23.11-alpine
     created: "2024-03-31T10:50:32.784464651Z"
     dependencies:
     - name: common
@@ -3793,4 +3864,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-03-31T11:33:09.683107192Z"
+generated: "2024-04-04T19:50:07.893799308Z"
