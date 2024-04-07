@@ -146,8 +146,8 @@ persistence:
 mongodb:
   enabled: false
   architecture: standalone
-  image:
-    tag: 5.0.15
+  # image:
+  #   tag: 5.0.15
   auth:
     enabled: false
   persistence:

@@ -23,7 +23,7 @@ Kubernetes: `>=1.16.0-0`
 | Repository | Name | Version |
 |------------|------|---------|
 | https://bjw-s.github.io/helm-charts | common | 3.0.4 |
-| https://charts.bitnami.com/bitnami | mongodb | 12.1.31 |
+| https://charts.bitnami.com/bitnami | mongodb | 15.1.3 |
 
 ## Values
 
