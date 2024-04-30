@@ -970,6 +970,45 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
+          description: Update to home-assistant version 2024.4.4
+    apiVersion: v2
+    appVersion: 2024.4.4
+    created: "2024-04-30T05:11:53.180516097Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.1.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.1.4
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 17.0.1
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.0.3
+    description: Home Assistant helm package
+    digest: e159ead305a406dc8d66a347890bc71ee5cd2ec2ffc5211b5e21ef780880e787
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: Marky Egebäck
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-1.1.5/home-assistant-1.1.5.tgz
+    version: 1.1.5
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
           description: Update to home-assistant version 2024.4.3
     apiVersion: v2
     appVersion: 2024.4.3
@@ -2126,6 +2165,34 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update node red to 3.1.9
+    apiVersion: v2
+    appVersion: 3.1.9
+    created: "2024-04-30T05:11:53.280021317Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.0.4
+    description: Node-RED is low-code programming for event-driven applications
+    digest: a86064a59e608472ed83b2ac39d1111e999d004b626a7194cac95b9cb20dfb1b
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-1.1.2/node-red-1.1.2.tgz
+    version: 1.1.2
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Fix notes
     apiVersion: v2
     appVersion: 3.1.8
@@ -2438,6 +2505,38 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/node-red-1.0.1/node-red-1.0.1.tgz
     version: 1.0.1
   teslamate:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update base chart to teslamate-agile to v1.14.0
+    apiVersion: v2
+    appVersion: 1.28.5
+    created: "2024-04-30T05:11:53.392840288Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.0.4
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.12.10
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 2d4a2c63ebb1b4febaffe915d9d619ebd0a6258ffc96e74f2031a9ee2505b439
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/793px-Tesla_Motors.svg.png
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-1.0.21/teslamate-1.0.21.tgz
+    version: 1.0.21
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
@@ -3974,4 +4073,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-04-13T12:42:58.553104872Z"
+generated: "2024-04-30T05:11:53.393919168Z"
