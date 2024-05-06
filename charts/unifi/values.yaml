@@ -49,10 +49,12 @@ defaultPodOptions:
 # @default -- See values.yaml
 service:
   main:
+    controller: main
     ports:
       # -- Configure Web interface + API port
       # @default -- See values.yaml
       http:
+        enabled: true
         port: 8443
         protocol: HTTPS
       # -- Configure Controller port used for device command/control
