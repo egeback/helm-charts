@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: 2024.5.4
+appVersion: 2024.5.5
 description: Home Assistant helm package
 name: home-assistant
-version: 1.1.7
+version: 1.1.8
 kubeVersion: ">=1.16.0-0"
 keywords:
   - home-assistant
