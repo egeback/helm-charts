@@ -9,7 +9,7 @@
 groupName: acme.anx.se
 
 certManager:
-  namespace: kube-system
+  namespace: cert-manager
   serviceAccountName: cert-manager
 
 image:

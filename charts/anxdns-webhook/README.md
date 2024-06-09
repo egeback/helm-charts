@@ -1,6 +1,6 @@
 # cert-manager-webhook-anxdns
 
-![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![AppVersion: v1.0.1](https://img.shields.io/badge/AppVersion-v1.0.1-informational?style=flat-square)
+![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![AppVersion: v1.0.1](https://img.shields.io/badge/AppVersion-v1.0.1-informational?style=flat-square)
 
 Cert manager webhook for anx.se
 
@@ -25,7 +25,7 @@ Kubernetes: `>=1.16.0-0`
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| certManager.namespace | string | `"kube-system"` |  |
+| certManager.namespace | string | `"cert-manager"` |  |
 | certManager.serviceAccountName | string | `"cert-manager"` |  |
 | fullnameOverride | string | `""` |  |
 | groupName | string | `"acme.anx.se"` |  |
