@@ -617,6 +617,35 @@ entries:
         - kind: changed
           description: Update app to version 2024.3.1
     apiVersion: v2
+    appVersion: 2024.6.1
+    created: "2024-06-21T07:54:04.850409583Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.0.4
+    description: ESP Home helm package
+    digest: 05e645a77c312024f79a36a6c43b95bd26810473e4a773817b5a030d03486d8b
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@$egeback.com
+      name: Marky Egebäck
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-1.0.9/esphome-1.0.9.tgz
+    version: 1.0.9
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update base helm to 3.0.4
+        - kind: changed
+          description: Update app to version 2024.3.1
+    apiVersion: v2
     appVersion: 2024.3.1
     created: "2024-03-31T09:34:49.346707355Z"
     dependencies:
@@ -2408,6 +2437,34 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update node red to 4.0.0
+    apiVersion: v2
+    appVersion: 4.0.0
+    created: "2024-06-21T07:54:05.020193721Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.0.4
+    description: Node-RED is low-code programming for event-driven applications
+    digest: e6c558a27b10cceecc90a9b604c940d2d931adb4653880616204c194996a4e5f
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-1.1.4/node-red-1.1.4.tgz
+    version: 1.1.4
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update node red to 3.1.10
     apiVersion: v2
     appVersion: 3.1.10
@@ -2776,6 +2833,37 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/node-red-1.0.1/node-red-1.0.1.tgz
     version: 1.0.1
   teslamate:
+  - annotations:
+      artifacthub.io/changes: "- kind: changed\n  description: Update teslamate to
+        1.0.23\n- kind: changed \n  description: Update telsamate-abrp to 3.0.1"
+    apiVersion: v2
+    appVersion: 1.29.2
+    created: "2024-06-21T07:54:05.202431131Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.0.4
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.12.10
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 04c7aa0c065b234f1acd31ad16670b6aacf19f2c057286fe4a7f0eda2f4ac1dd
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/793px-Tesla_Motors.svg.png
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-1.0.23/teslamate-1.0.23.tgz
+    version: 1.0.23
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
@@ -4407,4 +4495,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-06-16T14:49:37.257181451Z"
+generated: "2024-06-21T07:54:05.202806062Z"
