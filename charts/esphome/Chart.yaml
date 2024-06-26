@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: 2024.6.1
+appVersion: 2024.6.2
 description: ESP Home helm package
 name: esphome
-version: 1.0.9
+version: 1.0.10
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ESPHOME
@@ -20,6 +20,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Update base helm to 3.0.4
-    - kind: changed
-      description: Update app to version 2024.3.1
+      description: Update app to version 2024.6.2
