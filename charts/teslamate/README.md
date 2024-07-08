@@ -1,6 +1,6 @@
 # teslamate
 
-![Version: 1.0.23](https://img.shields.io/badge/Version-1.0.23-informational?style=flat-square) ![AppVersion: 1.29.2](https://img.shields.io/badge/AppVersion-1.29.2-informational?style=flat-square)
+![Version: 1.0.24](https://img.shields.io/badge/Version-1.0.24-informational?style=flat-square) ![AppVersion: 1.29.2](https://img.shields.io/badge/AppVersion-1.29.2-informational?style=flat-square)
 
 A self-hosted data logger for your Tesla 🚘
 
@@ -21,7 +21,7 @@ A self-hosted data logger for your Tesla 🚘
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts | common | 3.0.4 |
+| https://bjw-s.github.io/helm-charts | common | 3.2.1 |
 | https://charts.bitnami.com/bitnami | postgresql | 12.12.10 |
 
 ## Values
@@ -63,7 +63,7 @@ A self-hosted data logger for your Tesla 🚘
 | controllers.main.containers.teslamateagile.env.TeslaMate__UpdateIntervalSeconds | int | `300` |  |
 | controllers.main.containers.teslamateagile.env.Tibber__AccessToken | string | `"MyAccessToken"` |  |
 | controllers.main.containers.teslamateagile.image.repository | string | `"mattjeanes/teslamateagile"` |  |
-| controllers.main.containers.teslamateagile.image.tag | string | `"v1.14.0"` |  |
+| controllers.main.containers.teslamateagile.image.tag | string | `"v1.15.0"` |  |
 | controllers.main.containers.teslamateapi.enabled | bool | `false` |  |
 | controllers.main.containers.teslamateapi.env.DATABASE_HOST | string | `"{{ .Values.controllers.main.containers.main.DATABASE_HOST }}"` |  |
 | controllers.main.containers.teslamateapi.env.DATABASE_NAME | string | `"{{ .Values.postgresql.auth.database }}"` |  |

@@ -64,7 +64,7 @@ controllers:
         enabled: false
         image:
           repository: mattjeanes/teslamateagile
-          tag: v1.14.0
+          tag: v1.15.0
         env:
           DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
           DATABASE_PASS: "{{ .Values.postgresql.auth.postgresPassword }}"
