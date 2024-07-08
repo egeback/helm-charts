@@ -1,6 +1,6 @@
 # esphome
 
-![Version: 1.0.13](https://img.shields.io/badge/Version-1.0.13-informational?style=flat-square) ![AppVersion: 2024.6.6](https://img.shields.io/badge/AppVersion-2024.6.6-informational?style=flat-square)
+![Version: 1.0.14](https://img.shields.io/badge/Version-1.0.14-informational?style=flat-square) ![AppVersion: 2024.6.6](https://img.shields.io/badge/AppVersion-2024.6.6-informational?style=flat-square)
 
 ESP Home helm package
 
@@ -22,7 +22,7 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts | common | 3.0.4 |
+| https://bjw-s.github.io/helm-charts | common | 3.2.1 |
 
 ## Values
 
