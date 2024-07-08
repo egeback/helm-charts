@@ -26,7 +26,5 @@ maintainers:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed 
-      description: Update teslamateagile to v1.15.0
-    - kind: changed
-      description: Update basechart to 3.2.1
+      description: Update teslamate-abrp to 3.0.2
     
