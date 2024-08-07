@@ -1,6 +1,6 @@
 # teslamate
 
-![Version: 1.0.27](https://img.shields.io/badge/Version-1.0.27-informational?style=flat-square) ![AppVersion: 1.30.1](https://img.shields.io/badge/AppVersion-1.30.1-informational?style=flat-square)
+![Version: 1.0.28](https://img.shields.io/badge/Version-1.0.28-informational?style=flat-square) ![AppVersion: 1.30.1](https://img.shields.io/badge/AppVersion-1.30.1-informational?style=flat-square)
 
 A self-hosted data logger for your Tesla 🚘
 
@@ -50,7 +50,7 @@ A self-hosted data logger for your Tesla 🚘
 | controllers.main.containers.teslamate-abrp.env.MQTT_USERNAME | string | `"{{ .Values.controllers.main.containers.main.env.MQTT_USERNAME }}"` |  |
 | controllers.main.containers.teslamate-abrp.env.USER_TOKEN | string | `"y0ur-4p1-k3y"` |  |
 | controllers.main.containers.teslamate-abrp.image.repository | string | `"fetzu/teslamate-abrp"` |  |
-| controllers.main.containers.teslamate-abrp.image.tag | string | `"3.0.2"` |  |
+| controllers.main.containers.teslamate-abrp.image.tag | string | `"3.0.3"` |  |
 | controllers.main.containers.teslamateagile.enabled | bool | `false` |  |
 | controllers.main.containers.teslamateagile.env.DATABASE_HOST | string | `"{{ .Values.controllers.main.containers.main.env.DATABASE_HOST }}"` |  |
 | controllers.main.containers.teslamateagile.env.DATABASE_NAME | string | `"{{ .Values.postgresql.auth.database }}"` |  |

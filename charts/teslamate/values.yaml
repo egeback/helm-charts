@@ -80,7 +80,7 @@ controllers:
         enabled: false
         image:
           repository: fetzu/teslamate-abrp
-          tag: 3.0.2
+          tag: 3.0.3
         env:
           MQTT_SERVER: "{{ .Values.controllers.main.containers.main.env.MQTT_HOST }}"
           MQTT_PORT: '{{ .Values.controllers.main.containers.main.env.MQTT_PORT }}'
