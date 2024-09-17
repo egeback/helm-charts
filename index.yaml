@@ -3085,6 +3085,34 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update node-red to 4.0.3
+    apiVersion: v2
+    appVersion: 4.0.3
+    created: "2024-09-17T18:41:13.381508747Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.2.1
+    description: Node-RED is low-code programming for event-driven applications
+    digest: 30bf8a23080e99c96c86ce25d917362e0f74d2040349aa771c6f22717cf88fb9
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-1.2.2/node-red-1.2.2.tgz
+    version: 1.2.2
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update node-red to 4.0.2
         - kind: changed
           description: Update base chart to 3.2.1
@@ -5480,4 +5508,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-09-16T19:43:14.138789321Z"
+generated: "2024-09-17T18:41:13.3819221Z"
