@@ -1,0 +1,184 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+---
+# Grant the webhook permission to read the ConfigMap containing the Kubernetes
+# apiserver's requestheader-ca-certificate.
+# This ConfigMap is automatically created by the Kubernetes apiserver.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}:webhook-authentication-reader
+  namespace: kube-system
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: extension-apiserver-authentication-reader
+subjects:
+  - apiGroup: ""
+    kind: ServiceAccount
+    name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}
+    namespace: {{ .Release.Namespace }}
+---
+# apiserver gets the auth-delegator role to delegate auth decisions to
+# the core apiserver
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}:auth-delegator
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+  - apiGroup: ""
+    kind: ServiceAccount
+    name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}
+    namespace: {{ .Release.Namespace }}
+---
+# Grant cert-manager permission to validate using our apiserver
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}:domain-solver
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+rules:
+  - apiGroups:
+      - {{ .Values.groupName }}
+    resources:
+      - '*'
+    verbs:
+      - 'create'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}:domain-solver
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}:domain-solver
+subjects:
+  - apiGroup: ""
+    kind: ServiceAccount
+    name: {{ .Values.certManager.serviceAccountName }}
+    namespace: {{ .Values.certManager.namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}:secret-reader
+  namespace: {{ .Release.Namespace }}
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - "secrets"
+    {{- with .Values.secretName }}
+    resourceNames:
+    {{ toYaml . | indent 4 }}
+    {{- end }}
+    verbs:
+      - "get"
+      - "watch"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}:secret-reader
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}:secret-reader
+subjects:
+  - apiGroup: ""
+    kind: ServiceAccount
+    name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}
+    namespace: {{ .Release.Namespace }}
+---
+# Grant cert-manager permission to validate using our apiserver
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}:flowcontrol-solver
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+rules:
+  - apiGroups:
+      - "flowcontrol.apiserver.k8s.io"
+    resources:
+      - 'prioritylevelconfigurations'
+      - 'flowschemas'
+    verbs:
+      - 'list'
+      - 'watch'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}:flowcontrol-solver
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}:flowcontrol-solver
+subjects:
+  - apiGroup: ""
+    kind: ServiceAccount
+    name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}
+    namespace: {{ .Release.Namespace | quote }}
+---
