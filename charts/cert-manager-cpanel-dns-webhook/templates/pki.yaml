@@ -1,0 +1,84 @@
+---
+# Create a selfsigned Issuer, in order to create a root CA certificate for
+# signing webhook serving certificates
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.selfSignedIssuer" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+spec:
+  selfSigned: {}
+
+---
+
+# Generate a CA Certificate used to sign certificates for the webhook
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.rootCACertificate" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+spec:
+  secretName: {{ include "cert-manager-cpanel-dns-webhook.rootCACertificate" . }}
+  duration: 43800h # 5y
+  issuerRef:
+    name: {{ include "cert-manager-cpanel-dns-webhook.selfSignedIssuer" . }}
+  commonName: "ca.cert-manager-cpanel-dns-webhook.cert-manager"
+  isCA: true
+
+---
+
+# Create an Issuer that uses the above generated CA certificate to issue certs
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.rootCAIssuer" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+spec:
+  ca:
+    secretName: {{ include "cert-manager-cpanel-dns-webhook.rootCACertificate" . }}
+
+---
+
+# Finally, generate a serving certificate for the webhook to use
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.servingCertificate" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+spec:
+  secretName: {{ include "cert-manager-cpanel-dns-webhook.servingCertificate" . }}
+  duration: 8760h # 1y
+  issuerRef:
+    name: {{ include "cert-manager-cpanel-dns-webhook.rootCAIssuer" . }}
+  dnsNames:
+  - {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}
+  - {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}.{{ .Release.Namespace }}
+  - {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}.{{ .Release.Namespace }}.svc
