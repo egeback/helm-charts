@@ -1,6 +1,6 @@
 # teslamate
 
-![Version: 1.0.30](https://img.shields.io/badge/Version-1.0.30-informational?style=flat-square) ![AppVersion: 1.30.1](https://img.shields.io/badge/AppVersion-1.30.1-informational?style=flat-square)
+![Version: 1.0.31](https://img.shields.io/badge/Version-1.0.31-informational?style=flat-square) ![AppVersion: 1.30.1](https://img.shields.io/badge/AppVersion-1.30.1-informational?style=flat-square)
 
 A self-hosted data logger for your Tesla 🚘
 
@@ -50,7 +50,7 @@ A self-hosted data logger for your Tesla 🚘
 | controllers.main.containers.teslamate-abrp.env.MQTT_USERNAME | string | `"{{ .Values.controllers.main.containers.main.env.MQTT_USERNAME }}"` |  |
 | controllers.main.containers.teslamate-abrp.env.USER_TOKEN | string | `"y0ur-4p1-k3y"` |  |
 | controllers.main.containers.teslamate-abrp.image.repository | string | `"fetzu/teslamate-abrp"` |  |
-| controllers.main.containers.teslamate-abrp.image.tag | string | `"3.0.4"` |  |
+| controllers.main.containers.teslamate-abrp.image.tag | string | `"3.1.0"` |  |
 | controllers.main.containers.teslamateagile.enabled | bool | `false` |  |
 | controllers.main.containers.teslamateagile.env.DATABASE_HOST | string | `"{{ .Values.controllers.main.containers.main.env.DATABASE_HOST }}"` |  |
 | controllers.main.containers.teslamateagile.env.DATABASE_NAME | string | `"{{ .Values.postgresql.auth.database }}"` |  |
@@ -73,7 +73,7 @@ A self-hosted data logger for your Tesla 🚘
 | controllers.main.containers.teslamateapi.env.MQTT_HOST | string | `"{{ .Values.controllers.main.containers.main.MQTT_HOST }}"` |  |
 | controllers.main.containers.teslamateapi.env.TZ | string | `"{{ .Values.controllers.main.containers.main.env.TZ }}"` | MQTT password MQTT_PASSWORD: |
 | controllers.main.containers.teslamateapi.image.repository | string | `"tobiasehlert/teslamateapi"` |  |
-| controllers.main.containers.teslamateapi.image.tag | string | `"1.18.2"` |  |
+| controllers.main.containers.teslamateapi.image.tag | string | `"1.18.3"` |  |
 | controllers.main.containers.teslamateapi.name | string | `"teslamateapi"` |  |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | ingress.teslamate-api.enabled | bool | `false` |  |
