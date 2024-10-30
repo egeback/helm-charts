@@ -14,7 +14,7 @@ certManager:
   serviceAccountName: cert-manager
 image:
   # -- image repository
-  repository: egeback/cert-manager-cpanel-dns-webhook
+  repository: jamesorlakin/cert-manager-cpanel-dns-webhook
   # -- image tag
   # @default -- Chart.appVersion
   tag: 

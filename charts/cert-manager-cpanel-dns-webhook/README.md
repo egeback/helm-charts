@@ -1,6 +1,6 @@
 # cert-manager-cpanel-dns-webhook
 
-![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![AppVersion: v0.3.0](https://img.shields.io/badge/AppVersion-v0.3.0-informational?style=flat-square)
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: v0.3.0](https://img.shields.io/badge/AppVersion-v0.3.0-informational?style=flat-square)
 
 Cert-manager webhook plugin to support ACME DNS challenges for CPanel DNS zones
 
@@ -28,10 +28,10 @@ Kubernetes: `>=1.16.0-0`
 | certManager.namespace | string | `"cert-manager"` |  |
 | certManager.serviceAccountName | string | `"cert-manager"` |  |
 | fullnameOverride | string | `""` |  |
-| groupName | string | `"acme.anx.se"` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"egeback/cert-manager-cpanel-dns-webhook"` |  |
-| image.tag | string | `"latest"` |  |
+| groupName | string | `"jameslakin.co.uk"` |  |
+| image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
+| image.repository | string | `"jamesorlakin/cert-manager-cpanel-dns-webhook"` | image repository |
+| image.tag | string | Chart.appVersion | image tag |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | resources | object | `{}` |  |
