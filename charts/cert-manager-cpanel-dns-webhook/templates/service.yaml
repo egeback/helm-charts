@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: https
+      protocol: TCP
+      name: https
+  selector:
+    app: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    release: {{ .Release.Name }}

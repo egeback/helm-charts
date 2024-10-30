@@ -1,0 +1,21 @@
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1alpha1.{{ .Values.groupName }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-name: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    meta.helm.sh/release-namespace: {{ include "cert-manager-cpanel-dns-webhook.name" . }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+  annotations:
+    cert-manager.io/inject-ca-from: "{{ .Release.Namespace }}/{{ include "cert-manager-cpanel-dns-webhook.servingCertificate" . }}"
+spec:
+  group: {{ .Values.groupName }}
+  groupPriorityMinimum: 1000
+  versionPriority: 15
+  service:
+    name: {{ include "cert-manager-cpanel-dns-webhook.fullname" . }}
+    namespace: {{ .Release.Namespace }}
+  version: v1alpha1
