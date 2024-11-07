@@ -1,6 +1,6 @@
 # home-assistant
 
-![Version: 1.1.25](https://img.shields.io/badge/Version-1.1.25-informational?style=flat-square) ![AppVersion: 2024.10.4](https://img.shields.io/badge/AppVersion-2024.10.4-informational?style=flat-square)
+![Version: 1.1.26](https://img.shields.io/badge/Version-1.1.26-informational?style=flat-square) ![AppVersion: 2024.11](https://img.shields.io/badge/AppVersion-2024.11-informational?style=flat-square)
 
 Home Assistant helm package
 
