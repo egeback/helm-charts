@@ -1506,6 +1506,45 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
+          description: Update to home-assistant version 2024.11
+    apiVersion: v2
+    appVersion: "2024.11"
+    created: "2024-11-07T20:54:44.485341513Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.5.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.1.4
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 17.0.1
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.0.3
+    description: Home Assistant helm package
+    digest: 6421c0bc140fbc22a774720a0006c810d9e1aa95283eec70eabc7ecf481ba185
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: Marky Egebäck
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-1.1.26/home-assistant-1.1.26.tgz
+    version: 1.1.26
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
           description: Update to home-assistant version 2024.10.4
     apiVersion: v2
     appVersion: 2024.10.4
@@ -6148,4 +6187,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-11-07T20:53:24.920398832Z"
+generated: "2024-11-07T20:54:44.485713312Z"
