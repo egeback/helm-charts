@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: 2.6.1
+appVersion: 2.6.3
 description: An Application dashboard and launcher
 name: heimdall
-version: 1.1.1
+version: 1.1.2
 kubeVersion: ">=1.16.0-0"
 keywords:
   - heimdall
@@ -22,6 +22,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |
     - kind: changes
-      description: Update app version to 2.6.1
-    - kind: changed
-      description: Update base helm chart to 3.0.4
+      description: Update app version to 2.6.3
