@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: v8.5.6
+appVersion: v8.6.9
 description: Ubiquiti Network's Unifi Controller
 name: unifi
-version: 1.1.9
+version: 1.1.10
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ubiquiti
@@ -25,4 +25,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |
     - kind: changed 
-      description: Updated to Unifi app version v8.5.6
+      description: Updated to Unifi app version v8.6.9
