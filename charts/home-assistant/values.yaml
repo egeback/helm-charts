@@ -78,9 +78,29 @@ securityContext:
   # -- (bool) Privileged securityContext may be required if USB devics are accessed directly through the host machine
   privileged:  # true
 
+
+configMaps:
+  passwd:
+    # passwd -- workaround for https://github.com/home-assistant/core/issues/132336.
+    # @default -- See values.yaml
+    enabled: true
+    data:
+      passwd: |
+        fake-user:x:1000:1000:workaround for home-assistant/core/issues/132336::
+
+
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
 persistence:
+  passwd-walkarround:
+    type: configMap
+    name: passwd
+    advancedMounts:
+      main: 
+        main: 
+          - path: /etc/passwd
+            readOnly: true
+            subPath: passwd
   config:
     enabled: false
   # -- Configure a hostPathMount to mount a USB device in the container.

@@ -1,6 +1,6 @@
 # home-assistant
 
-![Version: 1.1.27](https://img.shields.io/badge/Version-1.1.27-informational?style=flat-square) ![AppVersion: 2024.12](https://img.shields.io/badge/AppVersion-2024.12-informational?style=flat-square)
+![Version: 1.1.28](https://img.shields.io/badge/Version-1.1.28-informational?style=flat-square) ![AppVersion: 2024.12](https://img.shields.io/badge/AppVersion-2024.12-informational?style=flat-square)
 
 Home Assistant helm package
 
@@ -31,6 +31,8 @@ Kubernetes: `>=1.16.0-0`
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| configMaps.passwd.data.passwd | string | `"fake-user:x:1000:1000:workaround for home-assistant/core/issues/132336::\n"` |  |
+| configMaps.passwd.enabled | bool | `true` |  |
 | controllers.main.containers.code.enabled | bool | `false` |  |
 | controllers.main.containers.code.env | object | See below | environment variables. See more environment variables in the [home-assistant documentation](https://home-assistant.org/docs). |
 | controllers.main.containers.code.image.repository | string | `"causticlab/hass-configurator-docker"` | image repository |
