@@ -94,7 +94,7 @@ configMaps:
 persistence:
   passwd-walkarround:
     type: configMap
-    name: passwd
+    name: home-assistant-passwd
     advancedMounts:
       main: 
         main: 
