@@ -73,7 +73,7 @@ A self-hosted data logger for your Tesla 🚘
 | controllers.main.containers.teslamateapi.env.MQTT_HOST | string | `"{{ .Values.controllers.main.containers.main.MQTT_HOST }}"` |  |
 | controllers.main.containers.teslamateapi.env.TZ | string | `"{{ .Values.controllers.main.containers.main.env.TZ }}"` | MQTT password MQTT_PASSWORD: |
 | controllers.main.containers.teslamateapi.image.repository | string | `"tobiasehlert/teslamateapi"` |  |
-| controllers.main.containers.teslamateapi.image.tag | string | `"1.18.3"` |  |
+| controllers.main.containers.teslamateapi.image.tag | string | `"1.20.1"` |  |
 | controllers.main.containers.teslamateapi.name | string | `"teslamateapi"` |  |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | ingress.teslamate-api.enabled | bool | `false` |  |

@@ -26,5 +26,5 @@ maintainers:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed 
-      description: Update teslamate to 1.32.0
+      description: Update teslamateapi to 1.20.1
     
