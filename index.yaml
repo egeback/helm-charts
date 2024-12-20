@@ -4263,6 +4263,37 @@ entries:
     version: 1.0.1
   teslamate:
   - annotations:
+      artifacthub.io/changes: "- kind: changed \n  description: Update teslamate to
+        1.32.0"
+    apiVersion: v2
+    appVersion: 1.32.0
+    created: "2024-12-20T17:45:26.668739987Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.5.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.12.10
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 20faf811c3e891f61641da75361921c23b03d631303dedb8f225f7dc760a363c
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/793px-Tesla_Motors.svg.png
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-1.0.34/teslamate-1.0.34.tgz
+    version: 1.0.34
+  - annotations:
       artifacthub.io/changes: "- kind: changed \n  description: Update teslamateagile
         to v1.16.0"
     apiVersion: v2
@@ -6451,4 +6482,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2024-12-07T17:25:33.751610801Z"
+generated: "2024-12-20T17:45:26.669230462Z"
