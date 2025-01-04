@@ -5,9 +5,47 @@
 # https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
+options:
+  runAsNonRoot: 
+    # -- enable non root mode that can be executed in a non privileged namespace
+    enabled: false
+    # -- filesystem group for non root mode
+    fsGroup: 1000
+    # -- user id for non root mode
+    runAsUser: 1000
+    # -- capabilties for the application
+    neededCapabilities:
+      - NET_BIND_SERVICE
+  # -- configure affinity to enable pods to be spread out over multiple hosts
+  setAffinity: false
+
+volumeClaimTemplates:
+  config:
+    # -- Set accessMode for config volumeClaimTemplate
+    accessMode: ReadWriteOnce
+    # -- Enable config volumeClaimTemplate
+    enabled: false
+    # -- Set size for config volumeClaimTemplate
+    size: 10Mi
+    # -- Set storageClass for config volumeClaimTemplate
+    storageClass: nfs-client
+
+  data:
+    # -- Set accessMode for data volumeClaimTemplate
+    accessMode: ReadWriteOnce
+    # -- Enable data volumeClaimTemplate
+    enabled: false
+    # -- Set size for data volumeClaimTemplate
+    size: 10Mi
+    # -- Set storageClass for data volumeClaimTemplate
+    storageClass: nfs-client
+    # -- Set mount path for data volumeClaim
+    globalMounts:
+      - path: /opt/adguardhome/work
+
 defaultPodOptions:
   hostNetwork: true
-  # Uncomment to allocate one instance of adguard to one host
+  # -- Uncomment to spread out the instances of adguard (only allow one instance per host)
   # affinity:
   #   podAffinity: {}
   #   podAntiAffinity:
@@ -21,13 +59,19 @@ defaultPodOptions:
   #                   - adguard-home
   #           topologyKey: kubernetes.io/hostname
   #         weight: 100
+  
+  # -- Uncomment to set fsGroup and seccompProfile to run in a non privileged namespace
+  # securityContext:
+  #     fsGroup: 1000
+  #     seccompProfile:
+  #       type: RuntimeDefault
 
 controllers:
   main:
     # -- Number of pods to load balance between
     replicas: 1
     
-    # Uncomment to define adguard as a statefulset and allocate data volume
+    # -- Uncomment to define adguard as a statefulset and allocate data volumes for work and config.
     # type: statefulset
     # statefulset:
     #   volumeClaimTemplates: 
@@ -37,6 +81,25 @@ controllers:
     #     size: "500Mi"
     #     globalMounts:
     #       - path: /opt/adguardhome/work
+    #   - name: config
+    #     accessMode: ReadWriteOnce
+    #     size: 10Mi
+    #     storageClass: nfs-client
+
+    # -- Uncomment to run as non root and to run in a non privileged namespace,
+    # defaultContainerOptions:
+    #    securityContext:
+    #     allowPrivilegeEscalation: false
+    #     privileged: false
+    #     readOnlyRootFilesystem: false
+    #     runAsNonRoot: true
+    #     runAsUser: 1000
+    #     capabilities:
+    #       add:
+    #         - NET_BIND_SERVICE
+    #       drop:
+    #         - ALL
+
     initContainers:
     # -- Configures an initContainer that copies the configmap to the AdGuardHome conf directory
     # It does NOT overwrite when the file already exists.
@@ -45,7 +108,7 @@ controllers:
         image: 
           repository: busybox
           pullPolicy: IfNotPresent
-          tag: 1.36.1
+          tag: 1.37.0
         command:
         - "sh"
         - "-c"
@@ -89,26 +152,20 @@ service:
     ports:
       http:
         port: 3000
-  dns-tcp:
+  dns:
     controller: main
-    enabled: true
-    type: NodePort
-    ports:
-      dns-tcp:
-        enabled: true
-        port: 53
-        protocol: TCP
-        targetPort: 53
-    externalTrafficPolicy: Local
-  dns-udp:
-    controller: main
-    enabled: true
+    enabled: false
     type: NodePort
     ports:
       dns-udp:
         enabled: true
         port: 53
         protocol: UDP
+        targetPort: 53
+      dns-tcp:
+        enabled: true
+        port: 53
+        protocol: TCP
         targetPort: 53
     externalTrafficPolicy: Local
 
@@ -126,7 +183,7 @@ persistence:
     type: emptyDir
   adguard-home-config:
     enabled: true
-    name: adguard-home-config
+    name: "{{ .Release.Name }}-config"
     type: configMap
     advancedMounts:
       main:
@@ -141,6 +198,7 @@ configMaps:
   config:
     # config -- AdGuard Home configuration. For a full list of options see https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration.
     # @default -- See values.yaml
+    # -- Enable default config
     enabled: true
     data:
       AdGuardHome.yaml: |
@@ -282,4 +340,3 @@ configMaps:
           user: ""
           rlimit_nofile: 0
         schema_version: 14
-      

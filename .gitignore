@@ -47,3 +47,6 @@ angel.yaml
 .history
 charts/adguard-home/test.yaml
 charts/adguard-home/test2.yaml
+charts/adguard-home/vakues.tmp
+charts/adguard-home/test.out
+charts/adguard-home/test2.out

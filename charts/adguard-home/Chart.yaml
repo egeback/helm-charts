@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: v0.107.54
+appVersion: v0.107.55
 description: DNS proxy as ad-blocker for local network
 name: adguard-home
-version: 1.0.23
+version: 1.0.24
 kubeVersion: ">=1.16.0-0"
 keywords:
   - adguard-home
@@ -16,7 +16,7 @@ sources:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
-    version: 3.5.1
+    version: 3.6.0
 maintainers:
   - name: egeback
     email: marky@egeback.se
@@ -24,3 +24,16 @@ annotations:
   artifacthub.io/changes: |-
     - kind: changed
       description: Update base helm chart
+    - kind: changed
+      description: Update adguard to version v0.107.55
+    - kind: added
+      description: Documentation of storage options in README.
+    - kind: added
+      description: Added chart features to generate affinity.
+    - kind: added
+      description: Added chart features to enable non-root mode.
+    - kind: added
+      description: Added chart features to generate volumeClaimTemplates.
+  artifacthub.io/links: |
+    - name: "source"
+      url: "https://github.com/egeback/helm-charts/tree/main/charts/adguard-home"
