@@ -603,6 +603,31 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Depricate the chart
+    apiVersion: v2
+    appVersion: v1.0.1
+    created: "2025-01-04T23:06:24.978583566Z"
+    deprecated: true
+    description: Cert manager webhook for anx.se
+    digest: 61aab6c6d5a083f338f9c9d0e7f85cab7573872fa7e19c1892802693d8f19f83
+    home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
+    keywords:
+    - anx.se
+    - cert-manager-webbook
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: cert-manager-webhook-anxdns
+    sources:
+    - https://github.com/egeback/cert-manager-webhook-anx
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.10/cert-manager-webhook-anxdns-1.0.10.tgz
+    version: 1.0.10
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Fix of version
     apiVersion: v2
     appVersion: v1.0.1
@@ -6671,4 +6696,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2025-01-04T23:00:28.959612783Z"
+generated: "2025-01-04T23:06:24.979126629Z"
