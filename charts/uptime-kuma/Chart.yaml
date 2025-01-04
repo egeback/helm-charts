@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: 1.23.11-alpine
+appVersion: 1.23.16-alpine
 description: A fancy self-hosted monitoring tool for your websites and applications
 name: uptime-kuma
-version: 1.1.2
+version: 1.1.3
 kubeVersion: ">=1.16.0-0"
 keywords:
   - uptime-kuma
@@ -17,7 +17,7 @@ sources:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
-    version: 3.1.0
+    version: 3.6.0
 maintainers:
   - name: egeback
     email: marky@egeback.se
@@ -25,3 +25,5 @@ annotations:
   artifacthub.io/changes: |-
     - kind: changed
       description: Update base helm chart
+    - kind: changed
+      description: Application to version 1.23.16-alpine
