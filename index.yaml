@@ -606,6 +606,30 @@ entries:
           description: Fix of version
     apiVersion: v2
     appVersion: v1.0.1
+    created: "2025-01-04T23:00:28.741932073Z"
+    description: Cert manager webhook for anx.se
+    digest: cd4098758cdcba0dfd1c361a4d99260f82f28b416d1fb056c2b951c11e26b0e8
+    home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
+    keywords:
+    - anx.se
+    - cert-manager-webbook
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: cert-manager-webhook-anxdns
+    sources:
+    - https://github.com/egeback/cert-manager-webhook-anx
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.9/cert-manager-webhook-anxdns-1.0.9.tgz
+    version: 1.0.9
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Fix of version
+    apiVersion: v2
+    appVersion: v1.0.1
     created: "2024-06-09T20:59:14.193870765Z"
     description: Cert manager webhook for anx.se
     digest: ff676fe4314e7caab385c204cd2ce9f181b508d7a5f7b2270d38c00d7380e987
@@ -6195,6 +6219,38 @@ entries:
       artifacthub.io/changes: |-
         - kind: changed
           description: Update base helm chart
+        - kind: changed
+          description: Application to version 1.23.16-alpine
+    apiVersion: v2
+    appVersion: 1.23.16-alpine
+    created: "2025-01-04T23:00:28.959255767Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.6.0
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: e02026a9387f1cf88549465c9ca5cf048594506b2c4d4279a13b4f2302822144
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.1.3/uptime-kuma-1.1.3.tgz
+    version: 1.1.3
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update base helm chart
     apiVersion: v2
     appVersion: 1.23.11-alpine
     created: "2024-04-04T19:50:07.893396225Z"
@@ -6615,4 +6671,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2025-01-04T22:54:22.141593145Z"
+generated: "2025-01-04T23:00:28.959612783Z"
