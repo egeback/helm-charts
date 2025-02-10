@@ -1,6 +1,6 @@
 # esphome
 
-![Version: 1.0.25](https://img.shields.io/badge/Version-1.0.25-informational?style=flat-square) ![AppVersion: 2024.10.3](https://img.shields.io/badge/AppVersion-2024.10.3-informational?style=flat-square)
+![Version: 1.0.26](https://img.shields.io/badge/Version-1.0.26-informational?style=flat-square) ![AppVersion: 2024.12.4](https://img.shields.io/badge/AppVersion-2024.12.4-informational?style=flat-square)
 
 ESP Home helm package
 
@@ -10,7 +10,7 @@ ESP Home helm package
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Marky Egebäck | <marky@$egeback.com> |  |
+| Marky Egebäck | <marky@egeback.com> |  |
 
 ## Source Code
 
@@ -22,7 +22,7 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts | common | 3.5.1 |
+| https://bjw-s.github.io/helm-charts | common | 3.7.0 |
 
 ## Values
 
