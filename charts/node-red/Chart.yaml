@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: 4.0.8
+appVersion: 4.0.9
 description: Node-RED is low-code programming for event-driven applications
 name: node-red
-version: 1.2.5
+version: 1.2.6
 kubeVersion: ">=1.16.0-0"
 keywords:
   - node-red
@@ -17,8 +17,10 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
-    version: 3.2.1
+    version: 3.7.1
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Update node-red to 4.0.8
+      description: Update node-red to 4.0.9
+    - kind: changed
+      description: Update basechart to 3.7.1
