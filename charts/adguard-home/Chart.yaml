@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: v0.107.56
+appVersion: v0.107.59
 description: DNS proxy as ad-blocker for local network
 name: adguard-home
-version: 1.0.26
+version: 1.0.27
 kubeVersion: ">=1.16.0-0"
 keywords:
   - adguard-home
@@ -16,14 +16,16 @@ sources:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
-    version: 3.6.0
+    version: 3.7.3
 maintainers:
   - name: egeback
     email: marky@egeback.se
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Update chart README.
+      description: Update app version to v0.107.59
+    - kind: changed
+      description: Updated base chart to 3.7.3
   artifacthub.io/links: |
     - name: "source"
       url: "https://github.com/egeback/helm-charts/tree/main/charts/adguard-home"
