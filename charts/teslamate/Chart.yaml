@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: 1.33.0
+appVersion: 2.0.0
 description: "A self-hosted data logger for your Tesla \U0001F698"
 name: teslamate
-version: 1.0.36
+version: 2.0.0
 keywords:
   - teslamate
   - tesla
@@ -14,8 +14,8 @@ sources:
   - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
 dependencies:
   - name: common
-    repository: https://bjw-s.github.io/helm-charts
-    version: 3.5.1
+    repository: https://bjw-s-labs.github.io/helm-charts
+    version: 3.7.3
   - name: postgresql
     version: 12.12.10
     repository: https://charts.bitnami.com/bitnami
@@ -26,5 +26,7 @@ maintainers:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed 
-      description: Update teslamateagile to v1.33.0
+      description: Update teslamate to v2.0.0
+    - kind: changed
+      description: Update base library
     
