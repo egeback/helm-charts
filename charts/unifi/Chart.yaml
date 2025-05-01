@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: v8.6.9
+appVersion: v9.1.120
 description: Ubiquiti Network's Unifi Controller
 name: unifi
 version: 1.1.10
@@ -16,8 +16,8 @@ maintainers:
     email: marky@egeback.se
 dependencies:
   - name: common
-    repository: https://bjw-s.github.io/helm-charts
-    version: 3.0.4
+    repository: https://bjw-s-labs.github.io/helm-charts
+    version: 3.7.3
   - name: mongodb
     version: 15.1.3
     repository: https://charts.bitnami.com/bitnami
@@ -25,4 +25,6 @@ dependencies:
 annotations:
   artifacthub.io/changes: |
     - kind: changed 
-      description: Updated to Unifi app version v8.6.9
+      description: Updated to Unifi app version v9.1.120
+    - kind: changed
+      description: Update base library
