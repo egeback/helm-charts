@@ -1,6 +1,6 @@
 # uptime-kuma
 
-![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-informational?style=flat-square) ![AppVersion: 1.23.11-alpine](https://img.shields.io/badge/AppVersion-1.23.11--alpine-informational?style=flat-square)
+![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![AppVersion: 1.23.16-alpine](https://img.shields.io/badge/AppVersion-1.23.16--alpine-informational?style=flat-square)
 
 A fancy self-hosted monitoring tool for your websites and applications
 
@@ -22,7 +22,7 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts | common | 3.1.0 |
+| https://bjw-s.github.io/helm-charts | common | 3.6.0 |
 
 ## Values
 
