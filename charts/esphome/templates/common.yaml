@@ -12,4 +12,3 @@ global:
 
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.all" . }}
-{{- include "egeback.common.lib.chart.notes" . -}}

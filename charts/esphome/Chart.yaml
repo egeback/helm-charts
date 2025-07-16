@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: 2025.6.3
+appVersion: 2025.7.0
 description: ESP Home helm package
 name: esphome
-version: 1.0.34
+version: 1.0.35
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ESPHOME
@@ -16,8 +16,10 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
-    version: 4.1.1
+    version: 4.1.2
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Updated ESP Home to 2025.6.3
+      description: Updated ESP Home to 2025.7.0
+    - kind: changed
+      description: Updated base chart to 4.1.2
