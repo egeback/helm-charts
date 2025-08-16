@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: 2.1.0
+appVersion: 2.1.1
 description: "A self-hosted data logger for your Tesla \U0001F698"
 name: teslamate
-version: 2.0.2
+version: 2.0.3
 keywords:
   - teslamate
   - tesla
