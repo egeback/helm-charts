@@ -64,7 +64,7 @@ controllers:
         enabled: false
         image:
           repository: mattjeanes/teslamateagile
-          tag: v1.18.2
+          tag: v1.19.0
         env:
           DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
           DATABASE_PASS: "{{ .Values.postgresql.auth.postgresPassword }}"
@@ -101,7 +101,6 @@ service:
   teslamate-api:
     controller: main
     enabled: false
-    controller: main
     ports:
       http2:
         port: 8080
