@@ -47,7 +47,7 @@ controllers:
         name: teslamateapi
         image:
           repository: tobiasehlert/teslamateapi
-          tag: 1.22.0
+          tag: 1.23.0
         env:
           ENCRYPTION_KEY: "{{ .Values.controllers.main.containers.main.env.ENCRYPTION_KEY }}"
           DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
