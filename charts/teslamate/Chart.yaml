@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: 2.1.1
+appVersion: 2.2.0
 description: "A self-hosted data logger for your Tesla \U0001F698"
 name: teslamate
-version: 2.0.8
+version: 2.0.9
 keywords:
   - teslamate
   - tesla
@@ -26,4 +26,6 @@ maintainers:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Update fetzu/teslamate-abrp to v3.4.0
+      description: Update teslamate 2.2.0
+    - kind: changed
+      description: Update mattjeanes/teslamateagile v1.20.0

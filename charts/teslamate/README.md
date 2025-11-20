@@ -1,6 +1,6 @@
 # teslamate
 
-![Version: 2.0.7](https://img.shields.io/badge/Version-2.0.7-informational?style=flat-square) ![AppVersion: 2.1.1](https://img.shields.io/badge/AppVersion-2.1.1-informational?style=flat-square)
+![Version: 2.0.9](https://img.shields.io/badge/Version-2.0.9-informational?style=flat-square) ![AppVersion: 2.2.0](https://img.shields.io/badge/AppVersion-2.2.0-informational?style=flat-square)
 
 A self-hosted data logger for your Tesla 🚘
 
@@ -50,7 +50,7 @@ A self-hosted data logger for your Tesla 🚘
 | controllers.main.containers.teslamate-abrp.env.MQTT_USERNAME | string | `"{{ .Values.controllers.main.containers.main.env.MQTT_USERNAME }}"` |  |
 | controllers.main.containers.teslamate-abrp.env.USER_TOKEN | string | `"y0ur-4p1-k3y"` |  |
 | controllers.main.containers.teslamate-abrp.image.repository | string | `"fetzu/teslamate-abrp"` |  |
-| controllers.main.containers.teslamate-abrp.image.tag | string | `"3.3.0"` |  |
+| controllers.main.containers.teslamate-abrp.image.tag | string | `"3.4.0"` |  |
 | controllers.main.containers.teslamateagile.enabled | bool | `false` |  |
 | controllers.main.containers.teslamateagile.env.DATABASE_HOST | string | `"{{ .Values.controllers.main.containers.main.env.DATABASE_HOST }}"` |  |
 | controllers.main.containers.teslamateagile.env.DATABASE_NAME | string | `"{{ .Values.postgresql.auth.database }}"` |  |
@@ -63,7 +63,7 @@ A self-hosted data logger for your Tesla 🚘
 | controllers.main.containers.teslamateagile.env.TeslaMate__UpdateIntervalSeconds | int | `300` |  |
 | controllers.main.containers.teslamateagile.env.Tibber__AccessToken | string | `"MyAccessToken"` |  |
 | controllers.main.containers.teslamateagile.image.repository | string | `"mattjeanes/teslamateagile"` |  |
-| controllers.main.containers.teslamateagile.image.tag | string | `"v1.19.0"` |  |
+| controllers.main.containers.teslamateagile.image.tag | string | `"v1.20.0"` |  |
 | controllers.main.containers.teslamateapi.enabled | bool | `false` |  |
 | controllers.main.containers.teslamateapi.env.DATABASE_HOST | string | `"{{ .Values.controllers.main.containers.main.DATABASE_HOST }}"` |  |
 | controllers.main.containers.teslamateapi.env.DATABASE_NAME | string | `"{{ .Values.postgresql.auth.database }}"` |  |
