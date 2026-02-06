@@ -8,14 +8,14 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["(^|/)Chart\\.yaml$"],
+      "fileMatch": ["(^|/)Chart\\.yaml$"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\nappVersion: (?<currentValue>[^\\s]+)"
       ]
     },
     {
       "customType": "regex",
-      "managerFilePatterns": ["(^|/)values\\.yaml$"],
+      "fileMatch": ["(^|/)values\\.yaml$"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\n\\s+tag: (?<currentValue>[^\\s]+)"
       ]
