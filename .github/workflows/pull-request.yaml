@@ -51,12 +51,43 @@ jobs:
       checkoutCommit: ${{ github.event.pull_request.head.sha }}
       chartsToTest: ${{ needs.detect-changes.outputs.chart_names }}
 
-  changelog:
-    name: Changelog
+  generate:
+    name: Generate Metadata and Docs
     needs: detect-changes
     if: ${{ needs.detect-changes.outputs.charts == 'true' && github.actor == 'renovate[bot]' }}
-    uses: ./.github/workflows/charts-changelog.yaml
-    with:
-      modifiedCharts: ${{ needs.detect-changes.outputs.chart_names }}
-      isRenovatePR: 'true'
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.RENOVATE_TOKEN || secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Generate Changelog Annotations
+        env:
+          CHECK_BRANCH: "origin/${{ github.event.repository.default_branch }}"
+        run: |
+          pip install -r ./.github/scripts/requirements.txt
+          CHARTS_JSON='${{ needs.detect-changes.outputs.chart_names }}'
+          CHARTS=$(echo $CHARTS_JSON | jq -r '.[]')
+          for chart in $CHARTS; do
+            ./.github/scripts/renovate-releasenotes.py --check-branch "$CHECK_BRANCH" "$chart"
+          done
+
+      - name: Generate Helm Docs
+        uses: losisin/helm-docs-action@v1
+        with:
+          chart-search-root: charts
+
+      - name: Create commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          file_pattern: charts/**/
+          commit_message: "chore: Auto-update chart metadata and docs"
+          commit_user_name: ${{ github.actor }}
+          commit_user_email: ${{ github.actor }}@users.noreply.github.com
