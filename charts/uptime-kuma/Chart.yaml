@@ -1,5 +1,6 @@
 ---
 apiVersion: v2
+# renovate: datasource=github-releases depName=louislam/uptime-kuma
 appVersion: 2.0.0-beta.3
 description: A fancy self-hosted monitoring tool for your websites and applications
 name: uptime-kuma

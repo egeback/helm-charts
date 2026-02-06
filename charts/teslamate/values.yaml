@@ -47,6 +47,7 @@ controllers:
         name: teslamateapi
         image:
           repository: tobiasehlert/teslamateapi
+          # renovate: datasource=github-releases depName=tobiasehlert/teslamateapi
           tag: 1.23.0
         env:
           ENCRYPTION_KEY: "{{ .Values.controllers.main.containers.main.env.ENCRYPTION_KEY }}"
@@ -64,6 +65,7 @@ controllers:
         enabled: false
         image:
           repository: mattjeanes/teslamateagile
+          # renovate: datasource=github-releases depName=mattjeanes/teslamateagile
           tag: v1.21.0
         env:
           DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
@@ -80,6 +82,7 @@ controllers:
         enabled: false
         image:
           repository: fetzu/teslamate-abrp
+          # renovate: datasource=github-releases depName=fetzu/teslamate-abrp
           tag: 3.4.0
         env:
           MQTT_SERVER: "{{ .Values.controllers.main.containers.main.env.MQTT_HOST }}"

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":rebaseStalePrs",
+    ":enableDashboard"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["(^|/)Chart\\.yaml$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\nappVersion: (?<currentValue>[^\\s]+)"
+      ]
+    },
+    {
+      "fileMatch": ["(^|/)values\\.yaml$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\n\\s+tag: (?<currentValue>[^\\s]+)"
+      ]
+    }
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["helm-values", "helmv3", "regex"],
+      "bumpVersion": "patch"
+    },
+    {
+      "matchPackageNames": ["bjw-s/common"],
+      "groupName": "bjw-s common chart"
+    }
+  ]
+}
