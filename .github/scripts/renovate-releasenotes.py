@@ -33,6 +33,20 @@ def _setup_logging(debug):
         level=log_level,
     )
 
+def _bump_patch_version(version_str: str) -> str:
+    """
+    Increments the patch version of a semver string
+    """
+    parts = version_str.split('.')
+    if len(parts) >= 3:
+        try:
+            patch = int(parts[2])
+            parts[2] = str(patch + 1)
+            return '.'.join(parts)
+        except ValueError:
+            pass
+    return version_str
+
 
 @app.command()
 def main(
@@ -75,12 +89,13 @@ def main(
             raise typer.Exit(1)
 
         chart_metadata_file = chart_folder.joinpath('Chart.yaml')
+        values_file = chart_folder.joinpath('values.yaml')
 
         if not chart_metadata_file.is_file():
             logger.error(f"Could not find file {str(chart_metadata_file)}")
             raise typer.Exit(1)
 
-        logger.info(f"Updating changelog annotation for chart {chart_folder}")
+        logger.info(f"Updating changelog and version for chart {chart_folder}")
 
         yaml = YAML(typ=['rt', 'string'])
         yaml.indent(mapping=2, sequence=4, offset=2)
@@ -93,6 +108,25 @@ def main(
         )
         new_chart_metadata = yaml.load(chart_metadata_file.read_text())
 
+        # Check if appVersion changed
+        app_version_changed = False
+        if "appVersion" in new_chart_metadata and "appVersion" in old_chart_metadata:
+            if new_chart_metadata["appVersion"] != old_chart_metadata["appVersion"]:
+                app_version_changed = True
+                logger.info(f"Detected appVersion change: {old_chart_metadata['appVersion']} -> {new_chart_metadata['appVersion']}")
+
+        # Check if values.yaml changed
+        values_changed = False
+        if values_file.is_file():
+            try:
+                old_values_content = git_repository.git.show(f"{branch}:{values_file}")
+                new_values_content = values_file.read_text()
+                if old_values_content != new_values_content:
+                    values_changed = True
+                    logger.info("Detected changes in values.yaml")
+            except Exception as e:
+                logger.warning(f"Could not compare values.yaml: {e}")
+
         try:
             old_chart_dependencies = old_chart_metadata["dependencies"]
         except KeyError:
@@ -104,6 +138,21 @@ def main(
             new_chart_dependencies = []
 
         annotations = []
+        
+        # Add annotation for appVersion change
+        if app_version_changed:
+            annotations.append({
+                "kind": "changed",
+                "description": f"Update application to {new_chart_metadata['appVersion']}"
+            })
+        
+        # Add annotation for values.yaml changes (excluding appVersion changes already covered)
+        if values_changed and not app_version_changed:
+             annotations.append({
+                "kind": "changed",
+                "description": "Update image tags or configuration in values.yaml"
+            })
+
         for dependency in new_chart_dependencies:
             old_dep = None
             if "alias" in dependency.keys():
@@ -138,14 +187,21 @@ def main(
                     })
 
         if annotations:
-            annotations = YAML(typ=['rt', 'string']
-                               ).dump_to_string(annotations)
+            # Bump chart version
+            old_version = new_chart_metadata.get("version", "0.1.0")
+            new_version = _bump_patch_version(old_version)
+            new_chart_metadata["version"] = new_version
+            logger.info(f"Bumping chart version: {old_version} -> {new_version}")
+
+            # Update annotations
+            annotations_str = YAML(typ=['rt', 'string']).dump_to_string(annotations)
 
             if not "annotations" in new_chart_metadata:
                 new_chart_metadata["annotations"] = CommentedMap()
 
             new_chart_metadata["annotations"]["artifacthub.io/changes"] = LiteralScalarString(
-                annotations)
+                annotations_str)
+            
             yaml.dump(new_chart_metadata, chart_metadata_file)
 
 

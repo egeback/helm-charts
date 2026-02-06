@@ -24,7 +24,7 @@
   "packageRules": [
     {
       "matchManagers": ["helm-values", "helmv3", "custom.regex"],
-      "bumpVersion": "patch"
+      "groupName": "all-helm-updates"
     },
     {
       "matchPackageNames": ["bjw-s/common"],
