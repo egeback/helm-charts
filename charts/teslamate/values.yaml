@@ -48,7 +48,7 @@ controllers:
         image:
           repository: tobiasehlert/teslamateapi
           # renovate: datasource=github-releases depName=tobiasehlert/teslamateapi
-          tag: 1.23.0
+          tag: 1.24.1
         env:
           ENCRYPTION_KEY: "{{ .Values.controllers.main.containers.main.env.ENCRYPTION_KEY }}"
           DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
