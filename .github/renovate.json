@@ -7,17 +7,15 @@
   "rebaseWhen": "behind-base-branch",
   "regexManagers": [
     {
-      "fileMatch": ["(^|/)Chart\.yaml$"],
+      "fileMatch": ["(^|/)Chart\\.yaml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\s]+?))?(?: versioning=(?<versioning>[a-z-]+?))?
-appVersion: (?<currentValue>[^\s]+)"
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\nappVersion: (?<currentValue>[^\\s]+)"
       ]
     },
     {
-      "fileMatch": ["(^|/)values\.yaml$"],
+      "fileMatch": ["(^|/)values\\.yaml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\s]+?))?(?: versioning=(?<versioning>[a-z-]+?))?
-\s+tag: (?<currentValue>[^\s]+)"
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\n\\s+tag: (?<currentValue>[^\\s]+)"
       ]
     }
   ],
