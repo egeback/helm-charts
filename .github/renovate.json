@@ -32,7 +32,8 @@
     },
     {
       "matchPackageNames": ["home-assistant/core", "AdguardTeam/AdGuardHome"],
-      "versioning": "docker"
+      "versioning": "docker",
+      "separateMajorMinor": false
     }
   ]
 }
