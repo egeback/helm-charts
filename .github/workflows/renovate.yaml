@@ -13,6 +13,8 @@ jobs:
         uses: renovatebot/github-action@v40.1.11
         env:
           RENOVATE_REPOSITORIES: ${{ github.repository }}
+          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+          DOCKER_HUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         with:
           configurationFile: .github/renovate.json
           token: ${{ secrets.RENOVATE_TOKEN }}
