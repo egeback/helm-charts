@@ -1,18 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
   "dependencyDashboard": true,
   "rebaseWhen": "behind-base-branch",
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": ["(^|/)Chart\\.yaml$"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\nappVersion: (?<currentValue>[^\\s]+)"
       ]
     },
     {
+      "customType": "regex",
       "fileMatch": ["(^|/)values\\.yaml$"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\n\\s+tag: (?<currentValue>[^\\s]+)"
@@ -21,7 +23,7 @@
   ],
   "packageRules": [
     {
-      "matchManagers": ["helm-values", "helmv3", "regex"],
+      "matchManagers": ["helm-values", "helmv3", "custom.regex"],
       "bumpVersion": "patch"
     },
     {
