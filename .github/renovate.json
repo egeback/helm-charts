@@ -3,7 +3,9 @@
   "extends": [
     "config:recommended"
   ],
-  "dependencyDashboard": true,
+  "dependencyDashboard": false,
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
   "rebaseWhen": "behind-base-branch",
   "customManagers": [
     {
