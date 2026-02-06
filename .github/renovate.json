@@ -10,14 +10,14 @@
       "customType": "regex",
       "fileMatch": ["(^|/)Chart\\.yaml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?:\\s+versioning=(?<versioning>.+?))?\\nappVersion:\\s*[\"']?(?<currentValue>.+?)[\"']?"
+        "# renovate: datasource=(?<datasource>[^\\s]+?) depName=(?<depName>[^\\s]+?)(?:\\s+versioning=(?<versioning>[^\\s]+?))?\\s+appVersion:\\s*[\"']?(?<currentValue>[^\\s\"']+)[\"']?"
       ]
     },
     {
       "customType": "regex",
       "fileMatch": ["(^|/)values\\.yaml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?:\\s+versioning=(?<versioning>.+?))?\\n\\s+tag:\\s*[\"']?(?<currentValue>.+?)[\"']?"
+        "# renovate: datasource=(?<datasource>[^\\s]+?) depName=(?<depName>[^\\s]+?)(?:\\s+versioning=(?<versioning>[^\\s]+?))?\\s+tag:\\s*[\"']?(?<currentValue>[^\\s\"']+)[\"']?"
       ]
     }
   ],
