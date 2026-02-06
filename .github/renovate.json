@@ -10,17 +10,15 @@
       "customType": "regex",
       "fileMatch": ["(^|/)Chart\\.yaml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>.+?))?\\s+appVersion:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
-      ],
-      "matchStringsStrategy": "any"
+        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?:\\s+versioning=(?<versioning>.+?))?\\nappVersion:\\s*[\"']?(?<currentValue>.+?)[\"']?"
+      ]
     },
     {
       "customType": "regex",
       "fileMatch": ["(^|/)values\\.yaml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>.+?))?\\s+tag:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
-      ],
-      "matchStringsStrategy": "any"
+        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?:\\s+versioning=(?<versioning>.+?))?\\n\\s+tag:\\s*[\"']?(?<currentValue>.+?)[\"']?"
+      ]
     }
   ],
   "packageRules": [
@@ -34,7 +32,7 @@
     },
     {
       "matchPackageNames": ["home-assistant/core"],
-      "versioning": "home-assistant"
+      "versioning": "docker"
     }
   ]
 }

@@ -1,5 +1,5 @@
 apiVersion: v2
-# renovate: datasource=github-releases depName=home-assistant/core
+# renovate: datasource=github-releases depName=home-assistant/core versioning=docker
 appVersion: 2024.12
 description: Home Assistant helm package
 name: home-assistant
