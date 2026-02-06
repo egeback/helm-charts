@@ -29,6 +29,10 @@
     {
       "matchPackageNames": ["bjw-s/common"],
       "groupName": "bjw-s common chart"
+    },
+    {
+      "matchPackageNames": ["home-assistant/core"],
+      "versioning": "home-assistant"
     }
   ]
 }
