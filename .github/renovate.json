@@ -31,7 +31,7 @@
       "groupName": "bjw-s common chart"
     },
     {
-      "matchPackageNames": ["home-assistant/core"],
+      "matchPackageNames": ["home-assistant/core", "AdguardTeam/AdGuardHome"],
       "versioning": "docker"
     }
   ]

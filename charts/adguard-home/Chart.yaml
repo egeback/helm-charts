@@ -1,6 +1,6 @@
 ---
 apiVersion: v2
-# renovate: datasource=github-releases depName=AdguardTeam/AdGuardHome
+# renovate: datasource=github-releases depName=AdguardTeam/AdGuardHome versioning=docker
 appVersion: v0.107.71
 description: DNS proxy as ad-blocker for local network
 name: adguard-home
