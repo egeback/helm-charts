@@ -9,13 +9,13 @@ controllers:
   main:
     containers:
       app:
-          # -- image repository
-          repository: ${CHARTNAME}/${CHARTNAME}
-          # -- image tag
-          # @default -- chart.appVersion
-          tag:
-          # -- image pull policy
-          pullPolicy: IfNotPresent
+        # -- image repository
+        repository: ${CHARTNAME}/${CHARTNAME}
+        # -- image tag
+        # @default -- chart.appVersion
+        tag:
+        # -- image pull policy
+        pullPolicy: IfNotPresent
 
         # -- environment variables. See more environment variables in the [${CHARTNAME} documentation](https://${CHARTNAME}.org/docs).
         # @default -- See below
@@ -61,4 +61,4 @@ ingress:
 persistence: {}
   # data:
   #   enabled: false
-  #   mountPath: /data
+  #   mountPath: /opt/app/data

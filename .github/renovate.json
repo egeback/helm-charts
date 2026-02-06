@@ -10,15 +10,17 @@
       "customType": "regex",
       "fileMatch": ["(^|/)Chart\\.yaml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?:\\s+(?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?:\\s+versioning=(?<versioning>[a-z-]+?))?\\nappVersion:\\s*[\"']?(?<currentValue>[^\\s\"']+)[\"']?"
-      ]
+        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>.+?))?\\s+appVersion:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
+      ],
+      "matchStringsStrategy": "any"
     },
     {
       "customType": "regex",
       "fileMatch": ["(^|/)values\\.yaml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?:\\s+(?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?:\\s+versioning=(?<versioning>[a-z-]+?))?\\n\\s+tag:\\s*[\"']?(?<currentValue>[^\\s\"']+)[\"']?"
-      ]
+        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>.+?))?\\s+tag:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
+      ],
+      "matchStringsStrategy": "any"
     }
   ],
   "packageRules": [
