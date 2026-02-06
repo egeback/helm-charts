@@ -1,0 +1,62 @@
+name: "Pull Request"
+
+on:
+  pull_request:
+
+jobs:
+  detect-changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      charts: ${{ steps.filter.outputs.charts }}
+      chart_names: ${{ steps.get-chart-names.outputs.list }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Filter changes
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          list-files: json
+          filters: |
+            charts:
+              - 'charts/*/**'
+
+      - name: Get chart names
+        id: get-chart-names
+        if: steps.filter.outputs.charts == 'true'
+        run: |
+          files='${{ steps.filter.outputs.charts_files }}'
+          # Extract chart names from file paths (charts/chart-name/...)
+          charts=$(echo $files | jq -r '.[]' | cut -d/ -f2 | sort -u | jq -R . | jq -s -c .)
+          echo "list=$charts" >> $GITHUB_OUTPUT
+
+  lint:
+    name: Lint
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.charts == 'true' }}
+    uses: ./.github/workflows/charts-lint.yaml
+    with:
+      checkoutCommit: ${{ github.event.pull_request.head.sha }}
+      chartsToLint: ${{ needs.detect-changes.outputs.chart_names }}
+      isRenovatePR: ${{ github.actor == 'renovate[bot]' && 'true' || 'false' }}
+
+  test:
+    name: Test
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.charts == 'true' }}
+    uses: ./.github/workflows/charts-tests.yaml
+    with:
+      checkoutCommit: ${{ github.event.pull_request.head.sha }}
+      chartsToTest: ${{ needs.detect-changes.outputs.chart_names }}
+
+  changelog:
+    name: Changelog
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.charts == 'true' && github.actor == 'renovate[bot]' }}
+    uses: ./.github/workflows/charts-changelog.yaml
+    with:
+      modifiedCharts: ${{ needs.detect-changes.outputs.chart_names }}
+      isRenovatePR: 'true'
+    secrets: inherit
