@@ -80,7 +80,7 @@ jobs:
           done
 
       - name: Generate Helm Docs
-        uses: losisin/helm-docs-action@v1
+        uses: losisin/helm-docs-action@v1.7.1
         with:
           chart-search-root: charts
 
