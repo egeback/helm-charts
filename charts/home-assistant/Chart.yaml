@@ -1,6 +1,6 @@
 apiVersion: v2
 # renovate: datasource=github-releases depName=home-assistant/core versioning=docker
-appVersion: 2024.12.0
+appVersion: 2026.2.1
 description: Home Assistant helm package
 name: home-assistant
 version: 1.1.29
@@ -17,9 +17,9 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
-    version: 3.5.0
+    version: 3.7.3
   - name: postgresql
-    version: 15.1.4
+    version: 15.5.38
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
   - name: mariadb
@@ -27,7 +27,7 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: mariadb.enabled
   - name: influxdb
-    version: 6.0.3
+    version: 6.6.16
     repository: https://charts.bitnami.com/bitnami
     condition: influxdb.enabled
 annotations:
