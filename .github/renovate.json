@@ -5,21 +5,18 @@
   ],
   "dependencyDashboard": true,
   "rebaseWhen": "behind-base-branch",
+  "ignoreDeps": ["losisin/helm-docs-action"],
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/(^|/)Chart\\.yaml$/"
-      ],
+      "fileMatch": ["(^|/)Chart\\.yaml$"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[^\\s]+?) depName=(?<depName>[^\\s]+?)(?:\\s+versioning=(?<versioning>[^\\s]+?))?\\s+appVersion:\\s*[\"']?(?<currentValue>[^\\s\"']+)[\"']?"
       ]
     },
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/(^|/)values\\.yaml$/"
-      ],
+      "fileMatch": ["(^|/)values\\.yaml$"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[^\\s]+?) depName=(?<depName>[^\\s]+?)(?:\\s+versioning=(?<versioning>[^\\s]+?))?\\s+tag:\\s*[\"']?(?<currentValue>[^\\s\"']+)[\"']?"
       ]
@@ -27,16 +24,11 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": [
-        "bjw-s/common"
-      ],
+      "matchPackageNames": ["bjw-s/common"],
       "groupName": "bjw-s common chart"
     },
     {
-      "matchPackageNames": [
-        "home-assistant/core",
-        "AdguardTeam/AdGuardHome"
-      ],
+      "matchPackageNames": ["home-assistant/core", "AdguardTeam/AdGuardHome"],
       "versioning": "docker",
       "separateMajorMinor": false
     }
