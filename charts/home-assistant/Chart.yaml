@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 2026.2.1
 description: Home Assistant helm package
 name: home-assistant
-version: 1.1.30
+version: 1.1.31
 kubeVersion: ">=1.16.0-0"
 keywords:
   - home-assistant
@@ -33,5 +33,5 @@ dependencies:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Fix for https://github.com/home-assistant/core/issues/132336
+      description: "Update application to 2026.2.1"
 

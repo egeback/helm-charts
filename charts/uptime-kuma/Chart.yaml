@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 2.1.0
 description: A fancy self-hosted monitoring tool for your websites and applications
 name: uptime-kuma
-version: 2.1.0
+version: 2.1.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - uptime-kuma
@@ -23,8 +23,6 @@ maintainers:
   - name: egeback
     email: marky@egeback.se
 annotations:
-  artifacthub.io/changes: |-
+  artifacthub.io/changes: |
     - kind: changed
-      description: Update base helm chart to 4.1.1
-    - kind: changed
-      description: Application to version 2.0.0-beta.3
+      description: "Update application to 2.1.0"
