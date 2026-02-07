@@ -8,14 +8,18 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["(^|/)Chart\\.yaml$"],
+      "managerFilePatterns": [
+        "/(^|/)Chart\\.yaml$/"
+      ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[^\\s]+?) depName=(?<depName>[^\\s]+?)(?:\\s+versioning=(?<versioning>[^\\s]+?))?\\s+appVersion:\\s*[\"']?(?<currentValue>[^\\s\"']+)[\"']?"
       ]
     },
     {
       "customType": "regex",
-      "fileMatch": ["(^|/)values\\.yaml$"],
+      "managerFilePatterns": [
+        "/(^|/)values\\.yaml$/"
+      ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[^\\s]+?) depName=(?<depName>[^\\s]+?)(?:\\s+versioning=(?<versioning>[^\\s]+?))?\\s+tag:\\s*[\"']?(?<currentValue>[^\\s\"']+)[\"']?"
       ]
@@ -23,11 +27,16 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["bjw-s/common"],
+      "matchPackageNames": [
+        "bjw-s/common"
+      ],
       "groupName": "bjw-s common chart"
     },
     {
-      "matchPackageNames": ["home-assistant/core", "AdguardTeam/AdGuardHome"],
+      "matchPackageNames": [
+        "home-assistant/core",
+        "AdguardTeam/AdGuardHome"
+      ],
       "versioning": "docker",
       "separateMajorMinor": false
     }
