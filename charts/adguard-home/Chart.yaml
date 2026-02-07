@@ -23,8 +23,8 @@ maintainers:
     email: marky@egeback.se
 annotations:
   artifacthub.io/changes: |-
-     - kind: changed
-      description: Update adguard-home to v0.107.71
+    - kind: changed
+      description: "Update adguard-home to v0.107.71"
   artifacthub.io/links: |
     - name: "source"
       url: "https://github.com/egeback/helm-charts/tree/main/charts/adguard-home"

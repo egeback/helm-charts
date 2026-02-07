@@ -8,7 +8,7 @@ kubeVersion: ">=1.16.0-0"
 keywords:
   - home-assistant
 home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
-icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+icon: https://brands.home-assistant.io/home-assistant/icon.png
 sources:
   - https://github.com/home-assistant/home-assistant-docker
 maintainers:

@@ -25,7 +25,7 @@ dependencies:
     condition: mongodb.enabled
 annotations:
   artifacthub.io/changes: |
-    - kind: changed 
-      description: Updated to Unifi app version v9.1.120
     - kind: changed
-      description: Update base library
+      description: "Updated to Unifi app version v10.0.162"
+    - kind: changed
+      description: "Update dependencies"

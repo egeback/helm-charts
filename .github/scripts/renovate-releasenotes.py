@@ -193,8 +193,12 @@ def main(
             new_chart_metadata["version"] = new_version
             logger.info(f"Bumping chart version: {old_version} -> {new_version}")
 
-            # Update annotations
-            annotations_str = YAML(typ=['rt', 'string']).dump_to_string(annotations)
+            # Update annotations - ensure they are properly formatted for ArtifactHub
+            # We use a separate YAML dumper to ensure strings are quoted if they contain special characters
+            ah_yaml = YAML()
+            ah_yaml.indent(mapping=2, sequence=4, offset=2)
+            ah_yaml.width = 4096
+            annotations_str = ah_yaml.dump_to_string(annotations)
 
             if not "annotations" in new_chart_metadata:
                 new_chart_metadata["annotations"] = CommentedMap()
