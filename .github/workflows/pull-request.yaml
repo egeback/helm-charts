@@ -12,7 +12,7 @@ jobs:
       chart_names: ${{ steps.get-chart-names.outputs.list }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
       
       - name: Filter changes
         uses: dorny/paths-filter@v3
@@ -58,15 +58,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.RENOVATE_TOKEN || secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.14"
+          python-version: "3.10"
 
       - name: Generate Changelog Annotations
         env:
@@ -85,7 +85,7 @@ jobs:
           chart-search-root: charts
 
       - name: Create commit
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           file_pattern: charts/**/
           commit_message: "chore: Auto-update chart metadata and docs"
