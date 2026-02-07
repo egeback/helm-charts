@@ -10,6 +10,38 @@ entries:
           url: "https://github.com/egeback/helm-charts/tree/main/charts/adguard-home"
     apiVersion: v2
     appVersion: v0.107.71
+    created: "2026-02-07T08:39:43.721702708Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: DNS proxy as ad-blocker for local network
+    digest: b7473e9d91e68b29f228a04b348e3f29f132bce59a09cbec7682ae018d52e316
+    home: https://github.com/egeback/helm-charts/blob/main/charts/adguard-home
+    icon: https://avatars3.githubusercontent.com/u/8361145?s=200&v=4?sanitize=true
+    keywords:
+    - adguard-home
+    - adblock
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: adguard-home
+    sources:
+    - https://github.com/AdguardTeam/AdGuardHome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/adguard-home-1.0.37/adguard-home-1.0.37.tgz
+    version: 1.0.37
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+         description: Update adguard-home to v0.107.71
+      artifacthub.io/links: |
+        - name: "source"
+          url: "https://github.com/egeback/helm-charts/tree/main/charts/adguard-home"
+    apiVersion: v2
+    appVersion: v0.107.71
     created: "2025-12-08T21:19:27.495359619Z"
     dependencies:
     - name: common
@@ -1076,6 +1108,33 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.1/cert-manager-webhook-anxdns-1.0.1.tgz
     version: 1.0.1
   esphome:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Updated ESP Home to 2025.12.2
+    apiVersion: v2
+    appVersion: 2026.1.4
+    created: "2026-02-07T08:39:43.861868352Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: ESP Home helm package
+    digest: ea53cc445d71de4ec5ab525e06075402b5f163d04ee344b95140ecbdbed6cf79
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.com
+      name: Marky Egebäck
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-1.1.5/esphome-1.1.5.tgz
+    version: 1.1.5
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
@@ -2174,6 +2233,35 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/esphome-1.0.0/esphome-1.0.0.tgz
     version: 1.0.0
   heimdall:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update base chart to 4.0.1
+    apiVersion: v2
+    appVersion: 2.6.3
+    created: "2026-02-07T08:39:44.022303211Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: An Application dashboard and launcher
+    digest: 9f62cf6dad3f4687d83b991bcb970e4ca7b31b81421749b4481a1af7a26bfec0
+    home: https://github.com/egeback/helm-charts/tree/main/charts/heimdall
+    icon: https://i.imgur.com/mM4tcO5.png
+    keywords:
+    - heimdall
+    - dashboard
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: heimdall
+    sources:
+    - https://hub.docker.com/r/linuxserver/heimdall/
+    - https://github.com/linuxserver/heimdall
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/heimdall-1.1.5/heimdall-1.1.5.tgz
+    version: 1.1.5
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
@@ -4592,6 +4680,34 @@ entries:
         - kind: changed
           description: Update node-red to 4.1.2
     apiVersion: v2
+    appVersion: 4.1.4
+    created: "2026-02-07T08:39:44.17786287Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: Node-RED is low-code programming for event-driven applications
+    digest: 103863419b0a7da0bd931df09122f37a9293f20c95d208b0a55873e4e0a6b372
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-1.2.11/node-red-1.2.11.tgz
+    version: 1.2.11
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update node-red to 4.1.2
+    apiVersion: v2
     appVersion: 4.1.2
     created: "2025-12-07T12:51:53.703011399Z"
     dependencies:
@@ -5272,6 +5388,38 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/node-red-1.0.1/node-red-1.0.1.tgz
     version: 1.0.1
   teslamate:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update mattjeanes/teslamateagile v1.21.0
+    apiVersion: v2
+    appVersion: 2.2.0
+    created: "2026-02-07T08:39:44.352764722Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.4
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: bcc0e5d59a112dd4d0e77e990e8602a3f08f7e6d1d3ac8cb4b96d5e694b0858f
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/793px-Tesla_Motors.svg.png
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-2.0.11/teslamate-2.0.11.tgz
+    version: 2.0.11
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
@@ -6756,6 +6904,37 @@ entries:
   unifi:
   - annotations:
       artifacthub.io/changes: "- kind: changed \n  description: Updated to Unifi app
+        version v9.1.120\n- kind: changed\n  description: Update base library\n"
+    apiVersion: v2
+    appVersion: v10.0.162
+    created: "2026-02-07T08:39:44.525820018Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.4.4
+    description: Ubiquiti Network's Unifi Controller
+    digest: 33c045451e05de7662229c385ee6bd485908c6867eeb05548951c87030041032
+    home: https://github.com/egeback/charts/tree/master/charts/stable/unifi
+    icon: https://prd-www-cdn.ubnt.com/static/favicon-152.png
+    keywords:
+    - ubiquiti
+    - unifi
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: unifi
+    sources:
+    - https://github.com/jacobalberty/unifi-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/unifi-1.1.11/unifi-1.1.11.tgz
+    version: 1.1.11
+  - annotations:
+      artifacthub.io/changes: "- kind: changed \n  description: Updated to Unifi app
         version v8.6.9\n"
     apiVersion: v2
     appVersion: v8.6.9
@@ -7981,4 +8160,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2026-02-07T08:37:31.771390382Z"
+generated: "2026-02-07T08:39:44.527458585Z"
