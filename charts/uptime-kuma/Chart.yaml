@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 # renovate: datasource=github-releases depName=louislam/uptime-kuma
-appVersion: 2.0.2
+appVersion: 2.1.0
 description: A fancy self-hosted monitoring tool for your websites and applications
 name: uptime-kuma
 version: 2.0.0
@@ -18,7 +18,7 @@ sources:
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
-    version: 4.1.1
+    version: 4.6.2
 maintainers:
   - name: egeback
     email: marky@egeback.se
