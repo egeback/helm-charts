@@ -23,10 +23,6 @@
   ],
   "packageRules": [
     {
-      "matchManagers": ["helm-values", "helmv3", "custom.regex"],
-      "groupName": "all-helm-updates"
-    },
-    {
       "matchPackageNames": ["bjw-s/common"],
       "groupName": "bjw-s common chart"
     },
