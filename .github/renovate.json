@@ -5,7 +5,6 @@
   ],
   "dependencyDashboard": true,
   "rebaseWhen": "behind-base-branch",
-  "ignoreDeps": ["losisin/helm-docs-action"],
   "customManagers": [
     {
       "customType": "regex",
