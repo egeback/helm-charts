@@ -7429,6 +7429,38 @@ entries:
         - kind: changed
           description: Application to version 2.0.0-beta.3
     apiVersion: v2
+    appVersion: 2.1.0
+    created: "2026-02-07T08:28:02.393809602Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: 3514d98d85eed5b490c6bfb4577d55f8ca70eb8bb7608bfd3d968f3f52505bf7
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.1.0/uptime-kuma-2.1.0.tgz
+    version: 2.1.0
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update base helm chart to 4.1.1
+        - kind: changed
+          description: Application to version 2.0.0-beta.3
+    apiVersion: v2
     appVersion: 2.0.0-beta.3
     created: "2025-06-19T21:34:35.696793151Z"
     dependencies:
@@ -7910,4 +7942,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-1.0.0/uptime-kuma-1.0.0.tgz
     version: 1.0.0
-generated: "2026-02-06T23:16:44.127609002Z"
+generated: "2026-02-07T08:28:02.394222836Z"
