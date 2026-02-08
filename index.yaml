@@ -3,11 +3,12 @@ entries:
   adguard-home: []
   cert-manager-cpanel-dns-webhook:
   - annotations:
-      artifacthub.io/changes: "- kind: changed\n  description: Updated with new build\
-        \ from jamesorlakin."
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Updated with new build from jamesorlakin.
     apiVersion: v2
     appVersion: v0.3.0
-    created: '2024-10-30T17:38:29.639614525Z'
+    created: "2024-10-30T17:38:29.639614525Z"
     description: Cert-manager webhook plugin to support ACME DNS challenges for CPanel
       DNS zones
     digest: da668789d29207900bece656d9ccc188a44db6f431e90a024430649fc05633b9
@@ -29,10 +30,12 @@ entries:
     version: 1.0.0
   cert-manager-webhook-anxdns:
   - annotations:
-      artifacthub.io/changes: "- kind: changed\n  description: Depricate the chart"
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Depricate the chart
     apiVersion: v2
     appVersion: v1.0.1
-    created: '2025-01-04T23:06:24.978583566Z'
+    created: "2025-01-04T23:06:24.978583566Z"
     deprecated: true
     description: Cert manager webhook for anx.se
     digest: 61aab6c6d5a083f338f9c9d0e7f85cab7573872fa7e19c1892802693d8f19f83
@@ -52,10 +55,12 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.10/cert-manager-webhook-anxdns-1.0.10.tgz
     version: 1.0.10
   - annotations:
-      artifacthub.io/changes: "- kind: changed\n  description: Fix of version"
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Fix of version
     apiVersion: v2
     appVersion: v1.0.1
-    created: '2025-01-04T23:00:28.741932073Z'
+    created: "2025-01-04T23:00:28.741932073Z"
     description: Cert manager webhook for anx.se
     digest: cd4098758cdcba0dfd1c361a4d99260f82f28b416d1fb056c2b951c11e26b0e8
     home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
@@ -74,10 +79,12 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.9/cert-manager-webhook-anxdns-1.0.9.tgz
     version: 1.0.9
   - annotations:
-      artifacthub.io/changes: "- kind: changed\n  description: Fix of version"
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Fix of version
     apiVersion: v2
     appVersion: v1.0.1
-    created: '2024-06-09T20:59:14.193870765Z'
+    created: "2024-06-09T20:59:14.193870765Z"
     description: Cert manager webhook for anx.se
     digest: ff676fe4314e7caab385c204cd2ce9f181b508d7a5f7b2270d38c00d7380e987
     home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
@@ -96,10 +103,12 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.8/cert-manager-webhook-anxdns-1.0.8.tgz
     version: 1.0.8
   - annotations:
-      artifacthub.io/changes: "- kind: changed\n  description: Fix of version"
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Fix of version
     apiVersion: v2
     appVersion: v1.0.1
-    created: '2024-06-09T20:44:07.701950114Z'
+    created: "2024-06-09T20:44:07.701950114Z"
     description: Cert manager webhook for anx.se
     digest: b70e13a7cf9cac7c23b486653229f7873e630c4deb00eaa0c0322d536267a78a
     home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
@@ -118,10 +127,12 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.7/cert-manager-webhook-anxdns-1.0.7.tgz
     version: 1.0.7
   - annotations:
-      artifacthub.io/changes: "- kind: changed\n  description: Fix of version"
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Fix of version
     apiVersion: v2
     appVersion: v1.0.1
-    created: '2024-03-31T09:31:52.259073477Z'
+    created: "2024-03-31T09:31:52.259073477Z"
     description: Cert manager webhook for anx.se
     digest: b77634de9407e9241b6c98129784918edd2959f7f6bc639559e3db1e7948d507
     home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
@@ -140,10 +151,12 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.6/cert-manager-webhook-anxdns-1.0.6.tgz
     version: 1.0.6
   - annotations:
-      artifacthub.io/changes: "- kind: changed\n  description: Fix of version"
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Fix of version
     apiVersion: v2
     appVersion: v1.0.1
-    created: '2024-02-24T21:00:44.187491799Z'
+    created: "2024-02-24T21:00:44.187491799Z"
     description: Cert manager webhook for anx.se
     digest: 0be8b5b7d65b06d1f1faa2949a99c7ecd99d399fe88646335e8b1ce254ff2e7a
     home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
@@ -162,10 +175,12 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.5/cert-manager-webhook-anxdns-1.0.5.tgz
     version: 1.0.5
   - annotations:
-      artifacthub.io/changes: "- kind: added\n  description: Initial version"
+      artifacthub.io/changes: |-
+        - kind: added
+          description: Initial version
     apiVersion: v2
     appVersion: v1.0.1
-    created: '2024-02-24T20:51:54.694671337Z'
+    created: "2024-02-24T20:51:54.694671337Z"
     description: Cert manager webhook for anx.se
     digest: cf855963a04df04d5783f280e8082f01e9f0a40e8bd13522f942c24ed8c72a61
     home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
@@ -184,10 +199,12 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.4/cert-manager-webhook-anxdns-1.0.4.tgz
     version: 1.0.4
   - annotations:
-      artifacthub.io/changes: "- kind: added\n  description: Initial version"
+      artifacthub.io/changes: |-
+        - kind: added
+          description: Initial version
     apiVersion: v2
     appVersion: v0.107.43
-    created: '2024-02-24T10:53:39.738492583Z'
+    created: "2024-02-24T10:53:39.738492583Z"
     description: Cert manager webhook for anx.se
     digest: 67f9c34cb3c9e3d4235c5836663911328f35723236ba1b87f02abc6bfe2bdcca
     home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
@@ -206,10 +223,12 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.3/cert-manager-webhook-anxdns-1.0.3.tgz
     version: 1.0.3
   - annotations:
-      artifacthub.io/changes: "- kind: added\n  description: Initial version"
+      artifacthub.io/changes: |-
+        - kind: added
+          description: Initial version
     apiVersion: v2
     appVersion: v0.107.43
-    created: '2024-01-17T21:33:31.487262278Z'
+    created: "2024-01-17T21:33:31.487262278Z"
     description: Cert manager webhook for anx.se
     digest: 9047a9e767dfbeb4eb0095e18aad7ba4aff1fca0669457e970cc0777a77c81e9
     home: https://github.com/egeback/helm-charts/blob/main/charts/anx-webhook
@@ -231,7 +250,41 @@ entries:
   heimdall: []
   home-assistant: []
   node-red: []
-  teslamate: []
+  teslamate:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update application to 2.2.0"
+        - kind: changed
+          description: "Initial version 2.x based on common 4.6.2"
+    apiVersion: v2
+    appVersion: 2.2.0
+    created: "2026-02-08T08:43:11.702847721Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.4
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: c79b5b2c24351763271e83d7d2b616cf17630129a2448b5fb69669cd131c9dfe
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-2.0.12/teslamate-2.0.12.tgz
+    version: 2.0.12
   unifi: []
   uptime-kuma: []
-generated: '2026-02-07T08:39:44.527458585Z'
+generated: "2026-02-08T08:43:11.702877727Z"
