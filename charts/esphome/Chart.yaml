@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 2026.1.4
 description: ESP Home helm package
 name: esphome
-version: 2.0.0
+version: 2.0.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ESPHOME
