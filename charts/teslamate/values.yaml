@@ -155,3 +155,4 @@ postgresql:
   primary:
     persistence:
       enabled: false
+# Initial v2 release

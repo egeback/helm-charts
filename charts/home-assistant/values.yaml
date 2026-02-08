@@ -187,3 +187,4 @@ metrics:
       #   for: 5m
       #   labels:
       #     severity: critical
+# Initial v2 release

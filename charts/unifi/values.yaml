@@ -156,3 +156,4 @@ mongodb:
     enabled: false
     # storageClass: ""
     # size: 8Gi
+# Initial v2 release
