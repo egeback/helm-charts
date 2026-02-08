@@ -1,6 +1,40 @@
 apiVersion: v1
 entries:
-  adguard-home: []
+  adguard-home:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update application to v0.107.71"
+        - kind: changed
+          description: "Initial version 2.x based on common 4.6.2"
+      artifacthub.io/links: |
+        - name: "source"
+          url: "https://github.com/egeback/helm-charts/tree/main/charts/adguard-home"
+    apiVersion: v2
+    appVersion: v0.107.71
+    created: "2026-02-08T08:47:29.680994023Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: DNS proxy as ad-blocker for local network
+    digest: 09f893f86bcd2170007c045a1ae643b09d243e827ef7ac87c3f6d862b4a89ea3
+    home: https://github.com/egeback/helm-charts/blob/main/charts/adguard-home
+    icon: https://avatars3.githubusercontent.com/u/8361145?s=200&v=4?sanitize=true
+    keywords:
+    - adguard-home
+    - adblock
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: adguard-home
+    sources:
+    - https://github.com/AdguardTeam/AdGuardHome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/adguard-home-2.0.2/adguard-home-2.0.2.tgz
+    version: 2.0.2
   cert-manager-cpanel-dns-webhook:
   - annotations:
       artifacthub.io/changes: |-
@@ -246,11 +280,174 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/cert-manager-webhook-anxdns-1.0.1/cert-manager-webhook-anxdns-1.0.1.tgz
     version: 1.0.1
-  esphome: []
-  heimdall: []
-  home-assistant: []
-  node-red: []
+  esphome:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update application to 2026.1.4"
+        - kind: changed
+          description: "Initial version 2.x based on common 4.6.2"
+    apiVersion: v2
+    appVersion: 2026.1.4
+    created: "2026-02-08T08:47:29.822725193Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: ESP Home helm package
+    digest: 706e96ea9aa8db8ff7c02589073d017c5a94a1901ef4adc215172b158e0e13bc
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.com
+      name: Marky Egebäck
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-2.0.2/esphome-2.0.2.tgz
+    version: 2.0.2
+  heimdall:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update base chart dependencies"
+    apiVersion: v2
+    appVersion: 2.6.3
+    created: "2026-02-08T08:47:29.960898298Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: An Application dashboard and launcher
+    digest: 3fcf0408823286a4c5a7a1803e3ef3da82e0fcb6db6b016cf2a2cdcdbc77dfba
+    home: https://github.com/egeback/helm-charts/tree/main/charts/heimdall
+    icon: https://i.imgur.com/mM4tcO5.png
+    keywords:
+    - heimdall
+    - dashboard
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: heimdall
+    sources:
+    - https://hub.docker.com/r/linuxserver/heimdall/
+    - https://github.com/linuxserver/heimdall
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/heimdall-2.0.2/heimdall-2.0.2.tgz
+    version: 2.0.2
+  home-assistant:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update application to 2026.2.1"
+        - kind: changed
+          description: "Initial version 2.x based on common 4.6.2"
+    apiVersion: v2
+    appVersion: 2026.2.1
+    created: "2026-02-08T08:47:30.133850961Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.4
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 24.0.4
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.1.20
+    description: Home Assistant helm package
+    digest: 45aaa8e29e313644cba473662ed5c604683fe9f120ff1882cabadf9995c8390c
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://brands.home-assistant.io/home-assistant/icon.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: Marky Egebäck
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-2.0.2/home-assistant-2.0.2.tgz
+    version: 2.0.2
+  node-red:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: "Update application to 4.1.4"
+        - kind: changed
+          description: "Initial version 2.x based on common 4.6.2"
+    apiVersion: v2
+    appVersion: 4.1.4
+    created: "2026-02-08T08:47:30.278488647Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: Node-RED is low-code programming for event-driven applications
+    digest: e4b38c8f4091e172d8d4d4914022063c90104ef0ef214b75ef2559e88eaccbb3
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-2.0.2/node-red-2.0.2.tgz
+    version: 2.0.2
   teslamate:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update application to 2.2.0"
+        - kind: changed
+          description: "Initial version 2.x based on common 4.6.2"
+    apiVersion: v2
+    appVersion: 2.2.0
+    created: "2026-02-08T08:47:30.422837333Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.4
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 13d839f73c65be7cbb4b1a6994d3b8ba5a92e11314fea8143ef9beae71fb2db4
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-2.0.13/teslamate-2.0.13.tgz
+    version: 2.0.13
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
@@ -285,6 +482,72 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/teslamate-2.0.12/teslamate-2.0.12.tgz
     version: 2.0.12
-  unifi: []
-  uptime-kuma: []
-generated: "2026-02-08T08:43:11.702877727Z"
+  unifi:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update application to v10.0.162"
+        - kind: changed
+          description: "Initial version 2.x based on common 4.6.2"
+    apiVersion: v2
+    appVersion: v10.0.162
+    created: "2026-02-08T08:47:30.601163383Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.4.4
+    description: Ubiquiti Network's Unifi Controller
+    digest: 74863db6d6a19f900c0dcb929b7bbfedb442449a15701e6d5473eca74f03429b
+    home: https://github.com/egeback/charts/tree/master/charts/stable/unifi
+    icon: https://prd-www-cdn.ubnt.com/static/favicon-152.png
+    keywords:
+    - ubiquiti
+    - unifi
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: unifi
+    sources:
+    - https://github.com/jacobalberty/unifi-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/unifi-2.1.2/unifi-2.1.2.tgz
+    version: 2.1.2
+  uptime-kuma:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update application to 2.1.0"
+        - kind: changed
+          description: "Initial version 2.0.0 based on common 4.6.2"
+    apiVersion: v2
+    appVersion: 2.1.0
+    created: "2026-02-08T08:47:30.800117122Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: 206b6dafa445f94a064657dec458ec6f9e633cca9dcce7bc0714c55643af84db
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
+    version: 2.0.2
+generated: "2026-02-08T08:47:30.800148Z"
