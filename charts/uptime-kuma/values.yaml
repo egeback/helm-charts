@@ -54,3 +54,4 @@ persistence:
     enabled: false
     mountPath: /app/data
 # Initial v2 release
+# Force rebuild v2
