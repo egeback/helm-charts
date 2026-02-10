@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: v0.3.0
 description: Cert-manager webhook plugin to support ACME DNS challenges for CPanel DNS zones
 name: cert-manager-cpanel-dns-webhook
-version: 1.0.0
+version: 1.0.1
 kubeVersion: ">=1.16.0-0"
 icon: https://raw.githubusercontent.com/cert-manager/community/4d35a69437d21b76322157e6284be4cd64e6d2b7/logo/logo-small.png
 keywords:
@@ -12,11 +12,11 @@ keywords:
   - cpanel
 home: https://github.com/egeback/helm-charts/blob/main/charts/cert-manager-cpanel-dns-webhook
 sources:
-  - https://github.com/egeback/cert-manager-cpanel-dns-webhook
+  -  https://github.com/jamesorlakin/cert-manager-cpanel-dns-webhook
 maintainers:
   - name: egeback
     email: marky@egeback.se
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Updated with new build from jamesorlakin.
+      description: Updated source tag for the chart to point to the new image location.
