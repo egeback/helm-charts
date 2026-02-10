@@ -54,7 +54,7 @@ jobs:
   generate:
     name: Generate Metadata and Docs
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.charts == 'true' && (github.actor == 'renovate[bot]' || startsWith(github.head_ref, 'renovate/')) }}
+    if: ${{ needs.detect-changes.outputs.charts == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -69,6 +69,7 @@ jobs:
           python-version: "3.14"
 
       - name: Generate Changelog Annotations
+        if: ${{ github.actor == 'renovate[bot]' || startsWith(github.head_ref, 'renovate/') }}
         env:
           CHECK_BRANCH: "origin/${{ github.event.repository.default_branch }}"
         run: |
