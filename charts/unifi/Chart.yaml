@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: v10.0.162
 description: Ubiquiti Network's Unifi Controller
 name: unifi
-version: 2.1.2
+version: 2.1.3
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ubiquiti
@@ -19,12 +19,10 @@ dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
     version: 4.6.2
-  - name: mongodb
-    version: 18.4.4 # renovate: disable
-    repository: https://charts.bitnami.com/bitnami
-    condition: mongodb.enabled
 annotations:
   artifacthub.io/changes: |
+    - kind: changed
+      description: "Remove built-in MongoDB dependency. Users must now provide an external MongoDB."
     - kind: changed
       description: "Update application to v10.0.162"
     - kind: changed

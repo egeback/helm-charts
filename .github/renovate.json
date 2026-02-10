@@ -37,15 +37,6 @@
     },
     {
       "matchPackageNames": [
-        "mongodb"
-      ],
-      "matchFileNames": [
-        "charts/unifi/Chart.yaml"
-      ],
-      "enabled": false
-    },
-    {
-      "matchPackageNames": [
         "bjw-s/common"
       ],
       "groupName": "bjw-s common chart"
