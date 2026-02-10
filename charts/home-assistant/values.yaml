@@ -94,7 +94,7 @@ configMaps:
 persistence:
   passwd-walkarround:
     type: configMap
-    name: home-assistant-passwd
+    name: '{{ include "bjw-s.common.lib.chart.names.fullname" . }}-passwd'
     advancedMounts:
       main:
         main:
