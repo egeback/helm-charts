@@ -128,6 +128,19 @@ def main(
             except Exception as e:
                 logger.warning(f"Could not compare values.yaml: {e}")
 
+        # Check if README.md changed
+        readme_file = chart_folder.joinpath('README.md')
+        readme_changed = False
+        if readme_file.is_file():
+            try:
+                old_readme_content = git_repository.git.show(f"{branch}:{readme_file}")
+                new_readme_content = readme_file.read_text()
+                if old_readme_content != new_readme_content:
+                    readme_changed = True
+                    logger.info("Detected changes in README.md")
+            except Exception as e:
+                logger.warning(f"Could not compare README.md: {e}")
+
         try:
             old_chart_dependencies = old_chart_metadata["dependencies"]
         except KeyError:
@@ -153,6 +166,13 @@ def main(
                 "kind": "changed",
                 "description": "Update image tags or configuration in values.yaml"
             })
+
+        # Add annotation for README.md changes if no other functional changes detected
+        if readme_changed and not app_version_changed and not values_changed:
+            # Check if dependencies changed too
+            pass # we check dependencies below
+
+        # ... (rest of dependency logic)
 
         for dependency in new_chart_dependencies:
             old_dep = None
@@ -186,6 +206,13 @@ def main(
                         "kind": "changed",
                         "description": f"Upgraded `{dependency['name']}` chart dependency to version {dependency['version']}"
                     })
+
+        # Add annotation for README.md changes if no other functional changes detected
+        if readme_changed and not annotations:
+            annotations.append({
+                "kind": "changed",
+                "description": "Update documentation in README.md"
+            })
 
         if annotations:
             # Bump chart version
