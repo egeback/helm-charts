@@ -30,7 +30,7 @@
       "matchPackageNames": [
         "postgresql"
       ],
-      "matchPaths": [
+      "matchFileNames": [
         "charts/teslamate/Chart.yaml"
       ],
       "enabled": false
@@ -39,7 +39,7 @@
       "matchPackageNames": [
         "mongodb"
       ],
-      "matchPaths": [
+      "matchFileNames": [
         "charts/unifi/Chart.yaml"
       ],
       "enabled": false
