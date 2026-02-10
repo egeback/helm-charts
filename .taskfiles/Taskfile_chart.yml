@@ -37,7 +37,7 @@ tasks:
     desc: lint your chart code
     dir: "{{.GIT_ROOT}}/charts/{{.CHART}}"
     cmds:
-    - helm lint
+    - helm lint .
     deps:
     - dependency
     - check-chart
@@ -45,10 +45,36 @@ tasks:
   ct-lint:
     desc: run `ct lint` on your chart code
     cmds:
-    - docker run --rm -it --user $(id -u):$(id -g) -e "HELM_CONFIG_HOME=/tmp/helm" -e "HELM_CACHE_HOME=/tmp/helm" -v {{.GIT_ROOT}}:/ci -w /ci quay.io/helmpack/chart-testing:latest ct lint --charts "charts/{{.CHART}}" --config /ci/.github/ct-lint.yaml
+    - docker run --rm -it --user $(id -u):$(id -g) -e "HELM_CONFIG_HOME=/tmp/helm" -e "HELM_CACHE_HOME=/tmp/helm" -v {{.GIT_ROOT}}:/ci -w /ci quay.io/helmpack/chart-testing:latest ct lint --charts "charts/{{.CHART}}" --config /ci/.github/ct/ct.yaml
     deps:
     - check-chart
     - lint
+
+  ct-install:
+    desc: run `ct install` on your chart code (requires running k8s cluster and configured KUBECONFIG)
+    cmds:
+    - docker run --rm -it --network host --user $(id -u):$(id -g) -e "KUBECONFIG=/ci/.kube/config" -e "HELM_CONFIG_HOME=/tmp/helm" -e "HELM_CACHE_HOME=/tmp/helm" -v {{.GIT_ROOT}}:/ci -v ${HOME}/.kube:/ci/.kube:ro -w /ci quay.io/helmpack/chart-testing:latest ct install --charts "charts/{{.CHART}}" --config /ci/.github/ct/ct.yaml
+    deps:
+    - check-chart
+    - dependency
+
+  ct-test:
+    desc: full test run (lint + install) on your chart code
+    cmds:
+    - task: ct-lint
+    - task: ct-install
+    deps:
+    - check-chart
+
+  test-cluster-up:
+    desc: create a local k3d cluster for testing
+    cmds:
+    - k3d cluster create helm-test --wait
+
+  test-cluster-down:
+    desc: delete the local k3d testing cluster
+    cmds:
+    - k3d cluster delete helm-test
 
   helm-docs:
     desc: generate helm-docs
