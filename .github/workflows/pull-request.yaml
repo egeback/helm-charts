@@ -53,7 +53,7 @@ jobs:
 
   generate:
     name: Generate Metadata and Docs
-    needs: detect-changes
+    needs: [detect-changes, lint, test]
     if: ${{ needs.detect-changes.outputs.charts == 'true' }}
     runs-on: ubuntu-latest
     steps:
