@@ -351,6 +351,49 @@ entries:
           description: "Initial version 2.x based on common 4.6.2"
     apiVersion: v2
     appVersion: 2026.2.1
+    created: "2026-02-10T10:38:24.642664112Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.5
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 24.1.1
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.1.20
+    description: Home Assistant helm package
+    digest: 59bcb3c0bcac73098d6b2a29ea928f00b6a5dd7e5b3bb1085a19dfb3f0a18231
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: Marky Egebäck
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-2.0.4/home-assistant-2.0.4.tgz
+    version: 2.0.4
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: "Fix broken icon URL"
+        - kind: changed
+          description: "Update application to 2026.2.1"
+        - kind: changed
+          description: "Initial version 2.x based on common 4.6.2"
+    apiVersion: v2
+    appVersion: 2026.2.1
     created: "2026-02-08T17:31:51.279134247Z"
     dependencies:
     - name: common
@@ -457,6 +500,40 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/node-red-2.0.2/node-red-2.0.2.tgz
     version: 2.0.2
   teslamate:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update application to 2.2.0"
+        - kind: changed
+          description: "Initial version 2.x based on common 4.6.2"
+    apiVersion: v2
+    appVersion: 2.2.0
+    created: "2026-02-10T10:38:24.820536992Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.5
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: db29408fbed12b6b05e0de2027534e831b061a7620db7c4965354381884e1409
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-2.0.14/teslamate-2.0.14.tgz
+    version: 2.0.14
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
@@ -593,4 +670,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-02-08T17:31:51.279173049Z"
+generated: "2026-02-10T10:38:24.820577047Z"
