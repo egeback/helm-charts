@@ -20,7 +20,7 @@ dependencies:
     repository: https://bjw-s-labs.github.io/helm-charts
     version: 4.6.2
   - name: mongodb
-    version: 18.4.4
+    version: 18.4.6
     repository: https://charts.bitnami.com/bitnami
     condition: mongodb.enabled
 annotations:
