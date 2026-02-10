@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import io
 import os
 import sys
 import typer
@@ -198,7 +199,9 @@ def main(
             ah_yaml = YAML()
             ah_yaml.indent(mapping=2, sequence=4, offset=2)
             ah_yaml.width = 4096
-            annotations_str = ah_yaml.dump_to_string(annotations)
+            with io.StringIO() as stream:
+                ah_yaml.dump(annotations, stream)
+                annotations_str = stream.getvalue()
 
             if not "annotations" in new_chart_metadata:
                 new_chart_metadata["annotations"] = CommentedMap()
