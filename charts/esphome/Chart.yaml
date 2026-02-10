@@ -12,7 +12,7 @@ icon: https://esphome.io/_images/logo.svg
 sources:
   - https://github.com/esphome
 maintainers:
-  - name: Marky Egebäck
+  - name: egeback
     email: marky@egeback.com
 dependencies:
   - name: common

@@ -12,7 +12,7 @@ icon: https://brands.home-assistant.io/homeassistant/icon.png
 sources:
   - https://github.com/home-assistant/home-assistant-docker
 maintainers:
-  - name: Marky Egebäck
+  - name: egeback
     email: marky@egeback.se
 dependencies:
   - name: common
