@@ -714,6 +714,38 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
+          description: "Remove built-in MongoDB dependency. Users must now provide an external MongoDB."
+        - kind: changed
+          description: "Update application to v10.0.162"
+        - kind: changed
+          description: "Initial version 2.x based on common 4.6.2"
+    apiVersion: v2
+    appVersion: v10.0.162
+    created: "2026-02-10T19:58:50.113724867Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: Ubiquiti Network's Unifi Controller
+    digest: b04a62e85aa717f15582512cf656c90c443fa409073f42611d3134f3ffcf0d63
+    home: https://github.com/egeback/charts/tree/master/charts/stable/unifi
+    icon: https://prd-www-cdn.ubnt.com/static/favicon-152.png
+    keywords:
+    - ubiquiti
+    - unifi
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: unifi
+    sources:
+    - https://github.com/jacobalberty/unifi-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/unifi-2.1.3/unifi-2.1.3.tgz
+    version: 2.1.3
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
           description: "Update application to v10.0.162"
         - kind: changed
           description: "Initial version 2.x based on common 4.6.2"
@@ -778,4 +810,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-02-10T19:41:54.089701754Z"
+generated: "2026-02-10T19:58:50.113763269Z"
