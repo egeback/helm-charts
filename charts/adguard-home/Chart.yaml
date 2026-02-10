@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: v0.107.71
 description: DNS proxy as ad-blocker for local network
 name: adguard-home
-version: 2.0.3
+version: 2.0.4
 kubeVersion: ">=1.16.0-0"
 keywords:
   - adguard-home
@@ -23,6 +23,8 @@ maintainers:
     email: marky@egeback.se
 annotations:
   artifacthub.io/changes: |
+    - kind: fixed
+      description: "Use dynamic name for config configmap to fix installation"
     - kind: changed
       description: "Update application to v0.107.71"
     - kind: changed
