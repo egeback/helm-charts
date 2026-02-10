@@ -28,6 +28,24 @@
   "packageRules": [
     {
       "matchPackageNames": [
+        "postgresql"
+      ],
+      "matchPaths": [
+        "charts/teslamate/Chart.yaml"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "mongodb"
+      ],
+      "matchPaths": [
+        "charts/unifi/Chart.yaml"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
         "bjw-s/common"
       ],
       "groupName": "bjw-s common chart"
