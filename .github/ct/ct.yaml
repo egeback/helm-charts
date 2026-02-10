@@ -1,5 +1,5 @@
-chart-yaml-schema: .ci/ct/chart_schema.yaml
-lint-conf: .ci/ct/lintconf.yaml
+chart-yaml-schema: .github/ct/chart_schema.yaml
+lint-conf: .github/ct/lintconf.yaml
 
 remote: origin
 target-branch: main
@@ -7,10 +7,8 @@ target-branch: main
 helm-extra-args: --timeout 600s
 
 chart-dirs:
-  - charts/library
-  - charts/apps
-  - charts/other
+  - charts
 
 chart-repos:
   - bitnami=https://charts.bitnami.com/bitnami
-  - bjw-s=https://bjw-s.github.io/helm-charts
+  - bjw-s=https://bjw-s-labs.github.io/helm-charts
