@@ -114,9 +114,7 @@ ingress:
     enabled: false
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-
     ingressClassName:  # "nginx"
-
     hosts:
       -  ## Host address. Helm template can be passed.
         host:
@@ -138,8 +136,8 @@ persistence:
   data:
     enabled: false
     advancedMounts:
-      main: 
-        main: 
+      main:
+        main:
           - path: /unifi/data/
 
 # -- Enable and configure mongodb database subchart under this key.
@@ -156,5 +154,3 @@ mongodb:
     enabled: false
     # storageClass: ""
     # size: 8Gi
-# Initial v2 release
-# Force rebuild v2
