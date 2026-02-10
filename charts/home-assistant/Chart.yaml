@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 2026.2.1
 description: Home Assistant helm package
 name: home-assistant
-version: 2.0.4
+version: 2.0.5
 kubeVersion: ">=1.16.0-0"
 keywords:
   - home-assistant
@@ -33,8 +33,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |
     - kind: fixed
-      description: "Fix broken icon URL"
-    - kind: changed
-      description: "Update application to 2026.2.1"
-    - kind: changed
-      description: "Initial version 2.x based on common 4.6.2"
+      description: "Remove the passwd patch"
