@@ -38,4 +38,3 @@ annotations:
       description: "Update application to 2026.2.1"
     - kind: changed
       description: "Initial version 2.x based on common 4.6.2"
-
