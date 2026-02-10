@@ -40,7 +40,7 @@ jobs:
     with:
       checkoutCommit: ${{ github.event.pull_request.head.sha }}
       chartsToLint: ${{ needs.detect-changes.outputs.chart_names }}
-      isRenovatePR: ${{ github.actor == 'renovate[bot]' && 'true' || 'false' }}
+      isRenovatePR: ${{ startsWith(github.head_ref, 'renovate/') && 'true' || 'false' }}
 
   test:
     name: Test
@@ -54,7 +54,7 @@ jobs:
   generate:
     name: Generate Metadata and Docs
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.charts == 'true' && github.actor == 'renovate[bot]' }}
+    if: ${{ needs.detect-changes.outputs.charts == 'true' && (github.actor == 'renovate[bot]' || startsWith(github.head_ref, 'renovate/')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
