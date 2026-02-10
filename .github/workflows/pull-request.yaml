@@ -53,8 +53,8 @@ jobs:
 
   generate:
     name: Generate Metadata and Docs
-    needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.charts == 'true' && (github.actor == 'renovate[bot]' || startsWith(github.head_ref, 'renovate/')) }}
+    needs: [detect-changes, lint, test]
+    if: ${{ needs.detect-changes.outputs.charts == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -62,6 +62,7 @@ jobs:
         with:
           token: ${{ secrets.RENOVATE_TOKEN || secrets.GITHUB_TOKEN }}
           fetch-depth: 0
+          ref: ${{ github.head_ref }}
 
       - name: Setup Python
         uses: actions/setup-python@v6
@@ -69,6 +70,7 @@ jobs:
           python-version: "3.14"
 
       - name: Generate Changelog Annotations
+        if: ${{ github.actor == 'renovate[bot]' || startsWith(github.head_ref, 'renovate/') }}
         env:
           CHECK_BRANCH: "origin/${{ github.event.repository.default_branch }}"
         run: |
@@ -87,7 +89,7 @@ jobs:
       - name: Create commit
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          file_pattern: charts/**/
+          file_pattern: 'charts/**'
           commit_message: "chore: Auto-update chart metadata and docs"
           commit_user_name: ${{ github.actor }}
           commit_user_email: ${{ github.actor }}@users.noreply.github.com
