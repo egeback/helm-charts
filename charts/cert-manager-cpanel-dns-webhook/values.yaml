@@ -17,7 +17,7 @@ image:
   repository: jamesorlakin/cert-manager-cpanel-dns-webhook
   # -- image tag
   # @default -- Chart.appVersion
-  tag: 
+  tag:
   # -- image pull policy
   pullPolicy: IfNotPresent
 

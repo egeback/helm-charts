@@ -6,7 +6,7 @@
 #
 
 options:
-  runAsNonRoot: 
+  runAsNonRoot:
     # -- enable non root mode that can be executed in a non privileged namespace
     enabled: false
     # -- filesystem group for non root mode
@@ -59,7 +59,7 @@ defaultPodOptions:
   #                   - adguard-home
   #           topologyKey: kubernetes.io/hostname
   #         weight: 100
-  
+
   # -- Uncomment to set fsGroup and seccompProfile to run in a non privileged namespace
   # securityContext:
   #     fsGroup: 1000
@@ -70,11 +70,11 @@ controllers:
   main:
     # -- Number of pods to load balance between
     replicas: 1
-    
+
     # -- Uncomment to define adguard as a statefulset and allocate data volumes for work and config.
     # type: statefulset
     # statefulset:
-    #   volumeClaimTemplates: 
+    #   volumeClaimTemplates:
     #   - name: data
     #     storageClass: "nfs-client"
     #     accessMode: "ReadWriteOnce"
@@ -105,7 +105,7 @@ controllers:
     # It does NOT overwrite when the file already exists.
     # @default -- See values.yaml
       copy-configmap:
-        image: 
+        image:
           repository: busybox
           pullPolicy: IfNotPresent
           tag: 1.37.0
@@ -134,7 +134,7 @@ controllers:
         env:
           # -- Set the container timezone
           TZ: UTC
-        
+
         # -- arguments passed to the adguard-home command line.
         args:
         - "--config"
@@ -187,7 +187,7 @@ persistence:
     type: configMap
     advancedMounts:
       main:
-        copy-configmap: 
+        copy-configmap:
           - path: /tmp/AdGuardHome.yaml
             subPath: AdGuardHome.yaml
   data:
@@ -339,4 +339,4 @@ configMaps:
           group: ""
           user: ""
           rlimit_nofile: 0
-        schema_version: 14# Force rebuild v2
+        schema_version: 14

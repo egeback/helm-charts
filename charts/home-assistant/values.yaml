@@ -96,8 +96,8 @@ persistence:
     type: configMap
     name: home-assistant-passwd
     advancedMounts:
-      main: 
-        main: 
+      main:
+        main:
           - path: /etc/passwd
             readOnly: true
             subPath: passwd
@@ -187,5 +187,3 @@ metrics:
       #   for: 5m
       #   labels:
       #     severity: critical
-# Initial v2 release
-# Force rebuild v2
