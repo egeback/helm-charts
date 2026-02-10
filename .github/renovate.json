@@ -27,6 +27,12 @@
   ],
   "packageRules": [
     {
+      "matchManagers": [
+        "helmv3"
+      ],
+      "bumpVersion": "patch"
+    },
+    {
       "matchPackageNames": [
         "bjw-s/common"
       ],

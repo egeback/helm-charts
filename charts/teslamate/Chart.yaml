@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 2.2.0
 description: "A self-hosted data logger for your Tesla \U0001F698"
 name: teslamate
-version: 2.0.13
+version: 2.0.14
 keywords:
   - teslamate
   - tesla
@@ -18,7 +18,7 @@ dependencies:
     repository: https://bjw-s-labs.github.io/helm-charts
     version: 4.6.2
   - name: postgresql
-    version: 18.2.4
+    version: 18.2.5
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
 maintainers:
