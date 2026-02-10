@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: v10.0.162
 description: Ubiquiti Network's Unifi Controller
 name: unifi
-version: 2.1.3
+version: 2.1.4
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ubiquiti
@@ -21,6 +21,8 @@ dependencies:
     version: 4.6.2
 annotations:
   artifacthub.io/changes: |
+    - kind: changed
+      description: "Restructure services into separate logical services (gui, controller, stun, etc.) and add external MongoDB support."
     - kind: changed
       description: "Remove built-in MongoDB dependency. Users must now provide an external MongoDB."
     - kind: changed
