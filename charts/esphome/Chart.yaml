@@ -1,9 +1,10 @@
+---
 apiVersion: v2
 # renovate: datasource=github-releases depName=esphome/esphome
 appVersion: 2026.1.5
 description: ESP Home helm package
 name: esphome
-version: 2.0.3
+version: 2.0.4
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ESPHOME
@@ -19,10 +20,6 @@ dependencies:
     repository: https://bjw-s-labs.github.io/helm-charts
     version: 4.6.2
 annotations:
-  artifacthub.io/changes: |
-    - kind: fixed
-      description: "Fix maintainer name for validation"
-    - kind: changed
-      description: "Update application to 2026.1.4"
-    - kind: changed
-      description: "Initial version 2.x based on common 4.6.2"
+  artifacthub.io/changes: |2
+      - kind: changed
+        description: Update application to 2026.1.5
