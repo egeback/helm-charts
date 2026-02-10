@@ -1,12 +1,38 @@
 ---
 {{- include "bjw-s.common.loader.init" . }}
 
+{{- define "unifi.mongodb.env" -}}
+{{- if .Values.mongodb.enabled -}}
+{{- if .Values.mongodb.dbUri -}}
+- name: DB_URI
+  value: {{ .Values.mongodb.dbUri | quote }}
+{{- end -}}
+{{- if .Values.mongodb.statDbUri -}}
+- name: STATDB_URI
+  value: {{ .Values.mongodb.statDbUri | quote }}
+{{- end -}}
+{{- if .Values.mongodb.databaseName -}}
+- name: DB_NAME
+  value: {{ .Values.mongodb.databaseName | quote }}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
 {{- define "app-template.hardcodedValues" -}}
 # Set the nameOverride based on the release name if no override has been set
 {{ if not .Values.global.nameOverride }}
 global:
   nameOverride: "{{ .Release.Name }}"
 {{ end }}
+
+{{- if .Values.mongodb.enabled -}}
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          {{- include "unifi.mongodb.env" . | nindent 10 }}
+{{- end -}}
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
 
