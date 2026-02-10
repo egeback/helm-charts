@@ -283,6 +283,37 @@ entries:
   esphome:
   - annotations:
       artifacthub.io/changes: |
+        - kind: fixed
+          description: "Fix maintainer name for validation"
+        - kind: changed
+          description: "Update application to 2026.1.4"
+        - kind: changed
+          description: "Initial version 2.x based on common 4.6.2"
+    apiVersion: v2
+    appVersion: 2026.1.4
+    created: "2026-02-10T18:19:59.359755067Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: ESP Home helm package
+    digest: 4687a48044201b1bb0c04c4589e25fad2aa466db88b4fe43eefc5a938cbf1c0d
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.com
+      name: egeback
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-2.0.3/esphome-2.0.3.tgz
+    version: 2.0.3
+  - annotations:
+      artifacthub.io/changes: |
         - kind: changed
           description: "Update application to 2026.1.4"
         - kind: changed
@@ -670,4 +701,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-02-10T10:38:24.820577047Z"
+generated: "2026-02-10T18:19:59.359795062Z"
