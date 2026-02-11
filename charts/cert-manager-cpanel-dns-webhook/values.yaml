@@ -9,13 +9,11 @@
 # here is recommended.
 groupName: jameslakin.co.uk
 
-cert-manager:
-  enabled: false
-  installCRDs: true
-
 certManager:
   namespace: cert-manager
   serviceAccountName: cert-manager
+  installCRDs: false
+
 image:
   # -- image repository
   repository: jamesorlakin/cert-manager-cpanel-dns-webhook

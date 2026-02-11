@@ -1,3 +1,4 @@
+{{- if or (index .Capabilities.APIVersions "cert-manager.io/v1") .Values.certManager.installCRDs -}}
 ---
 # Create a selfsigned Issuer, in order to create a root CA certificate for
 # signing webhook serving certificates
@@ -75,10 +76,11 @@ metadata:
     helm.sh/chart: '{{.Chart.Name}}-{{.Chart.Version}}'
 spec:
   secretName: '{{include "cert-manager-cpanel-dns-webhook.servingCertificate" .}}'
-  duration: 8760h   # 1y
+  duration: 8760h  # 1y
   issuerRef:
     name: '{{include "cert-manager-cpanel-dns-webhook.rootCAIssuer" .}}'
   dnsNames:
   - '{{include "cert-manager-cpanel-dns-webhook.fullname" .}}'
   - '{{include "cert-manager-cpanel-dns-webhook.fullname" .}}.{{.Release.Namespace}}'
   - '{{include "cert-manager-cpanel-dns-webhook.fullname" .}}.{{.Release.Namespace}}.svc'
+{{- end -}}
