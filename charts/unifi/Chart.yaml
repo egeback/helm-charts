@@ -1,9 +1,10 @@
+---
 apiVersion: v2
 # renovate: datasource=github-releases depName=jacobalberty/unifi-docker
 appVersion: v10.0.162
 description: Ubiquiti Network's Unifi Controller
 name: unifi
-version: 2.1.4
+version: 2.1.5
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ubiquiti
@@ -20,12 +21,6 @@ dependencies:
     repository: https://bjw-s-labs.github.io/helm-charts
     version: 4.6.2
 annotations:
-  artifacthub.io/changes: |
-    - kind: changed
-      description: "Restructure services into separate logical services (gui, controller, stun, etc.) and add external MongoDB support."
-    - kind: changed
-      description: "Remove built-in MongoDB dependency. Users must now provide an external MongoDB."
-    - kind: changed
-      description: "Update application to v10.0.162"
-    - kind: changed
-      description: "Initial version 2.x based on common 4.6.2"
+  artifacthub.io/changes: |2
+      - kind: changed
+        description: Update image tags or configuration in values.yaml
