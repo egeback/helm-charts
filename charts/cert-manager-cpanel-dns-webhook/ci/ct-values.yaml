@@ -4,3 +4,8 @@ cert-manager:
 
 certManager:
   renderTemplates: false
+
+livenessProbe:
+  enabled: false
+readinessProbe:
+  enabled: false

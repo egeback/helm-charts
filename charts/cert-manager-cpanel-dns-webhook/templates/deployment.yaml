@@ -36,16 +36,20 @@ spec:
             - name: https
               containerPort: 443
               protocol: TCP
+          {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             httpGet:
               scheme: HTTPS
               path: /healthz
               port: https
+          {{- end }}
+          {{- if .Values.readinessProbe.enabled }}
           readinessProbe:
             httpGet:
               scheme: HTTPS
               path: /healthz
               port: https
+          {{- end }}
           volumeMounts:
             - name: certs
               mountPath: /tls
