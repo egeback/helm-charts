@@ -9,6 +9,10 @@
 # here is recommended.
 groupName: jameslakin.co.uk
 
+cert-manager:
+  enabled: false
+  installCRDs: true
+
 certManager:
   namespace: cert-manager
   serviceAccountName: cert-manager
