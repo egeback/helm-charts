@@ -32,17 +32,17 @@ Create chart name and version as used by the chart label.
 {{- end -}}
 
 {{- define "cert-manager-cpanel-dns-webhook.selfSignedIssuer" -}}
-{{ printf "%s-selfsign" (include "cert-manager-cpanel-dns-webhook.fullname" .) }}
+{{printf "%s-selfsign" (include "cert-manager-cpanel-dns-webhook.fullname" .)}}
 {{- end -}}
 
 {{- define "cert-manager-cpanel-dns-webhook.rootCAIssuer" -}}
-{{ printf "%s-ca" (include "cert-manager-cpanel-dns-webhook.fullname" .) }}
+{{printf "%s-ca" (include "cert-manager-cpanel-dns-webhook.fullname" .)}}
 {{- end -}}
 
 {{- define "cert-manager-cpanel-dns-webhook.rootCACertificate" -}}
-{{ printf "%s-ca" (include "cert-manager-cpanel-dns-webhook.fullname" .) }}
+{{printf "%s-ca" (include "cert-manager-cpanel-dns-webhook.fullname" .)}}
 {{- end -}}
 
 {{- define "cert-manager-cpanel-dns-webhook.servingCertificate" -}}
-{{ printf "%s-webhook-tls" (include "cert-manager-cpanel-dns-webhook.fullname" .) }}
+{{printf "%s-webhook-tls" (include "cert-manager-cpanel-dns-webhook.fullname" .)}}
 {{- end -}}
