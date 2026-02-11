@@ -1,9 +1,10 @@
+---
 apiVersion: v2
 # renovate: datasource=github-releases depName=node-red/node-red
 appVersion: 4.1.5
 description: Node-RED is low-code programming for event-driven applications
 name: node-red
-version: 2.0.2
+version: 2.0.3
 kubeVersion: ">=1.16.0-0"
 keywords:
   - node-red
@@ -20,8 +21,6 @@ dependencies:
     repository: https://bjw-s-labs.github.io/helm-charts
     version: 4.6.2
 annotations:
-  artifacthub.io/changes: |
-    - kind: changed
-      description: "Update application to 4.1.4"
-    - kind: changed
-      description: "Initial version 2.x based on common 4.6.2"
+  artifacthub.io/changes: |2
+      - kind: changed
+        description: Update application to 4.1.5
