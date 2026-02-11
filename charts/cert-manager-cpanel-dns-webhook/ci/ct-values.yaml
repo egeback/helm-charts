@@ -1,2 +1,6 @@
+# ci values
+cert-manager:
+  enabled: false
+
 certManager:
-  installCRDs: true
+  renderTemplates: false

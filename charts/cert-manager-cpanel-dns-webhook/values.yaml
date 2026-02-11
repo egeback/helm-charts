@@ -9,10 +9,23 @@
 # here is recommended.
 groupName: jameslakin.co.uk
 
+# -- cert-manager dependency configuration
+cert-manager:
+  # -- install cert-manager as a subchart
+  enabled: false
+  # -- install cert-manager CRDs
+  installCRDs: true
+
 certManager:
+  # -- namespace where cert-manager is installed
   namespace: cert-manager
+  # -- service account used by cert-manager
   serviceAccountName: cert-manager
-  installCRDs: false
+  # -- whether to render the internal PKI resources (Issuer/Certificate)
+  # this is required for the webhook to work but might need to be disabled
+  # if you manage these resources externally or during initial install if
+  # CRDs are not present.
+  renderTemplates: true
 
 image:
   # -- image repository
