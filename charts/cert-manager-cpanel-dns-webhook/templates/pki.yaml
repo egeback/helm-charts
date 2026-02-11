@@ -1,4 +1,4 @@
-{{- if and .Values.certManager.renderTemplates (or (index .Capabilities.APIVersions "cert-manager.io/v1") (not .Release.IsInstall)) -}}
+{{- if and .Values.certManager.renderTemplates (or (.Capabilities.APIVersions.Has "cert-manager.io/v1") (not .Release.IsInstall)) -}}
 ---
 # Create a selfsigned Issuer, in order to create a root CA certificate for
 # signing webhook serving certificates
