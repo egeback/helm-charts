@@ -1,6 +1,6 @@
 # cert-manager-cpanel-dns-webhook
 
-![Version: 1.0.30](https://img.shields.io/badge/Version-1.0.30-informational?style=flat-square) ![AppVersion: v0.3.0](https://img.shields.io/badge/AppVersion-v0.3.0-informational?style=flat-square)
+![Version: 1.0.31](https://img.shields.io/badge/Version-1.0.31-informational?style=flat-square) ![AppVersion: v0.3.0](https://img.shields.io/badge/AppVersion-v0.3.0-informational?style=flat-square)
 
 Cert-manager webhook plugin to support ACME DNS challenges for CPanel DNS zones
 

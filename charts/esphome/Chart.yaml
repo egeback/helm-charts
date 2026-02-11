@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 2026.1.5
 description: ESP Home helm package
 name: esphome
-version: 2.0.33
+version: 2.0.34
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ESPHOME
@@ -22,4 +22,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |2
       - kind: changed
-        description: Update application to 2026.1.5
+        description: Update image tags or configuration in values.yaml
