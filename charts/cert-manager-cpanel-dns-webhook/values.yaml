@@ -9,6 +9,8 @@
 # here is recommended.
 groupName: jameslakin.co.uk
 
+replicaCount: 1
+
 # -- cert-manager dependency configuration
 cert-manager:
   # -- install cert-manager as a subchart
