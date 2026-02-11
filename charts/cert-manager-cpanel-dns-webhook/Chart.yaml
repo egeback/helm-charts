@@ -12,7 +12,7 @@ keywords:
   - cpanel
 home: https://github.com/egeback/helm-charts/blob/main/charts/cert-manager-cpanel-dns-webhook
 sources:
-  -  https://github.com/jamesorlakin/cert-manager-cpanel-dns-webhook
+  - https://github.com/jamesorlakin/cert-manager-cpanel-dns-webhook
 maintainers:
   - name: egeback
     email: marky@egeback.se
