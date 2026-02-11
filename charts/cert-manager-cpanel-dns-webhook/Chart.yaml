@@ -13,11 +13,6 @@ keywords:
 home: https://github.com/egeback/helm-charts/blob/main/charts/cert-manager-cpanel-dns-webhook
 sources:
   - https://github.com/jamesorlakin/cert-manager-cpanel-dns-webhook
-dependencies:
-  - name: cert-manager
-    repository: https://charts.jetstack.io
-    version: v1.19.3
-    condition: cert-manager.enabled
 maintainers:
   - name: egeback
     email: marky@egeback.se
