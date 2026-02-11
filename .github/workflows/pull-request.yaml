@@ -90,6 +90,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           file_pattern: 'charts/**'
-          commit_message: "chore: Auto-update chart metadata and docs"
+          commit_message: "chore: Auto-update chart metadata and docs [skip ci]"
           commit_user_name: ${{ github.actor }}
           commit_user_email: ${{ github.actor }}@users.noreply.github.com
