@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: v10.0.162
 description: Ubiquiti Network's Unifi Controller
 name: unifi
-version: 2.1.21
+version: 2.1.22
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ubiquiti
