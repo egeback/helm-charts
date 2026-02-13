@@ -466,6 +466,47 @@ entries:
           - kind: changed
             description: Update image tags or configuration in values.yaml
           - kind: changed
+            description: Upgraded `postgresql` chart dependency to version 18.2.9
+    apiVersion: v2
+    appVersion: 2026.2.1
+    created: "2026-02-13T19:33:24.412418523Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.9
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 24.1.1
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.1.20
+    description: Home Assistant helm package
+    digest: 4c6cc2a9dc3e6bc93a0bc080296751227ec851e052cbe4d6ff05049ad4b7c5e2
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-2.0.7/home-assistant-2.0.7.tgz
+    version: 2.0.7
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
             description: Upgraded `postgresql` chart dependency to version 18.2.6
     apiVersion: v2
     appVersion: 2026.2.1
@@ -630,6 +671,34 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/home-assistant-2.0.2/home-assistant-2.0.2.tgz
     version: 2.0.2
   node-red:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update application to 4.1.5
+    apiVersion: v2
+    appVersion: 4.1.5
+    created: "2026-02-13T19:33:24.581553355Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: Node-RED is low-code programming for event-driven applications
+    digest: 963f6dc32b5ad317ece055cbe0f50849dfe2f9ae9b5554567fda1635b00d3de4
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-2.0.3/node-red-2.0.3.tgz
+    version: 2.0.3
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
@@ -866,6 +935,36 @@ entries:
     version: 2.1.2
   uptime-kuma:
   - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update application to 2.1.1
+    apiVersion: v2
+    appVersion: 2.1.1
+    created: "2026-02-13T19:33:24.722748853Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: 34c579838b9318ce1f989f08516975f9bc9b1e57dfd1bee69014c250142f75e0
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.3/uptime-kuma-2.0.3.tgz
+    version: 2.0.3
+  - annotations:
       artifacthub.io/changes: |
         - kind: changed
           description: "Update application to 2.1.0"
@@ -897,4 +996,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-02-11T19:06:17.86244342Z"
+generated: "2026-02-13T19:33:24.722810748Z"
