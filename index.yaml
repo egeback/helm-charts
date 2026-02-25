@@ -73,6 +73,39 @@ entries:
     version: 2.0.2
   cert-manager-cpanel-dns-webhook:
   - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
+            description: Upgraded `cert-manager` chart dependency to version v1.19.4
+    apiVersion: v2
+    appVersion: v0.3.0
+    created: "2026-02-25T13:35:39.500989859Z"
+    dependencies:
+    - condition: cert-manager.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.19.4
+    description: Cert-manager webhook plugin to support ACME DNS challenges for CPanel
+      DNS zones
+    digest: 7e4136c317f24baeedda2d6de985403b99208498c9b1db5d1f9d1e0e582dde63
+    home: https://github.com/egeback/helm-charts/blob/main/charts/cert-manager-cpanel-dns-webhook
+    icon: https://raw.githubusercontent.com/cert-manager/community/4d35a69437d21b76322157e6284be4cd64e6d2b7/logo/logo-small.png
+    keywords:
+    - cert-manager-webbook
+    - dns
+    - cpanel
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: cert-manager-cpanel-dns-webhook
+    sources:
+    - https://github.com/jamesorlakin/cert-manager-cpanel-dns-webhook
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/cert-manager-cpanel-dns-webhook-1.0.2/cert-manager-cpanel-dns-webhook-1.0.2.tgz
+    version: 1.0.2
+  - annotations:
       artifacthub.io/changes: |-
         - kind: changed
           description: Updated source tag for the chart to point to the new image location.
@@ -1202,4 +1235,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-02-25T13:35:10.079993198Z"
+generated: "2026-02-25T13:35:39.501034843Z"
