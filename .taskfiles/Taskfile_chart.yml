@@ -51,12 +51,16 @@ tasks:
     - lint
 
   ct-install:
-    desc: run `ct install` on your chart code (requires running k8s cluster and configured KUBECONFIG)
+    desc: run `ct install` on your chart code (uses k3d-helm-test cluster only)
     cmds:
-    - docker run --rm -it --network host --user $(id -u):$(id -g) -e "KUBECONFIG=/ci/.kube/config" -e "HELM_CONFIG_HOME=/tmp/helm" -e "HELM_CACHE_HOME=/tmp/helm" -v {{.GIT_ROOT}}:/ci -v ${HOME}/.kube:/ci/.kube:ro -w /ci quay.io/helmpack/chart-testing:latest ct install --charts "charts/{{.CHART}}" --config /ci/.github/ct/ct.yaml
+    - mkdir -p {{.GIT_ROOT}}/.kube
+    - kubectl config view --context=k3d-helm-test --minify --flatten > {{.GIT_ROOT}}/.kube/config
+    - defer: rm -f {{.GIT_ROOT}}/.kube/config
+    - docker run --rm -it --network host --user $(id -u):$(id -g) -e "KUBECONFIG=/ci/.kube/config" -e "HELM_CONFIG_HOME=/tmp/helm" -e "HELM_CACHE_HOME=/tmp/helm" -v {{.GIT_ROOT}}:/ci -w /ci quay.io/helmpack/chart-testing:latest ct install --charts "charts/{{.CHART}}" --config /ci/.github/ct/ct.yaml
     deps:
     - check-chart
     - dependency
+    - check-test-cluster
 
   ct-test:
     desc: full test run (lint + install) on your chart code
@@ -88,4 +92,10 @@ tasks:
   check-chart:
     cmds:
     - test ! -z "{{.CHART}}" || (echo "Please define CHART parameter"; exit 1)
+    silent: true
+
+  check-test-cluster:
+    desc: verify k3d helm-test cluster is running
+    cmds:
+    - cmd: kubectl --context k3d-helm-test cluster-info > /dev/null 2>&1 || (echo "ERROR - k3d helm-test cluster is not running. Run 'task chart:test-cluster-up' first." && exit 1)
     silent: true

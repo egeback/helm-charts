@@ -37,6 +37,9 @@ Temporary Items
 charts/**/Chart.lock
 charts/**/charts
 
+# Temporary kubeconfig for local testing
+.kube/
+
 # Other resources
 .env
 .envrc
@@ -52,3 +55,4 @@ charts/adguard-home/test.out
 charts/adguard-home/test2.out
 
 GEMINI.md
+CLAUDE.local.md

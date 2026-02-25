@@ -183,7 +183,7 @@ persistence:
     type: emptyDir
   adguard-home-config:
     enabled: true
-    name: '{{ include "bjw-s.common.lib.chart.names.fullname" . }}-config'
+    name: '{{ include "bjw-s.common.lib.chart.names.fullname" . }}'
     type: configMap
     advancedMounts:
       main:
