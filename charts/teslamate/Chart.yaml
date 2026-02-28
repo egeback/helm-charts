@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 3.0.0
 description: "A self-hosted data logger for your Tesla 🚘"
 name: teslamate
-version: 2.0.15
+version: 2.0.16
 keywords:
   - teslamate
   - tesla
@@ -27,4 +27,4 @@ maintainers:
 annotations:
   artifacthub.io/changes: |2
       - kind: changed
-        description: Update image tags or configuration in values.yaml
+        description: Update application to 3.0.0
