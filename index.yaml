@@ -411,6 +411,33 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 2026.2.4
+    apiVersion: v2
+    appVersion: 2026.2.4
+    created: "2026-03-04T18:25:38.45919521Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: ESP Home helm package
+    digest: 4f5d7d60172919be555d5a8ea3f4451075e8c67b2a4f06f1d93d5377da0f547c
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.com
+      name: egeback
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-2.0.9/esphome-2.0.9.tgz
+    version: 2.0.9
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 2026.2.3
     apiVersion: v2
     appVersion: 2026.2.3
@@ -607,6 +634,47 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/heimdall-2.0.2/heimdall-2.0.2.tgz
     version: 2.0.2
   home-assistant:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
+            description: Upgraded `postgresql` chart dependency to version 18.5.2
+    apiVersion: v2
+    appVersion: 2026.2.3
+    created: "2026-03-04T18:25:38.636234986Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.5.2
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 24.1.1
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.1.20
+    description: Home Assistant helm package
+    digest: 2ffeb993e0ef8ff2f5bd6c6ef2d13057fc6ac9cc82d67caebe432809c03ec5dd
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-2.0.13/home-assistant-2.0.13.tgz
+    version: 2.0.13
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
@@ -1454,4 +1522,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-03-03T05:26:56.940076716Z"
+generated: "2026-03-04T18:25:38.63632813Z"
