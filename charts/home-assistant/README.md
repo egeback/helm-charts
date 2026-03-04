@@ -1,6 +1,6 @@
 # home-assistant
 
-![Version: 2.0.12](https://img.shields.io/badge/Version-2.0.12-informational?style=flat-square) ![AppVersion: 2026.2.3](https://img.shields.io/badge/AppVersion-2026.2.3-informational?style=flat-square)
+![Version: 2.0.13](https://img.shields.io/badge/Version-2.0.13-informational?style=flat-square) ![AppVersion: 2026.2.3](https://img.shields.io/badge/AppVersion-2026.2.3-informational?style=flat-square)
 
 Home Assistant helm package
 
@@ -25,7 +25,7 @@ Kubernetes: `>=1.16.0-0`
 | https://bjw-s-labs.github.io/helm-charts | common | 4.6.2 |
 | https://charts.bitnami.com/bitnami | influxdb | 7.1.20 |
 | https://charts.bitnami.com/bitnami | mariadb | 24.1.1 |
-| https://charts.bitnami.com/bitnami | postgresql | 18.5.1 |
+| https://charts.bitnami.com/bitnami | postgresql | 18.5.2 |
 
 ## Values
 
