@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 # renovate: datasource=github-releases depName=node-red/node-red
-appVersion: 4.1.7
+appVersion: 4.1.8
 description: Node-RED is low-code programming for event-driven applications
 name: node-red
 version: 2.0.5
