@@ -141,6 +141,39 @@ entries:
           - kind: changed
             description: Update image tags or configuration in values.yaml
           - kind: changed
+            description: Upgraded `cert-manager` chart dependency to version v1.20.1
+    apiVersion: v2
+    appVersion: v0.3.0
+    created: "2026-03-28T19:51:16.044089997Z"
+    dependencies:
+    - condition: cert-manager.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.20.1
+    description: Cert-manager webhook plugin to support ACME DNS challenges for CPanel
+      DNS zones
+    digest: 4a393953d8e4643f3cc84df9f82379346ff92c87b1b8667e34ae33bbd4f0840d
+    home: https://github.com/egeback/helm-charts/blob/main/charts/cert-manager-cpanel-dns-webhook
+    icon: https://raw.githubusercontent.com/cert-manager/community/4d35a69437d21b76322157e6284be4cd64e6d2b7/logo/logo-small.png
+    keywords:
+    - cert-manager-webbook
+    - dns
+    - cpanel
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: cert-manager-cpanel-dns-webhook
+    sources:
+    - https://github.com/jamesorlakin/cert-manager-cpanel-dns-webhook
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/cert-manager-cpanel-dns-webhook-1.0.4/cert-manager-cpanel-dns-webhook-1.0.4.tgz
+    version: 1.0.4
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
             description: Upgraded `cert-manager` chart dependency to version v1.20.0
     apiVersion: v2
     appVersion: v0.3.0
@@ -1191,6 +1224,34 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 4.1.8
+    apiVersion: v2
+    appVersion: 4.1.8
+    created: "2026-03-28T19:51:16.181838676Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: Node-RED is low-code programming for event-driven applications
+    digest: e4db7ea5bfce98d23e744376eed39493a745cea0d80cadda1990d5ca65e5c6dd
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-2.0.6/node-red-2.0.6.tgz
+    version: 2.0.6
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 4.1.7
     apiVersion: v2
     appVersion: 4.1.7
@@ -1753,4 +1814,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-03-16T14:03:38.242147054Z"
+generated: "2026-03-28T19:51:16.181962887Z"
