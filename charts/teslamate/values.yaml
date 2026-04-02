@@ -83,7 +83,7 @@ controllers:
         image:
           repository: fetzu/teslamate-abrp
           # renovate: datasource=github-releases depName=fetzu/teslamate-abrp
-          tag: 3.4.0
+          tag: 3.4.1
         env:
           MQTT_SERVER: "{{ .Values.controllers.main.containers.main.env.MQTT_HOST }}"
           MQTT_PORT: '{{ .Values.controllers.main.containers.main.env.MQTT_PORT }}'
