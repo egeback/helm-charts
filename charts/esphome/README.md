@@ -1,6 +1,6 @@
 # esphome
 
-![Version: 2.0.11](https://img.shields.io/badge/Version-2.0.11-informational?style=flat-square) ![AppVersion: 2026.3.1](https://img.shields.io/badge/AppVersion-2026.3.1-informational?style=flat-square)
+![Version: 2.0.12](https://img.shields.io/badge/Version-2.0.12-informational?style=flat-square) ![AppVersion: 2026.3.2](https://img.shields.io/badge/AppVersion-2026.3.2-informational?style=flat-square)
 
 ESP Home helm package
 
