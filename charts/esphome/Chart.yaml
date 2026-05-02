@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 # renovate: datasource=github-releases depName=esphome/esphome
-appVersion: 2026.3.3
+appVersion: 2026.4.3
 description: ESP Home helm package
 name: esphome
 version: 2.0.13
