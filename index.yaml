@@ -4,6 +4,38 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to v0.107.74
+      artifacthub.io/links: |
+        - name: "source"
+          url: "https://github.com/egeback/helm-charts/tree/main/charts/adguard-home"
+    apiVersion: v2
+    appVersion: v0.107.74
+    created: "2026-05-03T06:13:41.493424207Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: DNS proxy as ad-blocker for local network
+    digest: d34abb73cd535acdffa4cb67ea21ea4b11371bf917de127611487f0054e21631
+    home: https://github.com/egeback/helm-charts/blob/main/charts/adguard-home
+    icon: https://avatars3.githubusercontent.com/u/8361145?s=200&v=4?sanitize=true
+    keywords:
+    - adguard-home
+    - adblock
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: adguard-home
+    sources:
+    - https://github.com/AdguardTeam/AdGuardHome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/adguard-home-2.0.7/adguard-home-2.0.7.tgz
+    version: 2.0.7
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to v0.107.73
       artifacthub.io/links: |
         - name: "source"
@@ -2148,4 +2180,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-05-02T17:33:52.895271187Z"
+generated: "2026-05-03T06:13:41.493571401Z"
