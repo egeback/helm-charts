@@ -29,7 +29,9 @@ jobs:
     strategy:
       matrix:
         chart: ${{ fromJSON(inputs.chartsToTest) }}
-        k8s_version: ["v1.33"]
+        include:
+          - kubectl_version: "v1.33.3"
+            k3s_version: "v1.33"
       fail-fast: false
     steps:
       - name: Checkout
@@ -45,7 +47,7 @@ jobs:
             helmv3
             kubectl
           helm: "${{ env.HELM_VERSION }}"
-          kubectl: "${{ matrix.k8s_version }}"
+          kubectl: "${{ matrix.kubectl_version }}"
 
       - uses: actions/setup-python@v6
         with:
@@ -57,7 +59,7 @@ jobs:
       - name: Create k3d cluster
         uses: nolar/setup-k3d-k3s@v1
         with:
-          version: ${{ matrix.k8s_version }}
+          version: ${{ matrix.k3s_version }}
 
       - name: Remove node taints
         run: |
