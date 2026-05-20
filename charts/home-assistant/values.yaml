@@ -33,7 +33,7 @@ controllers:
            # -- image repository
           repository: causticlab/hass-configurator-docker
           # -- image tag
-          tag: 0.5.2
+          tag: 0.6.0
 
 defaultPodOptions:
   automountServiceAccountToken: false
