@@ -606,6 +606,33 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 2026.4.5
+    apiVersion: v2
+    appVersion: 2026.4.5
+    created: "2026-05-20T11:16:04.801529636Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: ESP Home helm package
+    digest: e5f0c63cfc6bd4ed561cbb7d3ac4a55fe1265bd0374aca7c5410493bef4e416a
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.com
+      name: egeback
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-2.0.14/esphome-2.0.14.tgz
+    version: 2.0.14
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 2026.3.3
     apiVersion: v2
     appVersion: 2026.3.3
@@ -2072,6 +2099,36 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 2.3.2
+    apiVersion: v2
+    appVersion: 2.3.2
+    created: "2026-05-20T11:16:04.968346394Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: d912b6c950afe04d026a5203fa2b5ae1479fe4eda66d0522cb41dad1853d3b4f
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.8/uptime-kuma-2.0.8.tgz
+    version: 2.0.8
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 2.2.1
     apiVersion: v2
     appVersion: 2.2.1
@@ -2251,4 +2308,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-05-20T08:41:04.491583596Z"
+generated: "2026-05-20T11:16:04.968515524Z"
