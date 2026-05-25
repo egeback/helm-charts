@@ -606,6 +606,33 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 2026.5.1
+    apiVersion: v2
+    appVersion: 2026.5.1
+    created: "2026-05-25T04:36:16.851174969Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: ESP Home helm package
+    digest: 0ced292a2248adf647f23fc04d06e678de21e3c40d6b07ceae9aab25088255ff
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.com
+      name: egeback
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-2.0.16/esphome-2.0.16.tgz
+    version: 2.0.16
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 2026.4.5
     apiVersion: v2
     appVersion: 2026.4.5
@@ -937,6 +964,47 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/heimdall-2.0.2/heimdall-2.0.2.tgz
     version: 2.0.2
   home-assistant:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
+            description: Upgraded `mariadb` chart dependency to version 24.2.0
+    apiVersion: v2
+    appVersion: 2026.5.3
+    created: "2026-05-25T04:36:17.021469326Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.5.2
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 24.2.0
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.1.20
+    description: Home Assistant helm package
+    digest: 6e6e683ca9dd0decfad34dc19b46a1e8762b614c8115971a932d541d4b673c74
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-2.0.23/home-assistant-2.0.23.tgz
+    version: 2.0.23
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
@@ -1798,6 +1866,38 @@ entries:
             description: Update image tags or configuration in values.yaml
     apiVersion: v2
     appVersion: 3.0.0
+    created: "2026-05-25T04:36:17.160979314Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.5
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: a1f8f8cd4f1117435da2e135bd2362f49ceb015b859fd05c24fae1c709c69661
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-2.0.19/teslamate-2.0.19.tgz
+    version: 2.0.19
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update image tags or configuration in values.yaml
+    apiVersion: v2
+    appVersion: 3.0.0
     created: "2026-05-02T17:33:52.895137282Z"
     dependencies:
     - name: common
@@ -2336,4 +2436,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-05-20T11:17:43.087649671Z"
+generated: "2026-05-25T04:36:17.161200787Z"
