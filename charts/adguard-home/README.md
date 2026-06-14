@@ -1,6 +1,6 @@
 # adguard-home
 
-![Version: 2.0.7](https://img.shields.io/badge/Version-2.0.7-informational?style=flat-square) ![AppVersion: v0.107.74](https://img.shields.io/badge/AppVersion-v0.107.74-informational?style=flat-square)
+![Version: 2.0.9](https://img.shields.io/badge/Version-2.0.9-informational?style=flat-square) ![AppVersion: v0.107.75](https://img.shields.io/badge/AppVersion-v0.107.75-informational?style=flat-square)
 
 DNS proxy as ad-blocker for local network
 
@@ -59,7 +59,7 @@ controllers:
 | controllers.main.containers.main.image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | controllers.main.containers.main.image.repository | string | `"adguard/adguardhome"` | image repository |
 | controllers.main.containers.main.image.tag | string | `"{{ .Chart.AppVersion }}"` |  |
-| controllers.main.initContainers | object | `{"copy-configmap":{"command":["sh","-c","if [ ! -f /config/AdGuardHome.yaml ]; then\n  mkdir -p /config\n  cp /tmp/AdGuardHome.yaml /config/AdGuardHome.yaml\nfi\n"],"image":{"pullPolicy":"IfNotPresent","repository":"busybox","tag":"1.37.0"},"securityContext":{"runAsUser":0}}}` | Uncomment to run as non root and to run in a non privileged namespace, defaultContainerOptions:    securityContext:     allowPrivilegeEscalation: false     privileged: false     readOnlyRootFilesystem: false     runAsNonRoot: true     runAsUser: 1000     capabilities:       add:         - NET_BIND_SERVICE       drop:         - ALL |
+| controllers.main.initContainers | object | `{"copy-configmap":{"command":["sh","-c","if [ ! -f /config/AdGuardHome.yaml ]; then\n  mkdir -p /config\n  cp /tmp/AdGuardHome.yaml /config/AdGuardHome.yaml\nfi\n"],"image":{"pullPolicy":"IfNotPresent","repository":"busybox","tag":"1.38.0"},"securityContext":{"runAsUser":0}}}` | Uncomment to run as non root and to run in a non privileged namespace, defaultContainerOptions:    securityContext:     allowPrivilegeEscalation: false     privileged: false     readOnlyRootFilesystem: false     runAsNonRoot: true     runAsUser: 1000     capabilities:       add:         - NET_BIND_SERVICE       drop:         - ALL |
 | controllers.main.initContainers.copy-configmap | object | See values.yaml | Configures an initContainer that copies the configmap to the AdGuardHome conf directory It does NOT overwrite when the file already exists. |
 | controllers.main.replicas | int | `1` | Number of pods to load balance between |
 | defaultPodOptions.hostNetwork | bool | `true` |  |
