@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: v0.107.77
 description: DNS proxy as ad-blocker for local network
 name: adguard-home
-version: 2.0.9
+version: 2.0.10
 kubeVersion: ">=1.16.0-0"
 keywords:
   - adguard-home
@@ -24,7 +24,7 @@ maintainers:
 annotations:
   artifacthub.io/changes: |2
       - kind: changed
-        description: Update image tags or configuration in values.yaml
+        description: Update application to v0.107.77
   artifacthub.io/links: |
     - name: "source"
       url: "https://github.com/egeback/helm-charts/tree/main/charts/adguard-home"
