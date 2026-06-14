@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 # renovate: datasource=github-releases depName=teslamate-org/teslamate
-appVersion: 4.0.0
+appVersion: 4.0.1
 description: "A self-hosted data logger for your Tesla 🚘"
 name: teslamate
 version: 2.1.1
