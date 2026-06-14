@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 2026.6.0
 description: Home Assistant helm package
 name: home-assistant
-version: 2.0.25
+version: 2.0.26
 kubeVersion: ">=1.16.0-0"
 keywords:
   - home-assistant
@@ -35,3 +35,5 @@ annotations:
   artifacthub.io/changes: |2
       - kind: changed
         description: Update application to 2026.6.0
+      - kind: changed
+        description: Upgraded `mariadb` chart dependency to version 26.1.3
