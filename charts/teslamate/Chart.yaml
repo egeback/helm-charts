@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 4.0.0
 description: "A self-hosted data logger for your Tesla 🚘"
 name: teslamate
-version: 2.1.0
+version: 2.1.1
 keywords:
   - teslamate
   - tesla
@@ -27,6 +27,4 @@ maintainers:
 annotations:
   artifacthub.io/changes: |2
       - kind: changed
-        description: |
-          Upgrade TeslaMate to 4.0.0 (Fleet API support, fixes 403 Forbidden from Owner API).
-          Note: ARMv7 support dropped upstream — ARM64 still supported.
+        description: Update image tags or configuration in values.yaml
