@@ -1,6 +1,6 @@
 # adguard-home
 
-![Version: 2.0.10](https://img.shields.io/badge/Version-2.0.10-informational?style=flat-square) ![AppVersion: v0.107.77](https://img.shields.io/badge/AppVersion-v0.107.77-informational?style=flat-square)
+![Version: 2.0.11](https://img.shields.io/badge/Version-2.0.11-informational?style=flat-square) ![AppVersion: v0.107.77](https://img.shields.io/badge/AppVersion-v0.107.77-informational?style=flat-square)
 
 DNS proxy as ad-blocker for local network
 
@@ -22,7 +22,7 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s-labs.github.io/helm-charts | common | 4.6.2 |
+| https://bjw-s-labs.github.io/helm-charts | common | 5.0.1 |
 
 ### Storage options
 Either use persistance volume claims or volume clam templates. Using volume claim templates indvidual storage per instance can be used. Adguard uses two storage locations:
