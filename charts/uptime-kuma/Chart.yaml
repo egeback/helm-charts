@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 2.4.0
 description: A fancy self-hosted monitoring tool for your websites and applications
 name: uptime-kuma
-version: 2.0.9
+version: 2.0.10
 kubeVersion: ">=1.16.0-0"
 keywords:
   - uptime-kuma
@@ -18,11 +18,13 @@ sources:
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
-    version: 4.6.2
+    version: 5.0.1
 maintainers:
   - name: egeback
     email: marky@egeback.se
 annotations:
   artifacthub.io/changes: |2
       - kind: changed
-        description: Update application to 2.4.0
+        description: Update image tags or configuration in values.yaml
+      - kind: changed
+        description: Upgraded `common` chart dependency to version 5.0.1

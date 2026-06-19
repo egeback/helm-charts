@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 2026.6.3
 description: Home Assistant helm package
 name: home-assistant
-version: 2.0.26
+version: 2.0.27
 kubeVersion: ">=1.16.0-0"
 keywords:
   - home-assistant
@@ -18,7 +18,7 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
-    version: 4.6.2
+    version: 5.0.1
   - name: postgresql
     version: 18.5.2
     repository: https://charts.bitnami.com/bitnami
@@ -34,4 +34,6 @@ dependencies:
 annotations:
   artifacthub.io/changes: |2
       - kind: changed
-        description: Update application to 2026.6.3
+        description: Update image tags or configuration in values.yaml
+      - kind: changed
+        description: Upgraded `common` chart dependency to version 5.0.1
