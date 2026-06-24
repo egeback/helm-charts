@@ -670,6 +670,33 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 2026.6.1
+    apiVersion: v2
+    appVersion: 2026.6.1
+    created: "2026-06-24T05:31:56.08896103Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    description: ESP Home helm package
+    digest: 11daa550f47b04230ca86a70e9522282b1f96600b9a7973cfa95c41a77556414
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.com
+      name: egeback
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-2.0.20/esphome-2.0.20.tgz
+    version: 2.0.20
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 2026.6.0
     apiVersion: v2
     appVersion: 2026.6.0
@@ -2154,6 +2181,38 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update image tags or configuration in values.yaml
+    apiVersion: v2
+    appVersion: 4.0.1
+    created: "2026-06-24T05:31:56.333973727Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.6.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.5
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: d9d7a59f60cccfa1e6766d801c914ea17969352237466473cfeb20084d2e5197
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-2.1.4/teslamate-2.1.4.tgz
+    version: 2.1.4
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 4.0.1
     apiVersion: v2
     appVersion: 4.0.1
@@ -2823,4 +2882,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-06-19T06:51:40.242732655Z"
+generated: "2026-06-24T05:31:56.334216585Z"
