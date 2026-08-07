@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 2026.7.0
 description: Home Assistant helm package
 name: home-assistant
-version: 2.0.29
+version: 2.0.30
 kubeVersion: ">=1.16.0-0"
 keywords:
   - home-assistant
@@ -36,4 +36,4 @@ annotations:
       - kind: changed
         description: Update image tags or configuration in values.yaml
       - kind: changed
-        description: Upgraded `common` chart dependency to version 5.0.1
+        description: Upgraded `postgresql` chart dependency to version 18.8.6
