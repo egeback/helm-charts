@@ -1,8 +1,9 @@
+---
 apiVersion: v2
 appVersion: 2.6.3
 description: An Application dashboard and launcher
 name: heimdall
-version: 2.0.2
+version: 2.0.3
 kubeVersion: ">=1.16.0-0"
 keywords:
   - heimdall
@@ -20,6 +21,8 @@ dependencies:
     repository: https://bjw-s-labs.github.io/helm-charts
     version: 5.0.1
 annotations:
-  artifacthub.io/changes: |
-    - kind: changed
-      description: "Update base chart dependencies"
+  artifacthub.io/changes: |2
+      - kind: changed
+        description: Update image tags or configuration in values.yaml
+      - kind: changed
+        description: Upgraded `common` chart dependency to version 5.0.1
