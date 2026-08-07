@@ -769,6 +769,33 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 2026.7.4
+    apiVersion: v2
+    appVersion: 2026.7.4
+    created: "2026-08-07T18:08:54.620132295Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.0.1
+    description: ESP Home helm package
+    digest: 99b77586d20cbdf301e58720deee5a63d3c3ca735824e44af1f789d9fcf25c4f
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.com
+      name: egeback
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-2.0.24/esphome-2.0.24.tgz
+    version: 2.0.24
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update image tags or configuration in values.yaml
           - kind: changed
             description: Upgraded `common` chart dependency to version 5.0.1
@@ -3166,6 +3193,36 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 2.5.0
+    apiVersion: v2
+    appVersion: 2.5.0
+    created: "2026-08-07T18:08:54.796602927Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.0.1
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: 3444f79fa2e211078af61b379c737bd616e7bf4c6235b6292a3167b8b3cd97a6
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.11/uptime-kuma-2.0.11.tgz
+    version: 2.0.11
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update image tags or configuration in values.yaml
           - kind: changed
             description: Upgraded `common` chart dependency to version 5.0.1
@@ -3437,4 +3494,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-08-07T18:08:46.140345858Z"
+generated: "2026-08-07T18:08:54.7969204Z"
