@@ -3,6 +3,7 @@
   "extends": [
     "config:recommended"
   ],
+  "gitAuthor": "egeback <3228822+egeback@users.noreply.github.com>",
   "dependencyDashboard": true,
   "rebaseWhen": "behind-base-branch",
   "customManagers": [
