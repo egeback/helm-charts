@@ -63,7 +63,7 @@ A self-hosted data logger for your Tesla 🚘
 | controllers.main.containers.teslamateagile.env.TeslaMate__UpdateIntervalSeconds | int | `300` |  |
 | controllers.main.containers.teslamateagile.env.Tibber__AccessToken | string | `"MyAccessToken"` |  |
 | controllers.main.containers.teslamateagile.image.repository | string | `"mattjeanes/teslamateagile"` |  |
-| controllers.main.containers.teslamateagile.image.tag | string | `"v1.22.0"` |  |
+| controllers.main.containers.teslamateagile.image.tag | string | `"v1.23.0"` |  |
 | controllers.main.containers.teslamateapi.enabled | bool | `false` |  |
 | controllers.main.containers.teslamateapi.env.DATABASE_HOST | string | `"{{ .Values.controllers.main.containers.main.DATABASE_HOST }}"` |  |
 | controllers.main.containers.teslamateapi.env.DATABASE_NAME | string | `"{{ .Values.postgresql.auth.database }}"` |  |
