@@ -4,6 +4,40 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
+            description: Upgraded `common` chart dependency to version 5.0.1
+      artifacthub.io/links: |
+        - name: "source"
+          url: "https://github.com/egeback/helm-charts/tree/main/charts/adguard-home"
+    apiVersion: v2
+    appVersion: v0.107.78
+    created: "2026-08-07T18:02:38.16493128Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.0.1
+    description: DNS proxy as ad-blocker for local network
+    digest: 1d678d2b8e0d0654bfb81a82b2d6e6ef820a798ef3d35d686c73de3753ae7e47
+    home: https://github.com/egeback/helm-charts/blob/main/charts/adguard-home
+    icon: https://avatars3.githubusercontent.com/u/8361145?s=200&v=4?sanitize=true
+    keywords:
+    - adguard-home
+    - adblock
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: adguard-home
+    sources:
+    - https://github.com/AdguardTeam/AdGuardHome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/adguard-home-2.0.12/adguard-home-2.0.12.tgz
+    version: 2.0.12
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to v0.107.78
       artifacthub.io/links: |
         - name: "source"
@@ -735,6 +769,35 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
+            description: Upgraded `common` chart dependency to version 5.0.1
+    apiVersion: v2
+    appVersion: 2026.6.3
+    created: "2026-08-07T18:02:38.335458458Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.0.1
+    description: ESP Home helm package
+    digest: 17581c7a2efc7ed4d115f57b912f6276db27baab17e0b280fa094f2ccd28e42f
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.com
+      name: egeback
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-2.0.23/esphome-2.0.23.tgz
+    version: 2.0.23
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 2026.6.3
     apiVersion: v2
     appVersion: 2026.6.3
@@ -1199,6 +1262,37 @@ entries:
     version: 2.0.2
   heimdall:
   - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
+            description: Upgraded `common` chart dependency to version 5.0.1
+    apiVersion: v2
+    appVersion: 2.6.3
+    created: "2026-08-07T18:02:38.512998326Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.0.1
+    description: An Application dashboard and launcher
+    digest: 159b1ec774ab2ae0cd10998604bb8cb0e0f6131bf56a521b203ae4ba84e92f63
+    home: https://github.com/egeback/helm-charts/tree/main/charts/heimdall
+    icon: https://i.imgur.com/mM4tcO5.png
+    keywords:
+    - heimdall
+    - dashboard
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: heimdall
+    sources:
+    - https://hub.docker.com/r/linuxserver/heimdall/
+    - https://github.com/linuxserver/heimdall
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/heimdall-2.0.3/heimdall-2.0.3.tgz
+    version: 2.0.3
+  - annotations:
       artifacthub.io/changes: |
         - kind: changed
           description: "Update base chart dependencies"
@@ -1228,6 +1322,47 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/heimdall-2.0.2/heimdall-2.0.2.tgz
     version: 2.0.2
   home-assistant:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
+            description: Upgraded `common` chart dependency to version 5.0.1
+    apiVersion: v2
+    appVersion: 2026.7.0
+    created: "2026-08-07T18:02:38.697573652Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.0.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.5.2
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 24.2.0
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.1.20
+    description: Home Assistant helm package
+    digest: 3b7537f4e5a954d275cacc7fc5b7efcd7f0c07155bbfa785b3078a5a32260c6d
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-2.0.29/home-assistant-2.0.29.tgz
+    version: 2.0.29
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
@@ -2151,6 +2286,36 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
+            description: Upgraded `common` chart dependency to version 5.0.1
+    apiVersion: v2
+    appVersion: 5.0.4
+    created: "2026-08-07T18:02:38.88010496Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.0.1
+    description: Node-RED is low-code programming for event-driven applications
+    digest: 55ae352f0301133092ebef9ee84c14f7088409e49486a105af32fafaa2c20879
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-2.0.12/node-red-2.0.12.tgz
+    version: 2.0.12
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 5.0.4
     apiVersion: v2
     appVersion: 5.0.4
@@ -2431,6 +2596,40 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/node-red-2.0.2/node-red-2.0.2.tgz
     version: 2.0.2
   teslamate:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
+            description: Upgraded `common` chart dependency to version 5.0.1
+    apiVersion: v2
+    appVersion: 4.0.1
+    created: "2026-08-07T18:02:39.051110251Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.0.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.5
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: e0856c79a31a958488da8f18cecc07c0211cf2346fed01adf2bcf789ab3fa950
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-2.1.5/teslamate-2.1.5.tgz
+    version: 2.1.5
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
@@ -2793,6 +2992,36 @@ entries:
     version: 2.0.12
   unifi:
   - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
+            description: Upgraded `common` chart dependency to version 5.0.1
+    apiVersion: v2
+    appVersion: v10.0.162
+    created: "2026-08-07T18:02:39.27914932Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.0.1
+    description: Ubiquiti Network's Unifi Controller
+    digest: 91b09bd10c302e60bd0d50bc15f56c494ef0fd6ce16f08b54e9aa02001ff81af
+    home: https://github.com/egeback/charts/tree/master/charts/stable/unifi
+    icon: https://prd-www-cdn.ubnt.com/static/favicon-152.png
+    keywords:
+    - ubiquiti
+    - unifi
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: unifi
+    sources:
+    - https://github.com/jacobalberty/unifi-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/unifi-2.1.5/unifi-2.1.5.tgz
+    version: 2.1.5
+  - annotations:
       artifacthub.io/changes: |
         - kind: changed
           description: "Restructure services into separate logical services (gui, controller, stun, etc.) and add external MongoDB support."
@@ -2893,6 +3122,38 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/unifi-2.1.2/unifi-2.1.2.tgz
     version: 2.1.2
   uptime-kuma:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update image tags or configuration in values.yaml
+          - kind: changed
+            description: Upgraded `common` chart dependency to version 5.0.1
+    apiVersion: v2
+    appVersion: 2.4.0
+    created: "2026-08-07T18:02:39.440638774Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.0.1
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: 676d0175229c6227403bf846ba647d26cdd23b181a6fe8dd85e02c2a1e58691c
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.10/uptime-kuma-2.0.10.tgz
+    version: 2.0.10
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
@@ -3135,4 +3396,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-08-07T17:56:00.405342026Z"
+generated: "2026-08-07T18:02:39.440935901Z"
