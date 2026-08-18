@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 2026.8.2
 description: Home Assistant helm package
 name: home-assistant
-version: 2.0.34
+version: 2.0.35
 kubeVersion: ">=1.16.0-0"
 keywords:
   - home-assistant
@@ -24,7 +24,7 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
   - name: mariadb
-    version: 27.0.2
+    version: 27.0.6
     repository: https://charts.bitnami.com/bitnami
     condition: mariadb.enabled
   - name: influxdb
@@ -34,4 +34,6 @@ dependencies:
 annotations:
   artifacthub.io/changes: |2
       - kind: changed
-        description: Update application to 2026.8.2
+        description: Update image tags or configuration in values.yaml
+      - kind: changed
+        description: Upgraded `mariadb` chart dependency to version 27.0.6
