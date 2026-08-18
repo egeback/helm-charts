@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: v10.0.162
 description: Ubiquiti Network's Unifi Controller
 name: unifi
-version: 2.1.5
+version: 2.1.6
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ubiquiti
@@ -19,10 +19,10 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
-    version: 5.0.1
+    version: 5.1.0
 annotations:
   artifacthub.io/changes: |2
       - kind: changed
         description: Update image tags or configuration in values.yaml
       - kind: changed
-        description: Upgraded `common` chart dependency to version 5.0.1
+        description: Upgraded `common` chart dependency to version 5.1.0
