@@ -1,6 +1,6 @@
 # teslamate
 
-![Version: 2.1.9](https://img.shields.io/badge/Version-2.1.9-informational?style=flat-square) ![AppVersion: 4.1.1](https://img.shields.io/badge/AppVersion-4.1.1-informational?style=flat-square)
+![Version: 2.1.10](https://img.shields.io/badge/Version-2.1.10-informational?style=flat-square) ![AppVersion: 4.2.0](https://img.shields.io/badge/AppVersion-4.2.0-informational?style=flat-square)
 
 A self-hosted data logger for your Tesla 🚘
 
