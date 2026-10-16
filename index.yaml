@@ -835,6 +835,33 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 2026.9.1
+    apiVersion: v2
+    appVersion: 2026.9.1
+    created: "2026-10-16T04:44:12.689200709Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.1.0
+    description: ESP Home helm package
+    digest: fcea87efa85ec5f4c980db86594de9e7e281e12683efe3404f59bf55cba9b6eb
+    home: https://github.com/egeback/helm-charts/tree/main/charts/esphome
+    icon: https://esphome.io/_images/logo.svg
+    keywords:
+    - ESPHOME
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.com
+      name: egeback
+    name: esphome
+    sources:
+    - https://github.com/esphome
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/esphome-2.0.27/esphome-2.0.27.tgz
+    version: 2.0.27
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 2026.8.0
     apiVersion: v2
     appVersion: 2026.8.0
@@ -1502,6 +1529,45 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/heimdall-2.0.2/heimdall-2.0.2.tgz
     version: 2.0.2
   home-assistant:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Update application to 2026.10.1
+    apiVersion: v2
+    appVersion: 2026.10.1
+    created: "2026-10-16T04:44:12.883060211Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.1.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.8.6
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 27.0.2
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.1.20
+    description: Home Assistant helm package
+    digest: 4669bf58c2e9b83e47e66825ac996564946a89aad001793820913dc578d3c904
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-2.0.37/home-assistant-2.0.37.tgz
+    version: 2.0.37
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
@@ -3088,6 +3154,38 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 4.3.0
+    apiVersion: v2
+    appVersion: 4.3.0
+    created: "2026-10-16T04:44:13.076508076Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.1.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.5
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 96987f5f94a3f654a851f47dd23184a2e4c7bf8f73d5dae2b9afa14e8f95c2ed
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-2.1.11/teslamate-2.1.11.tgz
+    version: 2.1.11
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 4.2.0
     apiVersion: v2
     appVersion: 4.2.0
@@ -4169,4 +4267,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-10-15T06:11:52.98809389Z"
+generated: "2026-10-16T04:44:13.076840618Z"
