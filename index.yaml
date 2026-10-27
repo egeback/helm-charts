@@ -2850,6 +2850,34 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 5.0.8
+    apiVersion: v2
+    appVersion: 5.0.8
+    created: "2026-10-27T06:43:53.082826336Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: Node-RED is low-code programming for event-driven applications
+    digest: 6a6b28ccd43d34b13a3ef91a32c36a2df0ce0ccb4dceda50ea74d9c6935c9a99
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-2.0.14/node-red-2.0.14.tgz
+    version: 2.0.14
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update image tags or configuration in values.yaml
           - kind: changed
             description: Upgraded `common` chart dependency to version 5.1.0
@@ -3975,6 +4003,36 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Update application to 2.5.6
+    apiVersion: v2
+    appVersion: 2.5.6
+    created: "2026-10-27T06:43:53.889315239Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: 1a473146729e383454f58bcbb57d042fab4055b656c4d933694079ade4958acd
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.14/uptime-kuma-2.0.14.tgz
+    version: 2.0.14
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 2.5.1
     apiVersion: v2
     appVersion: 2.5.1
@@ -4338,4 +4396,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-10-27T06:42:37.681355264Z"
+generated: "2026-10-27T06:43:53.889562861Z"
