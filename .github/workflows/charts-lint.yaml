@@ -23,7 +23,7 @@ on:
         default: '[]'
 
 env:
-  HELM_VERSION: 3.9.2
+  HELM_VERSION: 3.22.1
 
 jobs:
   lint-chart:
@@ -45,7 +45,7 @@ jobs:
         uses: yokawasa/action-setup-kube-tools@v0.14.1
         with:
           setup-tools: |
-            helmv3
+            helm
           helm: "${{ env.HELM_VERSION }}"
 
       - name: Set up chart-testing
