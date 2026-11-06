@@ -22,7 +22,7 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.jetstack.io | cert-manager | v1.21.2 |
+| https://charts.jetstack.io | cert-manager | v1.21.3 |
 
 ## Values
 
