@@ -51,6 +51,24 @@ jobs:
       checkoutCommit: ${{ github.event.pull_request.head.sha }}
       chartsToTest: ${{ needs.detect-changes.outputs.chart_names }}
 
+  version-check:
+    name: Chart version bumped
+    needs: detect-changes
+    # Renovate PRs get their bump from the generate job below
+    if: ${{ needs.detect-changes.outputs.charts == 'true' && !startsWith(github.head_ref, 'renovate/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Check that changed charts bump their version
+        run: |
+          CHARTS=$(echo '${{ needs.detect-changes.outputs.chart_names }}' | jq -r '.[]')
+          ./.github/scripts/check-chart-versions.sh --base "origin/${{ github.base_ref }}" $CHARTS
+
   generate:
     name: Generate Metadata and Docs
     needs: [detect-changes, lint, test]

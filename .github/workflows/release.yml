@@ -5,7 +5,26 @@ on:
     branches:
       - main
 
+# Two pushes in quick succession raced on gh-pages ("local changes would be overwritten")
+concurrency:
+  group: release-charts
+  cancel-in-progress: false
+
 jobs:
+  version-guard:
+    name: Released versions match main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      # chart-releaser skips versions whose tag exists, so a change merged
+      # without a bump would never be published. Make that visible on main.
+      - name: Check charts against their release tags
+        run: ./.github/scripts/check-chart-versions.sh --release-tags
+
   release:
     runs-on: ubuntu-latest
     steps:
