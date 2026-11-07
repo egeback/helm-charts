@@ -18,10 +18,6 @@ controllers:
           # -- image pull policy
           pullPolicy: IfNotPresent
 
-        # -- state.json (lifetime counters) is written to the working directory,
-        #    so run from the data volume to keep it across restarts
-        workingDir: /app/data
-
         # -- Environment variables. See the [ha-to-tn-reporter documentation](https://github.com/egeback/ha-to-tn-reporter#readme).
         #    The token, hash and MQTT password come from the Secret, see `reporter`.
         # @default -- See below
@@ -40,6 +36,8 @@ controllers:
           REPORTER_MQTT_TOPIC: tn_reporter
           LOG_LEVEL: WARNING
           HEALTH_PORT: "8080"
+          # -- Lifetime counters, on the data volume (`persistence.data`)
+          REPORTER_STATE_FILE: /data/state.json
 
         # -- Probes against the /health endpoint (healthy once the first cycle ran, and MQTT is connected when enabled)
         # @default -- See values.yaml
@@ -107,7 +105,7 @@ persistence:
     accessMode: ReadWriteOnce
     size: 64Mi
     globalMounts:
-      - path: /app/data
+      - path: /data
   # -- Writable /tmp for the read-only root filesystem
   tmp:
     type: emptyDir
