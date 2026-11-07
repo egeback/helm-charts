@@ -5,6 +5,83 @@
 {{- define "custom.custom.configuration" -}}
 {{ template "custom.custom.configuration.header" . }}
 
+### Persistence
+
+Home Assistant runs as uid 1000. Without `persistence.config` the chart mounts
+an emptyDir at `/config`, so the configuration is lost when the pod is
+recreated. For real use give it a volume:
+
+```yaml
+persistence:
+  config:
+    enabled: true
+    existingClaim: home-assistant-config
+```
+
+### Networking: host network or Multus
+
+By default the pod uses `hostNetwork: true`, so discovery (mDNS, SSDP,
+HomeKit) works on the node's LAN. To give Home Assistant its own address on
+the LAN instead, attach a second interface with
+[Multus](https://github.com/k8snetworkplumbingwg/multus-cni) and turn host
+networking off. Set it on the `main` controller rather than in
+`defaultPodOptions`, so a bundled database pod does not get the same address.
+
+```yaml
+controllers:
+  main:
+    pod:
+      hostNetwork: false
+      dnsPolicy: ClusterFirst
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |
+          [{"name": "lan", "namespace": "kube-system",
+            "ips": ["192.168.1.25/24"], "mac": "c6:5e:a4:00:00:25"}]
+```
+
+A fixed MAC keeps the DHCP reservation and router rules stable across pod
+restarts. A matching macvlan `NetworkAttachmentDefinition` (static IPs need
+the `static` IPAM plugin, or `host-local` with a range):
+
+```yaml
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: lan
+  namespace: kube-system
+spec:
+  config: |
+    {
+      "cniVersion": "0.3.1",
+      "type": "macvlan",
+      "master": "eth0",
+      "mode": "bridge",
+      "capabilities": {"ips": true, "mac": true},
+      "ipam": {"type": "static", "routes": [{"dst": "0.0.0.0/0", "gw": "192.168.1.1"}]}
+    }
+```
+
+### Prometheus
+
+Home Assistant exposes metrics at `/api/prometheus` once the
+[Prometheus integration](https://www.home-assistant.io/integrations/prometheus/)
+is enabled; scraping needs a long-lived access token. With the Prometheus
+Operator:
+
+```yaml
+serviceMonitor:
+  main:
+    service:
+      identifier: main
+    endpoints:
+      - port: http
+        path: /api/prometheus
+        interval: 1m
+        bearerTokenSecret:
+          name: home-assistant-prometheus   # key "token": a long-lived access token
+          key: token
+```
+
 ### Recorder database
 
 The chart can run the recorder database next to Home Assistant on the official
