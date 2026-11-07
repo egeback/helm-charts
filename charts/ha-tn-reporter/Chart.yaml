@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 # renovate: datasource=docker depName=egeback/ha-tn-reporter
-appVersion: 1.4.11
+appVersion: 1.4.12
 description: Reports Home Assistant temperature sensors to temperatur.nu
 name: ha-tn-reporter
 version: 1.0.0
