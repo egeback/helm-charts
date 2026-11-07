@@ -1,6 +1,6 @@
 # node-red
 
-![Version: 2.0.14](https://img.shields.io/badge/Version-2.0.14-informational?style=flat-square) ![AppVersion: 5.0.9](https://img.shields.io/badge/AppVersion-5.0.9-informational?style=flat-square)
+![Version: 2.0.15](https://img.shields.io/badge/Version-2.0.15-informational?style=flat-square) ![AppVersion: 5.0.9](https://img.shields.io/badge/AppVersion-5.0.9-informational?style=flat-square)
 
 Node-RED is low-code programming for event-driven applications
 
