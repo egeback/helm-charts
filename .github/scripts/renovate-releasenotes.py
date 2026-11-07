@@ -216,10 +216,17 @@ def main(
 
         if annotations:
             # Bump chart version
-            old_version = new_chart_metadata.get("version", "0.1.0")
-            new_version = _bump_patch_version(old_version)
+            # Bump relative to the target branch, so a re-run on an already
+            # bumped PR (CI runs again after the auto-commit) is a no-op
+            old_version = old_chart_metadata.get("version", "0.1.0")
+            current_version = new_chart_metadata.get("version", old_version)
+            if current_version != old_version:
+                new_version = current_version
+                logger.info(f"Chart version already bumped: {old_version} -> {new_version}")
+            else:
+                new_version = _bump_patch_version(old_version)
+                logger.info(f"Bumping chart version: {old_version} -> {new_version}")
             new_chart_metadata["version"] = new_version
-            logger.info(f"Bumping chart version: {old_version} -> {new_version}")
 
             # Update annotations - ensure they are properly formatted for ArtifactHub
             # We use a separate YAML dumper to ensure strings are quoted if they contain special characters

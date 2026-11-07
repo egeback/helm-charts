@@ -108,6 +108,27 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           file_pattern: 'charts/**'
-          commit_message: "chore: Auto-update chart metadata and docs [skip ci]"
+          # No [skip ci]: the push uses RENOVATE_TOKEN, so CI runs again on the
+          # new head and the required "CI successful" check reports on it.
+          # The second run finds nothing to change and makes no commit.
+          commit_message: "chore: Auto-update chart metadata and docs"
           commit_user_name: ${{ github.actor }}
           commit_user_email: ${{ github.actor }}@users.noreply.github.com
+
+  # Single required status check for branch protection. Jobs skipped because
+  # no chart changed count as passed; failed or cancelled ones do not.
+  ci-successful:
+    name: CI successful
+    needs: [detect-changes, lint, test, version-check, generate]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check job results
+        env:
+          RESULTS: ${{ toJSON(needs.*.result) }}
+        run: |
+          echo "$RESULTS"
+          if echo "$RESULTS" | jq -e 'any(.[]; . == "failure" or . == "cancelled")' >/dev/null; then
+            echo "::error::A required job failed or was cancelled"
+            exit 1
+          fi
