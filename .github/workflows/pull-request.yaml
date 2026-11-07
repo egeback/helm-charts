@@ -8,7 +8,7 @@ jobs:
     name: Detect changes
     runs-on: ubuntu-latest
     outputs:
-      charts: ${{ steps.filter.outputs.charts }}
+      charts: ${{ steps.get-chart-names.outputs.any }}
       chart_names: ${{ steps.get-chart-names.outputs.list }}
     steps:
       - name: Checkout
@@ -22,15 +22,27 @@ jobs:
           filters: |
             charts:
               - 'charts/*/**'
+            # Changes to the chart CI itself are tested against every chart
+            ci:
+              - '.github/workflows/charts-*.yaml'
+              - '.github/workflows/pull-request.yaml'
+              - '.github/ct/**'
+              - '.github/scripts/**'
 
       - name: Get chart names
         id: get-chart-names
-        if: steps.filter.outputs.charts == 'true'
         run: |
-          files='${{ steps.filter.outputs.charts_files }}'
-          # Extract chart names from file paths (charts/chart-name/...)
-          charts=$(echo $files | jq -r '.[]' | cut -d/ -f2 | sort -u | jq -R . | jq -s -c .)
+          if [ "${{ steps.filter.outputs.ci }}" = "true" ]; then
+            charts=$(find charts -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort | jq -R . | jq -s -c .)
+          elif [ "${{ steps.filter.outputs.charts }}" = "true" ]; then
+            files='${{ steps.filter.outputs.charts_files }}'
+            # Extract chart names from file paths (charts/chart-name/...)
+            charts=$(echo $files | jq -r '.[]' | cut -d/ -f2 | sort -u | jq -R . | jq -s -c .)
+          else
+            charts='[]'
+          fi
           echo "list=$charts" >> $GITHUB_OUTPUT
+          if [ "$charts" = "[]" ]; then echo "any=false"; else echo "any=true"; fi >> $GITHUB_OUTPUT
 
   lint:
     name: Lint
