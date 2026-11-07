@@ -1,8 +1,8 @@
 #
 # IMPORTANT NOTE
 #
-# This chart inherits from our common library chart. You can check the default values/options here:
-# https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+# This chart inherits from the bjw-s common library chart. You can check the default values/options here:
+# https://github.com/bjw-s-labs/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
 controllers:
@@ -23,24 +23,43 @@ controllers:
         env:
           # -- Set the container timezone
           TZ: UTC
+        # -- Probes against the web UI; the startup probe allows for a slow first start
+        # @default -- See values.yaml
+        probes:
+          startup:
+            enabled: true
+            type: HTTP
+            path: /
+            spec:
+              periodSeconds: 5
+              failureThreshold: 60
+          readiness:
+            enabled: true
+            type: HTTP
+            path: /
+          liveness:
+            enabled: true
+            type: HTTP
+            path: /
+            spec:
+              failureThreshold: 5
       code:
         enabled: false
         # -- environment variables. See more environment variables in the [home-assistant documentation](https://home-assistant.org/docs).
         # @default -- See below
         env:
-          TZ: Europe/Stockholm
+          TZ: UTC
         image:
-           # -- image repository
+          # -- image repository
           repository: causticlab/hass-configurator-docker
           # -- image tag
+          # renovate: datasource=docker depName=causticlab/hass-configurator-docker
           tag: 0.6.0
 
 defaultPodOptions:
   automountServiceAccountToken: false
   dnsPolicy: ClusterFirstWithHostNet
   hostNetwork: true
-  podSecurityContext:
-    fsGroup: 1000
   securityContext:
     fsGroup: 1000
     fsGroupChangePolicy: OnRootMismatch
@@ -68,20 +87,13 @@ ingress:
   main:
     enabled: false
 
-# -- Enable devices to be discoverable
-# hostNetwork: true
-
-# -- When hostNetwork is true set dnsPolicy to ClusterFirstWithHostNet
-# dnsPolicy: ClusterFirstWithHostNet
-
-securityContext:
-  # -- (bool) Privileged securityContext may be required if USB devics are accessed directly through the host machine
-  privileged:  # true
-
-
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
 persistence:
+  # -- Home Assistant's /config. While disabled the chart mounts an emptyDir
+  #    instead (configuration is lost when the pod is recreated); enable it with
+  #    a PVC or `existingClaim` for real use.
+  # @default -- See values.yaml
   config:
     enabled: false
   # -- Configure a hostPathMount to mount a USB device in the container.
@@ -144,36 +156,3 @@ postgresql:
     # -- StorageClass for the data volume ("-" for none, empty for the cluster default)
     storageClass: ""
   resources: {}
-
-metrics:
-  # -- Enable and configure a Prometheus serviceMonitor for the chart under this key.
-  # @default -- See values.yaml
-  enabled: false
-  serviceMonitor:
-    interval: 1m
-    scrapeTimeout: 30s
-    labels: {}
-    ## See https://www.home-assistant.io/docs/authentication/ for where to find
-    ## long lived access token creation under your account profile, which is
-    ## needed to monitor Home Assistant
-    # bearerTokenSecret:
-    #   name: ""
-    #   key: ""
-
-  # -- Enable and configure Prometheus Rules for the chart under this key.
-  # @default -- See values.yaml
-  prometheusRule:
-    enabled: false
-    labels: {}
-    # -- Configure additionial rules for the chart under this key.
-    # @default -- See prometheusrules.yaml
-    rules: []
-      # - alert: HomeAssistantAbsent
-      #   annotations:
-      #     description: Home Assistant has disappeared from Prometheus service discovery.
-      #     summary: Home Assistant is down.
-      #   expr: |
-      #     absent(up{job=~".*home-assistant.*"} == 1)
-      #   for: 5m
-      #   labels:
-      #     severity: critical

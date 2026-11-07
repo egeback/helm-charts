@@ -1,1 +1,6 @@
-{{- include "egeback.common.lib.chart.notes" . -}}
+{{- include "egeback.common.lib.chart.notes" . }}
+{{- if or (not .Values.persistence.config.enabled) (eq (.Values.persistence.config.type | default "") "emptyDir") }}
+
+WARNING: /config is an emptyDir, so the Home Assistant configuration is lost
+when the pod is recreated. Set persistence.config (a PVC or existingClaim) to keep it.
+{{- end }}

@@ -10,6 +10,11 @@ global:
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
 
+{{- /* Home Assistant runs as uid 1000 and cannot write the image's /config: without persistence, mount an emptyDir there */ -}}
+{{- if not .Values.persistence.config.enabled -}}
+  {{- $_ := set .Values.persistence "config" (merge (dict "enabled" true "type" "emptyDir") (omit .Values.persistence.config "enabled" "type" "existingClaim")) -}}
+{{- end -}}
+
 {{- /* Bundled recorder database: add its resources and point Home Assistant at it */ -}}
 {{- if and .Values.mariadb.enabled .Values.postgresql.enabled -}}
   {{- fail "Enable only one of mariadb.enabled and postgresql.enabled" -}}
