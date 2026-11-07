@@ -1,0 +1,10 @@
+ha-tn-reporter reports {{ .Values.controllers.main.containers.main.env.REPORTER_SENSOR_MAPPING | default "(no sensors configured)" }}
+from {{ .Values.controllers.main.containers.main.env.REPORTER_HA_URL | default "(REPORTER_HA_URL not set)" }} to temperatur.nu every {{ .Values.controllers.main.containers.main.env.REPORTER_INTERVAL }} s.
+
+Status and counters:
+  kubectl port-forward --namespace {{ .Release.Namespace }} svc/{{ include "bjw-s.common.lib.chart.names.fullname" . }} 8080:8080
+  curl http://127.0.0.1:8080/health
+{{- if not .Values.persistence.data.enabled }}
+
+Note: persistence.data is disabled, so the lifetime counters start over when the pod is recreated.
+{{- end }}

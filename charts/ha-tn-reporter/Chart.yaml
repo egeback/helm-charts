@@ -1,0 +1,27 @@
+---
+apiVersion: v2
+# renovate: datasource=docker depName=egeback/ha-tn-reporter
+appVersion: 1.4.11
+description: Reports Home Assistant temperature sensors to temperatur.nu
+name: ha-tn-reporter
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - home-assistant
+  - temperatur.nu
+  - temperature
+home: https://github.com/egeback/helm-charts/tree/main/charts/ha-tn-reporter
+icon: https://brands.home-assistant.io/homeassistant/icon.png
+sources:
+  - https://github.com/egeback/ha-to-tn-reporter
+maintainers:
+  - name: egeback
+    email: marky@egeback.se
+dependencies:
+  - name: common
+    repository: https://bjw-s-labs.github.io/helm-charts
+    version: 5.3.0
+annotations:
+  artifacthub.io/changes: |2
+      - kind: added
+        description: Initial version

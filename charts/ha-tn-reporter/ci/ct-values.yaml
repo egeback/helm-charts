@@ -1,0 +1,15 @@
+---
+# CI only: no Home Assistant or temperatur.nu; the first cycle fails, which
+# still ends the "starting" phase so /health turns ready
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          REPORTER_HA_URL: http://127.0.0.1:1
+          REPORTER_SENSOR_MAPPING: ci=sensor.ci_temperature
+          LOG_LEVEL: INFO
+
+reporter:
+  haToken: ct-install-only
+  tnHash: ct-install-only

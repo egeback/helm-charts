@@ -1,0 +1,115 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from the bjw-s common library chart. You can check the default values/options here:
+# https://github.com/bjw-s-labs/helm-charts/blob/main/charts/library/common/values.yaml
+#
+
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: egeback/ha-tn-reporter
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: "{{ .Chart.AppVersion }}"
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+
+        # -- state.json (lifetime counters) is written to the working directory,
+        #    so run from the data volume to keep it across restarts
+        workingDir: /app/data
+
+        # -- Environment variables. See the [ha-to-tn-reporter documentation](https://github.com/egeback/ha-to-tn-reporter#readme).
+        #    The token, hash and MQTT password come from the Secret, see `reporter`.
+        # @default -- See below
+        env:
+          # -- Home Assistant URL
+          REPORTER_HA_URL: ""
+          # -- temperatur.nu station to HA sensor(s): `station=sensor.a|sensor.b,station2=sensor.c`
+          #    (several sensors per station are aggregated)
+          REPORTER_SENSOR_MAPPING: ""
+          # -- Seconds between reports
+          REPORTER_INTERVAL: "180"
+          # -- MQTT broker for Home Assistant discovery; empty disables MQTT
+          REPORTER_MQTT_HOST: ""
+          REPORTER_MQTT_PORT: "1883"
+          # REPORTER_MQTT_USER: tn-reporter
+          REPORTER_MQTT_TOPIC: tn_reporter
+          LOG_LEVEL: WARNING
+          HEALTH_PORT: "8080"
+
+        # -- Probes against the /health endpoint (healthy once the first cycle ran, and MQTT is connected when enabled)
+        # @default -- See values.yaml
+        probes:
+          startup:
+            enabled: true
+            type: HTTP
+            path: /health
+            spec:
+              periodSeconds: 10
+              failureThreshold: 30
+          readiness:
+            enabled: true
+            type: HTTP
+            path: /health
+          liveness:
+            enabled: true
+            type: HTTP
+            path: /health
+            spec:
+              failureThreshold: 5
+
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: [ALL]
+
+defaultPodOptions:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
+
+# -- Credentials, stored in a Secret and passed to the container as env vars
+# @default -- See below
+reporter:
+  # -- Home Assistant long-lived access token. Required unless `existingSecret` is set.
+  haToken: ""
+  # -- temperatur.nu hash. Required unless `existingSecret` is set.
+  tnHash: ""
+  # -- MQTT password, if the broker needs one
+  mqttPassword: ""
+  # -- Existing Secret with the keys `REPORTER_HA_TOKEN`, `REPORTER_TN_HASH` (and optionally `REPORTER_MQTT_PASSWORD`)
+  existingSecret: ""
+
+# -- Health endpoint, used by the probes
+# @default -- See values.yaml
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 8080
+
+# -- Persistence for state.json (lifetime success/error counters)
+# @default -- See values.yaml
+persistence:
+  data:
+    # -- Without it the counters start over when the pod is recreated
+    enabled: false
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 64Mi
+    globalMounts:
+      - path: /app/data
+  # -- Writable /tmp for the read-only root filesystem
+  tmp:
+    type: emptyDir
+    globalMounts:
+      - path: /tmp
