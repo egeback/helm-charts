@@ -1,0 +1,7 @@
+{{- include "egeback.common.lib.chart.notes" . }}
+
+Home Assistant: add the Matter integration with
+  ws://{{ include "bjw-s.common.lib.chart.names.fullname" . }}.{{ .Release.Namespace }}.svc:5580/ws
+{{- if .Values.defaultPodOptions.hostNetwork }}
+(with hostNetwork the server also listens on the node's own address, port 5580)
+{{- end }}

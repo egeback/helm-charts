@@ -1,0 +1,115 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from the bjw-s common library chart. You can check the default values/options here:
+# https://github.com/bjw-s-labs/helm-charts/blob/main/charts/library/common/values.yaml
+#
+
+controllers:
+  main:
+    # -- The fabric belongs to one server; Recreate avoids two pods using it
+    strategy: Recreate
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: ghcr.io/matter-js/matterjs-server
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: "{{ .Chart.AppVersion }}"
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+
+        # -- Environment variables, see the [matterjs-server docs](https://github.com/matter-js/matterjs-server/blob/main/docs/docker.md)
+        # @default -- See below
+        env:
+          # -- Set the container timezone
+          TZ: UTC
+          STORAGE_PATH: /data
+          LOG_LEVEL: info
+          # -- Interface for mDNS and Matter traffic; auto-detected when unset.
+          #    Set it (e.g. `net1` with Multus) when the node has several interfaces.
+          # PRIMARY_INTERFACE: eth0
+          # -- Force dashboard production mode behind a reverse proxy / ingress
+          # PRODUCTION_MODE: "true"
+
+        # -- Probes use the image's health check script; the first start can take
+        #    long (certificate and DCL downloads), so the startup probe allows 15 minutes
+        # @default -- See values.yaml
+        probes:
+          startup:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command: [/usr/local/bin/healthcheck.sh]
+              periodSeconds: 5
+              timeoutSeconds: 10
+              failureThreshold: 180
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command: [/usr/local/bin/healthcheck.sh]
+              periodSeconds: 30
+              timeoutSeconds: 10
+              failureThreshold: 3
+          liveness:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command: [/usr/local/bin/healthcheck.sh]
+              periodSeconds: 60
+              timeoutSeconds: 10
+              failureThreshold: 6
+
+defaultPodOptions:
+  # -- Matter needs IPv6 link-local and mDNS on the LAN the devices and Thread
+  #    border routers are on. See the README for a Multus alternative.
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
+
+# -- Commission devices over a local Bluetooth adapter through the host's BlueZ
+#    (D-Bus), which keeps the container unprivileged. Home Assistant's companion
+#    app can commission without it.
+# @default -- See below
+bluetooth:
+  # -- HCI ID of the adapter (`0` for hci0); empty disables Bluetooth
+  adapter: ""
+
+# -- Configures service settings for the chart.
+# @default -- See values.yaml
+service:
+  main:
+    controller: main
+    ports:
+      # -- WebSocket API (`/ws`, used by Home Assistant) and dashboard
+      http:
+        port: 5580
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: false
+
+# -- Configure persistence settings for the chart under this key.
+# @default -- See values.yaml
+persistence:
+  # -- Fabric credentials and node data. Losing it means re-commissioning every
+  #    device, so it is enabled by default.
+  data:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    globalMounts:
+      - path: /data

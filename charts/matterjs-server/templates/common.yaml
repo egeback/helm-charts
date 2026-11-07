@@ -1,0 +1,24 @@
+---
+{{- include "bjw-s.common.loader.init" . }}
+
+{{- define "app-template.hardcodedValues" -}}
+# Set the nameOverride based on the release name if no override has been set
+{{ if not .Values.global.nameOverride }}
+global:
+  nameOverride: "{{ .Release.Name }}"
+{{ end }}
+{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
+
+{{- /* Bluetooth through the host's BlueZ over D-Bus (unprivileged), see the upstream docker docs */ -}}
+{{- if ne (toString .Values.bluetooth.adapter) "" -}}
+  {{- $_ := mergeOverwrite .Values (dict
+        "persistence" (dict "dbus" (dict "type" "hostPath" "hostPath" "/run/dbus" "hostPathType" "Directory"
+          "globalMounts" (list (dict "path" "/run/dbus" "readOnly" true))))
+        "controllers" (dict "main" (dict "containers" (dict "main" (dict "env" (dict
+          "BLUETOOTH_ADAPTER" (toString .Values.bluetooth.adapter)
+          "NOBLE_BINDINGS" "dbus")))))) -}}
+{{- end -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.generate" . }}
