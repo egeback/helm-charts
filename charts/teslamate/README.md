@@ -1,6 +1,6 @@
 # teslamate
 
-![Version: 2.2.0](https://img.shields.io/badge/Version-2.2.0-informational?style=flat-square) ![AppVersion: 4.4.0](https://img.shields.io/badge/AppVersion-4.4.0-informational?style=flat-square)
+![Version: 3.0.0](https://img.shields.io/badge/Version-3.0.0-informational?style=flat-square) ![AppVersion: 4.4.0](https://img.shields.io/badge/AppVersion-4.4.0-informational?style=flat-square)
 
 A self-hosted data logger for your Tesla 🚘
 
@@ -22,7 +22,6 @@ A self-hosted data logger for your Tesla 🚘
 | Repository | Name | Version |
 |------------|------|---------|
 | https://bjw-s-labs.github.io/helm-charts | common | 5.3.0 |
-| https://charts.bitnami.com/bitnami | postgresql | 18.2.5 |
 
 ## Values
 
@@ -75,7 +74,6 @@ A self-hosted data logger for your Tesla 🚘
 | controllers.main.containers.teslamateapi.image.repository | string | `"tobiasehlert/teslamateapi"` |  |
 | controllers.main.containers.teslamateapi.image.tag | string | `"1.25.0"` |  |
 | controllers.main.containers.teslamateapi.name | string | `"teslamateapi"` |  |
-| global.templateEvaluation.excludePaths | list | `[["postgresql"]]` | The postgresql subchart's values contain its own templates; leave them for the subchart instead of evaluating them against this chart. |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | ingress.teslamate-api.enabled | bool | `false` |  |
 | ingress.teslamate-api.hosts[0].host | string | `"teslamate-api.example.com"` |  |
@@ -85,7 +83,12 @@ A self-hosted data logger for your Tesla 🚘
 | ingress.teslamate-api.hosts[0].paths[0].service.name | string | `"teslamate-api"` |  |
 | ingress.teslamate-api.hosts[0].paths[0].service.port | int | `8080` |  |
 | persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
-| postgresql | object | See values.yaml | Enable and configure postgresql database subchart under this key.    For more options see [postgresql chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/postgresql) |
+| postgresql | object | See values.yaml | Bundled PostgreSQL on the official `postgres` image. When enabled the    chart creates a StatefulSet, Service and Secret, and TeslaMate (and the    API/Agile sidecars) read DATABASE_PASS from that Secret. |
+| postgresql.auth.existingSecret | string | `""` | Existing Secret with the key `password` |
+| postgresql.auth.password | string | `""` | Password for `username`; required unless `existingSecret` is set |
+| postgresql.enabled | bool | `false` | Deploy a PostgreSQL StatefulSet; disable to use an external database (set DATABASE_* env yourself) |
+| postgresql.image.tag | string | `"18.6"` | TeslaMate's reference setup uses PostgreSQL 18; major upgrades need a dump/restore renovate: datasource=docker depName=postgres |
+| postgresql.persistence.storageClass | string | `""` | StorageClass for the data volume ("-" for none, empty for the cluster default) |
 | service | object | See values.yaml | Configures service settings for the chart. |
 
 ----------------------------------------------
