@@ -1623,6 +1623,41 @@ entries:
   home-assistant:
   - annotations:
       artifacthub.io/changes: |2
+          - kind: removed
+            description: Bitnami mariadb and postgresql subcharts (Bitnami's free images are only published as latest; the postgresql override pointed at a removed tag).
+          - kind: added
+            description: Bundled recorder database on the official mariadb (12.3 LTS) or postgres (18) image, with Secret/existingSecret and RECORDER_DB_URL on Home Assistant.
+          - kind: fixed
+            description: Chart failed to render with influxdb.enabled (subchart values are now excluded from template evaluation).
+    apiVersion: v2
+    appVersion: 2026.11.0
+    created: "2026-11-07T07:02:32.068261473Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    - condition: influxdb.enabled
+      name: influxdb
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.1.20
+    description: Home Assistant helm package
+    digest: 6e010b943e4b984aa7ba2ba8452be3ce27d223c9ec4d25727accfa9c27b557ef
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-3.0.0/home-assistant-3.0.0.tgz
+    version: 3.0.0
+  - annotations:
+      artifacthub.io/changes: |2
           - kind: changed
             description: Update application to 2026.11.0
     apiVersion: v2
@@ -3351,6 +3386,38 @@ entries:
   teslamate:
   - annotations:
       artifacthub.io/changes: |2
+          - kind: removed
+            description: Bitnami postgresql subchart (Bitnami's free images are only published as latest).
+          - kind: added
+            description: Bundled PostgreSQL 18 on the official postgres image; TeslaMate and sidecars read DATABASE_PASS from its Secret or postgresql.auth.existingSecret.
+          - kind: changed
+            description: postgresql.auth.password has no default; postgresql.auth.postgresPassword and primary.persistence were removed.
+    apiVersion: v2
+    appVersion: 4.4.0
+    created: "2026-11-07T07:02:32.261783133Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 8a9561d5d5b588c27dabd983e9c2852a207232bd463c2211f45e5522c9eb0038
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-3.0.0/teslamate-3.0.0.tgz
+    version: 3.0.0
+  - annotations:
+      artifacthub.io/changes: |2
           - kind: fixed
             description: Container env was nested under image and never applied; DATABASE_*, MQTT_*, ENCRYPTION_KEY and TZ now reach TeslaMate.
           - kind: fixed
@@ -4563,4 +4630,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-11-07T06:43:38.079787775Z"
+generated: "2026-11-07T07:02:32.262364196Z"
