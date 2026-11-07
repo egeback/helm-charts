@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 4.4.0
 description: "A self-hosted data logger for your Tesla 🚘"
 name: teslamate
-version: 2.2.0
+version: 3.0.0
 keywords:
   - teslamate
   - tesla
@@ -17,18 +17,14 @@ dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
     version: 5.3.0
-  - name: postgresql
-    version: 18.2.5
-    repository: https://charts.bitnami.com/bitnami
-    condition: postgresql.enabled
 maintainers:
   - name: egeback
     email: marky@egeback.se
 annotations:
   artifacthub.io/changes: |2
-      - kind: fixed
-        description: Container env was nested under image and never applied; DATABASE_*, MQTT_*, ENCRYPTION_KEY and TZ now reach TeslaMate.
-      - kind: fixed
-        description: DATABASE_USER rendered as a literal string; sidecars referenced non-existent DATABASE_HOST/MQTT_HOST paths and postgresPassword.
-      - kind: fixed
-        description: Chart failed to render with default values or with postgresql enabled (subchart values are now excluded from template evaluation).
+      - kind: removed
+        description: Bitnami postgresql subchart (Bitnami's free images are only published as latest).
+      - kind: added
+        description: Bundled PostgreSQL 18 on the official postgres image; TeslaMate and sidecars read DATABASE_PASS from its Secret or postgresql.auth.existingSecret.
+      - kind: changed
+        description: postgresql.auth.password has no default; postgresql.auth.postgresPassword and primary.persistence were removed.

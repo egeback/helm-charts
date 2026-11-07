@@ -5,5 +5,16 @@
 {{- define "custom.custom.configuration" -}}
 {{ template "custom.custom.configuration.header" . }}
 
-N/A
+### Database
+
+With `postgresql.enabled: true` the chart runs PostgreSQL on the official
+`postgres` image (StatefulSet, Service and Secret) and TeslaMate, TeslaMateApi
+and TeslaMate Agile read `DATABASE_PASS` from its Secret. Set
+`postgresql.auth.password` or `postgresql.auth.existingSecret` (key `password`).
+With it disabled, set the `DATABASE_*` env vars for an external database.
+
+**Upgrading from 2.x:** the Bitnami `postgresql` subchart was removed (Bitnami's
+free images are only published as `latest`). Its values and data layout are not
+compatible; dump the database before upgrading and restore it into the new
+StatefulSet (see the TeslaMate backup and restore docs).
 {{- end -}}

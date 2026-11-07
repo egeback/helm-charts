@@ -8,3 +8,6 @@ controllers:
 
 postgresql:
   enabled: true
+  auth:
+    # CI-only throwaway password
+    password: ct-install-only
