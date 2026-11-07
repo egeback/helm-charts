@@ -1,0 +1,34 @@
+---
+{{- include "bjw-s.common.loader.init" . }}
+
+{{- define "app-template.hardcodedValues" -}}
+# Set the nameOverride based on the release name if no override has been set
+{{ if not .Values.global.nameOverride }}
+global:
+  nameOverride: "{{ .Release.Name }}"
+{{ end }}
+{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
+
+{{- /* Without persistence, keep /app/data writable (the root filesystem is read-only) */ -}}
+{{- if not .Values.persistence.data.enabled -}}
+  {{- $_ := set .Values.persistence "data" (dict "enabled" true "type" "emptyDir" "globalMounts" .Values.persistence.data.globalMounts) -}}
+{{- end -}}
+
+{{- /* Credentials: a Secret from reporter.* unless reporter.existingSecret is set, loaded with envFrom */ -}}
+{{- $fullname := include "bjw-s.common.lib.chart.names.fullname" . -}}
+{{- $secretName := .Values.reporter.existingSecret | default $fullname -}}
+{{- if not .Values.reporter.existingSecret -}}
+  {{- $data := dict
+        "REPORTER_HA_TOKEN" (required "reporter.haToken (or reporter.existingSecret) is required" .Values.reporter.haToken)
+        "REPORTER_TN_HASH" (required "reporter.tnHash (or reporter.existingSecret) is required" .Values.reporter.tnHash) -}}
+  {{- with .Values.reporter.mqttPassword -}}
+    {{- $_ := set $data "REPORTER_MQTT_PASSWORD" . -}}
+  {{- end -}}
+  {{- $_ := mergeOverwrite .Values (dict "secrets" (dict "credentials" (dict "forceRename" $fullname "stringData" $data))) -}}
+{{- end -}}
+{{- $main := .Values.controllers.main.containers.main -}}
+{{- $_ := set $main "envFrom" (append ($main.envFrom | default list) (dict "secretRef" (dict "name" $secretName))) -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.generate" . }}

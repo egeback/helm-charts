@@ -1,0 +1,112 @@
+suite: ha-tn-reporter
+templates:
+  - templates/common.yaml
+release:
+  name: tn
+tests:
+  - it: fails without a Home Assistant token
+    set:
+      reporter.tnHash: test-hash
+    asserts:
+      - failedTemplate:
+          errorPattern: reporter\.haToken .* is required
+
+  - it: fails without a temperatur.nu hash
+    set:
+      reporter.haToken: test-token
+    asserts:
+      - failedTemplate:
+          errorPattern: reporter\.tnHash .* is required
+
+  - it: stores the credentials in a Secret loaded with envFrom
+    set:
+      reporter.haToken: test-token
+      reporter.tnHash: test-hash
+    asserts:
+      - equal:
+          path: stringData
+          value:
+            REPORTER_HA_TOKEN: test-token
+            REPORTER_TN_HASH: test-hash
+        documentSelector:
+          path: kind
+          value: Secret
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].envFrom
+          content:
+            secretRef:
+              name: tn
+        documentSelector:
+          path: kind
+          value: Deployment
+
+  - it: uses an existing Secret instead of creating one
+    set:
+      reporter.existingSecret: tn-credentials
+    asserts:
+      - hasDocuments:
+          count: 3
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].envFrom
+          content:
+            secretRef:
+              name: tn-credentials
+        documentSelector:
+          path: kind
+          value: Deployment
+
+  - it: runs from the data volume so state.json is kept
+    set:
+      reporter.existingSecret: tn-credentials
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[?(@.name == "main")].workingDir
+          value: /app/data
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].volumeMounts
+          content:
+            name: data
+            mountPath: /app/data
+      - contains:
+          path: spec.template.spec.volumes
+          content:
+            name: data
+            emptyDir: {}
+
+  - it: keeps state.json on a PVC when persistence is enabled
+    set:
+      reporter.existingSecret: tn-credentials
+      persistence.data.enabled: true
+    asserts:
+      - contains:
+          path: spec.template.spec.volumes
+          content:
+            name: data
+            persistentVolumeClaim:
+              claimName: tn
+        documentSelector:
+          path: kind
+          value: Deployment
+
+  - it: runs non-root with a read-only root filesystem and probes /health
+    set:
+      reporter.existingSecret: tn-credentials
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - equal:
+          path: spec.template.spec.securityContext.runAsUser
+          value: 1000
+      - equal:
+          path: spec.template.spec.containers[?(@.name == "main")].securityContext.readOnlyRootFilesystem
+          value: true
+      - equal:
+          path: spec.template.spec.containers[?(@.name == "main")].readinessProbe.httpGet
+          value:
+            path: /health
+            port: 8080
+            scheme: HTTP

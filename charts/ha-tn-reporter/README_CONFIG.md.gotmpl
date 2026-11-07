@@ -1,0 +1,33 @@
+{{- define "custom.custom.configuration.header" -}}
+## Custom configuration
+{{- end -}}
+
+{{- define "custom.custom.configuration" -}}
+{{ template "custom.custom.configuration.header" . }}
+
+[ha-to-tn-reporter](https://github.com/egeback/ha-to-tn-reporter) reads
+temperature sensors from Home Assistant and reports them to
+[temperatur.nu](https://www.temperatur.nu). Several sensors can feed one
+station; they are aggregated.
+
+```yaml
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          REPORTER_HA_URL: http://home-assistant.home.svc:8123
+          REPORTER_SENSOR_MAPPING: mystation=sensor.outside_north|sensor.outside_south
+
+reporter:
+  existingSecret: ha-tn-reporter   # keys: REPORTER_HA_TOKEN, REPORTER_TN_HASH
+
+persistence:
+  data:
+    enabled: true
+```
+
+Set `REPORTER_MQTT_HOST` to publish the reporter's state to Home Assistant via
+MQTT discovery. With MQTT enabled, `/health` (and so the probes) also requires
+a working MQTT connection.
+{{- end -}}
