@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 4.4.0
 description: "A self-hosted data logger for your Tesla 🚘"
 name: teslamate
-version: 2.1.12
+version: 2.2.0
 keywords:
   - teslamate
   - tesla
@@ -26,5 +26,9 @@ maintainers:
     email: marky@egeback.se
 annotations:
   artifacthub.io/changes: |2
-      - kind: changed
-        description: Update image tags or configuration in values.yaml
+      - kind: fixed
+        description: Container env was nested under image and never applied; DATABASE_*, MQTT_*, ENCRYPTION_KEY and TZ now reach TeslaMate.
+      - kind: fixed
+        description: DATABASE_USER rendered as a literal string; sidecars referenced non-existent DATABASE_HOST/MQTT_HOST paths and postgresPassword.
+      - kind: fixed
+        description: Chart failed to render with default values or with postgresql enabled (subchart values are now excluded from template evaluation).

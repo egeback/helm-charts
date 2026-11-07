@@ -5,6 +5,13 @@
 # https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
+global:
+  templateEvaluation:
+    # -- The postgresql subchart's values contain its own templates; leave them
+    # for the subchart instead of evaluating them against this chart.
+    excludePaths:
+      - [postgresql]
+
 controllers:
   main:
     containers:
@@ -17,31 +24,31 @@ controllers:
           tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
-          # -- environment variables. See [teslamate docs](https://docs.teslamate.org/docs/configuration/environment_variables) for more details.
-          # @default -- See below
-          env:
-            # -- Set the container timezone
-            TZ: UTC
-            # -- Postgres database hostname
-            DATABASE_HOST: '{{ include "bjw-s.common.lib.chart.names.fullname" .}}-postgresql'
-            # -- Postgres database user name
-            DATABASE_USER: '{{ "Values.postgresql.auth.username" | default "postgres" }}'
-            # -- Postgres database password
-            DATABASE_PASS: "{{ .Values.postgresql.auth.password }}"
-            # -- Postgres database password
-            DATABASE_NAME: "{{ .Values.postgresql.auth.database }}"
-            # -- Disables the MQTT feature if `true`
-            DISABLE_MQTT: "false"
-            # -- MQTT server host
-            MQTT_HOST: "mosquitto"
-            # -- MQTT server port
-            MQTT_PORT: 1883
-            # -- MQTT username
-            # MQTT_USERNAME:
-            # -- MQTT password
-            # MQTT_PASSWORD:
-            # -- Teslamate encryption key
-            ENCRYPTION_KEY: "MySuperSecretEncryptionKey"
+        # -- environment variables. See [teslamate docs](https://docs.teslamate.org/docs/configuration/environment_variables) for more details.
+        # @default -- See below
+        env:
+          # -- Set the container timezone
+          TZ: UTC
+          # -- Postgres database hostname
+          DATABASE_HOST: '{{ include "bjw-s.common.lib.chart.names.fullname" .}}-postgresql'
+          # -- Postgres database user name
+          DATABASE_USER: '{{ .Values.postgresql.auth.username | default "postgres" }}'
+          # -- Postgres database password
+          DATABASE_PASS: "{{ .Values.postgresql.auth.password }}"
+          # -- Postgres database password
+          DATABASE_NAME: "{{ .Values.postgresql.auth.database }}"
+          # -- Disables the MQTT feature if `true`
+          DISABLE_MQTT: "false"
+          # -- MQTT server host
+          MQTT_HOST: "mosquitto"
+          # -- MQTT server port
+          MQTT_PORT: 1883
+          # -- MQTT username
+          # MQTT_USERNAME:
+          # -- MQTT password
+          # MQTT_PASSWORD:
+          # -- Teslamate encryption key
+          ENCRYPTION_KEY: "MySuperSecretEncryptionKey"
       teslamateapi:
         enabled: false
         name: teslamateapi
@@ -52,10 +59,10 @@ controllers:
         env:
           ENCRYPTION_KEY: "{{ .Values.controllers.main.containers.main.env.ENCRYPTION_KEY }}"
           DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
-          DATABASE_PASS: "{{ .Values.postgresql.auth.postgresPassword }}"
+          DATABASE_PASS: "{{ .Values.postgresql.auth.password }}"
           DATABASE_NAME: "{{ .Values.postgresql.auth.database }}"
-          DATABASE_HOST: "{{ .Values.controllers.main.containers.main.DATABASE_HOST }}"
-          MQTT_HOST: "{{ .Values.controllers.main.containers.main.MQTT_HOST }}"
+          DATABASE_HOST: '{{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgresql'
+          MQTT_HOST: "{{ .Values.controllers.main.containers.main.env.MQTT_HOST }}"
           # -- MQTT username
           # MQTT_USERNAME:
           # -- MQTT password
@@ -69,9 +76,9 @@ controllers:
           tag: v1.23.0
         env:
           DATABASE_USER: "{{ .Values.postgresql.auth.username }}"
-          DATABASE_PASS: "{{ .Values.postgresql.auth.postgresPassword }}"
+          DATABASE_PASS: "{{ .Values.postgresql.auth.password }}"
           DATABASE_NAME: "{{ .Values.postgresql.auth.database }}"
-          DATABASE_HOST: "{{ .Values.controllers.main.containers.main.env.DATABASE_HOST }}"
+          DATABASE_HOST: '{{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgresql'
           TeslaMate__UpdateIntervalSeconds: 300
           TeslaMate__GeofenceId: 1
           TeslaMate__EnergyProvider: Tibber
@@ -87,8 +94,8 @@ controllers:
         env:
           MQTT_SERVER: "{{ .Values.controllers.main.containers.main.env.MQTT_HOST }}"
           MQTT_PORT: '{{ .Values.controllers.main.containers.main.env.MQTT_PORT }}'
-          MQTT_PASSWORD: '{{ .Values.controllers.main.containers.main.env.MQTT_PASSWORD }}'
-          MQTT_USERNAME: '{{ .Values.controllers.main.containers.main.env.MQTT_USERNAME }}'
+          MQTT_PASSWORD: '{{ dig "MQTT_PASSWORD" "" .Values.controllers.main.containers.main.env }}'
+          MQTT_USERNAME: '{{ dig "MQTT_USERNAME" "" .Values.controllers.main.containers.main.env }}'
           CAR_NUMBER: 2
           CAR_MODEL: tesla:my:19:bt37:awd  # Tesla Model Y Longrange https://api.iternio.com/1/tlm/get_carmodels_list
           USER_TOKEN: y0ur-4p1-k3y
