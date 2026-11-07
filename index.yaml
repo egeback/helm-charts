@@ -1592,6 +1592,36 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/go2rtc-1.0.0/go2rtc-1.0.0.tgz
     version: 1.0.0
+  ha-tn-reporter:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: added
+            description: Initial version
+    apiVersion: v2
+    appVersion: 1.4.11
+    created: "2026-11-07T08:22:54.89233673Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: Reports Home Assistant temperature sensors to temperatur.nu
+    digest: f9866aa77eca51ba7ff2cf262040cbd70c9427ecc82d5f46a1734f93a03781a7
+    home: https://github.com/egeback/helm-charts/tree/main/charts/ha-tn-reporter
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    - temperatur.nu
+    - temperature
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: ha-tn-reporter
+    sources:
+    - https://github.com/egeback/ha-to-tn-reporter
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/ha-tn-reporter-1.0.0/ha-tn-reporter-1.0.0.tgz
+    version: 1.0.0
   heimdall:
   - annotations:
       artifacthub.io/changes: |2
@@ -4991,4 +5021,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/zwave-js-ui-1.0.0/zwave-js-ui-1.0.0.tgz
     version: 1.0.0
-generated: "2026-11-07T08:22:37.170077571Z"
+generated: "2026-11-07T08:22:54.892500243Z"
