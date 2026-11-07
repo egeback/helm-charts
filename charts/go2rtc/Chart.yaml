@@ -1,0 +1,29 @@
+---
+apiVersion: v2
+# renovate: datasource=docker depName=alexxit/go2rtc
+appVersion: 1.9.15
+description: Camera streaming application (RTSP, WebRTC, HomeKit, MSE) for Home Assistant and Frigate
+name: go2rtc
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - go2rtc
+  - camera
+  - webrtc
+  - rtsp
+  - home-assistant
+home: https://github.com/egeback/helm-charts/tree/main/charts/go2rtc
+icon: https://raw.githubusercontent.com/AlexxIT/go2rtc/master/website/images/logo.png
+sources:
+  - https://github.com/AlexxIT/go2rtc
+maintainers:
+  - name: egeback
+    email: marky@egeback.se
+dependencies:
+  - name: common
+    repository: https://bjw-s-labs.github.io/helm-charts
+    version: 5.3.0
+annotations:
+  artifacthub.io/changes: |2
+      - kind: added
+        description: Initial version

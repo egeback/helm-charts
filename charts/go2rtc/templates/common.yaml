@@ -1,0 +1,35 @@
+---
+{{- include "bjw-s.common.loader.init" . }}
+
+{{- define "app-template.hardcodedValues" -}}
+# Set the nameOverride based on the release name if no override has been set
+{{ if not .Values.global.nameOverride }}
+global:
+  nameOverride: "{{ .Release.Name }}"
+{{ end }}
+{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
+
+{{- /* go2rtc.yaml from .Values.config. Stream URLs are left as written (no template evaluation). */ -}}
+{{- $excludePaths := concat (dig "templateEvaluation" "excludePaths" list .Values.global) (list (list "config") (list "configMaps" "go2rtc")) -}}
+{{- $extra := dict
+      "global" (dict "templateEvaluation" (dict "excludePaths" $excludePaths))
+      "configMaps" (dict "go2rtc" (dict "data" (dict "go2rtc.yaml" (toYaml .Values.config)))) -}}
+{{- if .Values.persistence.config.enabled -}}
+  {{- /* Seed the persistent /config once, so edits made in the web UI are kept */ -}}
+  {{- $_ := set $extra "persistence" (dict "seed" (dict
+        "type" "configMap" "identifier" "go2rtc"
+        "advancedMounts" (dict "main" (dict "seed" (list (dict "path" "/seed" "readOnly" true)))))) -}}
+  {{- $main := .Values.controllers.main.containers.main -}}
+  {{- $_ := set $extra "controllers" (dict "main" (dict "initContainers" (dict "seed" (dict
+        "image" $main.image
+        "command" (list "sh" "-c" "[ -f /config/go2rtc.yaml ] || cp /seed/go2rtc.yaml /config/go2rtc.yaml"))))) -}}
+{{- else -}}
+  {{- $_ := set $extra "persistence" (dict "go2rtc" (dict
+        "type" "configMap" "identifier" "go2rtc"
+        "globalMounts" (list (dict "path" "/config/go2rtc.yaml" "subPath" "go2rtc.yaml" "readOnly" true)))) -}}
+{{- end -}}
+{{- $_ := mergeOverwrite .Values $extra -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.generate" . }}
