@@ -1,0 +1,11 @@
+{{- include "egeback.common.lib.chart.notes" . }}
+
+Home Assistant: enable the WebSocket server in zwave-js-ui (Settings → Home Assistant)
+and add the Z-Wave integration with ws://{{ include "bjw-s.common.lib.chart.names.fullname" . }}.{{ .Release.Namespace }}.svc:3000
+{{- if .Values.device.hostPath }}
+
+The stick {{ .Values.device.hostPath }} is mounted at /dev/zwave; select that path under Settings → Z-Wave.
+{{- else }}
+
+No USB stick is mounted (device.hostPath is empty); use a network-attached controller (tcp://host:port).
+{{- end }}

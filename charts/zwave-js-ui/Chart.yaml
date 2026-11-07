@@ -1,0 +1,28 @@
+---
+apiVersion: v2
+# renovate: datasource=docker depName=zwavejs/zwave-js-ui
+appVersion: 11.25.2
+description: Z-Wave control panel and Z-Wave JS server for Home Assistant
+name: zwave-js-ui
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - zwave
+  - z-wave
+  - zwave-js
+  - home-assistant
+home: https://github.com/egeback/helm-charts/tree/main/charts/zwave-js-ui
+icon: https://raw.githubusercontent.com/zwave-js/zwave-js-ui/master/public/logo.svg
+sources:
+  - https://github.com/zwave-js/zwave-js-ui
+maintainers:
+  - name: egeback
+    email: marky@egeback.se
+dependencies:
+  - name: common
+    repository: https://bjw-s-labs.github.io/helm-charts
+    version: 5.3.0
+annotations:
+  artifacthub.io/changes: |2
+      - kind: added
+        description: Initial version

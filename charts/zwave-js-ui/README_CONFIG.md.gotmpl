@@ -1,0 +1,45 @@
+{{- define "custom.custom.configuration.header" -}}
+## Custom configuration
+{{- end -}}
+
+{{- define "custom.custom.configuration" -}}
+{{ template "custom.custom.configuration.header" . }}
+
+### The Z-Wave controller
+
+**USB stick on a node:** set `device.hostPath` to the stick's
+`/dev/serial/by-id/...` path (not `/dev/ttyUSBx`, which can change) and pin
+the pod to that node. The stick is mounted at `/dev/zwave`; select that path
+under Settings → Z-Wave → Serial port. Device access needs a privileged
+container, which the chart enables when `device.hostPath` is set.
+
+```yaml
+device:
+  hostPath: /dev/serial/by-id/usb-0658_0200-if00
+
+defaultPodOptions:
+  nodeSelector:
+    kubernetes.io/hostname: node-with-the-stick
+```
+
+**Network-attached controller:** leave `device.hostPath` empty and enter
+`tcp://host:port` (e.g. ser2net or an Ethernet/Wi-Fi Z-Wave bridge) as the
+serial port. The pod then runs unprivileged and can be scheduled anywhere.
+
+### Home Assistant
+
+Enable the WebSocket server under Settings → Home Assistant (port 3000), then
+add the Z-Wave integration in Home Assistant with
+`ws://<release>.<namespace>.svc:3000`.
+
+### Store and secrets
+
+`persistence.store` holds the settings, the network security keys (S0/S2) and
+the node cache. It is enabled by default: losing it means re-including every
+device. Back it up.
+
+`SESSION_SECRET` is generated on install and reused on upgrades by reading the
+existing Secret (`lookup`). Tools that render with `helm template`, such as
+Argo CD, cannot look it up and would create a new one on every sync; set
+`sessionSecret` or `existingSecret` there.
+{{- end -}}

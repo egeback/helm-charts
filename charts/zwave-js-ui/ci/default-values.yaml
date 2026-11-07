@@ -1,0 +1,2 @@
+---
+# Default values: no USB stick in CI, the UI and /health still come up
