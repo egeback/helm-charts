@@ -4927,4 +4927,35 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-11-07T08:22:02.36840744Z"
+  zwave-js-ui:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: added
+            description: Initial version
+    apiVersion: v2
+    appVersion: 11.25.2
+    created: "2026-11-07T08:22:21.04763902Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: Z-Wave control panel and Z-Wave JS server for Home Assistant
+    digest: 2a66dae87e832ac403459671cdcd82c5d26a0ebede75dfffad136142fe3e99ca
+    home: https://github.com/egeback/helm-charts/tree/main/charts/zwave-js-ui
+    icon: https://raw.githubusercontent.com/zwave-js/zwave-js-ui/master/public/logo.svg
+    keywords:
+    - zwave
+    - z-wave
+    - zwave-js
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: zwave-js-ui
+    sources:
+    - https://github.com/zwave-js/zwave-js-ui
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/zwave-js-ui-1.0.0/zwave-js-ui-1.0.0.tgz
+    version: 1.0.0
+generated: "2026-11-07T08:22:21.047790806Z"
