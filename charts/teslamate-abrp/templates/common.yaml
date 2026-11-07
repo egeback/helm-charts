@@ -1,0 +1,27 @@
+---
+{{- include "bjw-s.common.loader.init" . }}
+
+{{- define "app-template.hardcodedValues" -}}
+# Set the nameOverride based on the release name if no override has been set
+{{ if not .Values.global.nameOverride }}
+global:
+  nameOverride: "{{ .Release.Name }}"
+{{ end }}
+{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
+
+{{- /* Credentials: a Secret from abrp.* unless abrp.existingSecret is set, loaded with envFrom */ -}}
+{{- $fullname := include "bjw-s.common.lib.chart.names.fullname" . -}}
+{{- $secretName := .Values.abrp.existingSecret | default $fullname -}}
+{{- if not .Values.abrp.existingSecret -}}
+  {{- $data := dict "USER_TOKEN" (required "abrp.userToken (or abrp.existingSecret) is required" .Values.abrp.userToken) -}}
+  {{- with .Values.abrp.mqttPassword -}}
+    {{- $_ := set $data "MQTT_PASSWORD" . -}}
+  {{- end -}}
+  {{- $_ := mergeOverwrite .Values (dict "secrets" (dict "credentials" (dict "forceRename" $fullname "stringData" $data))) -}}
+{{- end -}}
+{{- $main := .Values.controllers.main.containers.main -}}
+{{- $_ := set $main "envFrom" (append ($main.envFrom | default list) (dict "secretRef" (dict "name" $secretName))) -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.generate" . }}

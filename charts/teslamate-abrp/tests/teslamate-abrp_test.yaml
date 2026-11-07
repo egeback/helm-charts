@@ -1,0 +1,80 @@
+suite: teslamate-abrp
+templates:
+  - templates/common.yaml
+release:
+  name: abrp
+tests:
+  - it: fails without a user token or existingSecret
+    asserts:
+      - failedTemplate:
+          errorPattern: abrp\.userToken .* is required
+
+  - it: stores the credentials in a Secret
+    set:
+      abrp.userToken: test-token
+      abrp.mqttPassword: test-mqtt-password
+    asserts:
+      - hasDocuments:
+          count: 3
+      - equal:
+          path: stringData
+          value:
+            USER_TOKEN: test-token
+            MQTT_PASSWORD: test-mqtt-password
+        documentSelector:
+          path: kind
+          value: Secret
+      - equal:
+          path: metadata.name
+          value: abrp
+        documentSelector:
+          path: kind
+          value: Secret
+
+  - it: leaves MQTT_PASSWORD out when it is not set
+    set:
+      abrp.userToken: test-token
+    asserts:
+      - equal:
+          path: stringData
+          value:
+            USER_TOKEN: test-token
+        documentSelector:
+          path: kind
+          value: Secret
+
+  - it: loads the credentials into the container
+    set:
+      abrp.userToken: test-token
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].envFrom
+          content:
+            secretRef:
+              name: abrp
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].env
+          content:
+            name: MQTT_SERVER
+            value: mosquitto
+      - matchRegex:
+          path: spec.template.spec.containers[?(@.name == "main")].image
+          pattern: ^fetzu/teslamate-abrp:\d+\.\d+\.\d+$
+
+  - it: uses an existing Secret instead of creating one
+    set:
+      abrp.existingSecret: abrp-credentials
+    asserts:
+      - hasDocuments:
+          count: 2
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].envFrom
+          content:
+            secretRef:
+              name: abrp-credentials
+        documentSelector:
+          path: kind
+          value: Deployment

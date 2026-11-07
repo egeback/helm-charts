@@ -1,0 +1,27 @@
+---
+apiVersion: v2
+# renovate: datasource=docker depName=fetzu/teslamate-abrp
+appVersion: 4.0.2
+description: Sends TeslaMate data from MQTT to A Better Route Planner (ABRP)
+name: teslamate-abrp
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - teslamate
+  - abrp
+  - tesla
+home: https://github.com/egeback/helm-charts/tree/main/charts/teslamate-abrp
+icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+sources:
+  - https://github.com/fetzu/teslamate-abrp
+maintainers:
+  - name: egeback
+    email: marky@egeback.se
+dependencies:
+  - name: common
+    repository: https://bjw-s-labs.github.io/helm-charts
+    version: 5.3.0
+annotations:
+  artifacthub.io/changes: |2
+      - kind: added
+        description: Initial version

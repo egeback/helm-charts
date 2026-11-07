@@ -1,0 +1,18 @@
+---
+# CI only: a local broker in the same pod so the bridge has something to connect to
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          MQTT_SERVER: localhost
+      mosquitto:
+        image:
+          repository: eclipse-mosquitto
+          tag: "2.0.22"
+        # No config file: mosquitto 2 then runs in local-only mode on localhost:1883,
+        # which is all the bridge in the same pod needs
+        command: [/usr/sbin/mosquitto]
+
+abrp:
+  userToken: ct-install-only

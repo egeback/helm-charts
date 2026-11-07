@@ -1,0 +1,30 @@
+{{- define "custom.custom.configuration.header" -}}
+## Custom configuration
+{{- end -}}
+
+{{- define "custom.custom.configuration" -}}
+{{ template "custom.custom.configuration.header" . }}
+
+teslamate-abrp subscribes to TeslaMate's MQTT topics and forwards the car's
+state to [A Better Route Planner](https://abetterrouteplanner.com). It has no
+web UI or port. Point it at the same broker TeslaMate publishes to and give it
+your ABRP user token:
+
+```yaml
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          MQTT_SERVER: mosquitto.home.svc
+          CAR_NUMBER: "1"
+          CAR_MODEL: tesla:my:19:bt37:awd
+
+abrp:
+  existingSecret: teslamate-abrp   # keys: USER_TOKEN, optionally MQTT_PASSWORD
+```
+
+The [teslamate](https://github.com/egeback/helm-charts/tree/main/charts/teslamate)
+chart can also run the bridge as a sidecar; use this chart when TeslaMate is
+deployed separately.
+{{- end -}}
