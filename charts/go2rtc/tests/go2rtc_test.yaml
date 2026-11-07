@@ -1,0 +1,104 @@
+suite: go2rtc
+templates:
+  - templates/common.yaml
+release:
+  name: go2rtc
+tests:
+  - it: renders go2rtc.yaml from the config value
+    set:
+      config.streams.front_door: rtsp://user:password@192.168.1.30:554/stream1
+    documentSelector:
+      path: kind
+      value: ConfigMap
+    asserts:
+      - matchRegex:
+          path: data["go2rtc.yaml"]
+          pattern: "front_door: rtsp://user:password@192\\.168\\.1\\.30:554/stream1"
+      - matchRegex:
+          path: data["go2rtc.yaml"]
+          pattern: "listen: :1984"
+
+  - it: leaves template-like strings in the config untouched
+    set:
+      config.streams.cam: "ffmpeg:{{ not a template }}#video=h264"
+    documentSelector:
+      path: kind
+      value: ConfigMap
+    asserts:
+      - matchRegex:
+          path: data["go2rtc.yaml"]
+          pattern: "\\{\\{ not a template \\}\\}"
+
+  - it: mounts the config read-only without persistence
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].volumeMounts
+          content:
+            name: go2rtc
+            mountPath: /config/go2rtc.yaml
+            subPath: go2rtc.yaml
+            readOnly: true
+      - notExists:
+          path: spec.template.spec.initContainers
+
+  - it: seeds a persistent /config once with persistence
+    set:
+      persistence.config.enabled: true
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - equal:
+          path: spec.template.spec.initContainers[0].command
+          value: ["sh", "-c", "[ -f /config/go2rtc.yaml ] || cp /seed/go2rtc.yaml /config/go2rtc.yaml"]
+      - contains:
+          path: spec.template.spec.initContainers[0].volumeMounts
+          content:
+            name: config
+            mountPath: /config
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].volumeMounts
+          content:
+            name: config
+            mountPath: /config
+      - notContains:
+          path: spec.template.spec.containers[?(@.name == "main")].volumeMounts
+          content:
+            name: seed
+            mountPath: /seed
+            readOnly: true
+
+  - it: exposes the API, RTSP and WebRTC over TCP and UDP
+    documentSelector:
+      path: kind
+      value: Service
+    asserts:
+      - contains:
+          path: spec.ports
+          content:
+            name: webrtc-udp
+            port: 8555
+            protocol: UDP
+            targetPort: 8555
+      - contains:
+          path: spec.ports
+          content:
+            name: rtsp
+            port: 8554
+            protocol: TCP
+            targetPort: 8554
+
+  - it: probes the API
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[?(@.name == "main")].readinessProbe.httpGet
+          value:
+            path: /api
+            port: 1984
+            scheme: HTTP

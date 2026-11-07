@@ -1,0 +1,45 @@
+{{- define "custom.custom.configuration.header" -}}
+## Custom configuration
+{{- end -}}
+
+{{- define "custom.custom.configuration" -}}
+{{ template "custom.custom.configuration.header" . }}
+
+### Streams and go2rtc.yaml
+
+`config` becomes `/config/go2rtc.yaml`. Without `persistence.config` the file
+is mounted read-only from a ConfigMap, so the values file is the only source
+of truth and edits in the web UI are not saved. With `persistence.config`
+enabled, the file is copied to the volume only if it does not exist yet; after
+that the web UI (and go2rtc itself) own it.
+
+```yaml
+config:
+  streams:
+    front_door: rtsp://user:password@192.168.1.30:554/stream1
+  webrtc:
+    listen: ":8555"
+    candidates:
+      - 192.168.1.20:8555
+      - stun:8555
+```
+
+Keep camera passwords out of the values file by referencing env vars
+(`rtsp://user:${CAMERA_PASSWORD}@...`, supported by go2rtc) and loading them
+from a Secret with `controllers.main.containers.main.envFrom`.
+
+### Networking
+
+WebRTC needs a UDP/TCP address that clients can reach on port 8555, and
+HomeKit and some cameras rely on multicast. Two ways to get that:
+
+- `defaultPodOptions.hostNetwork: true` (and `dnsPolicy: ClusterFirstWithHostNet`),
+  the setup the go2rtc docs recommend.
+- A `LoadBalancer` Service (`service.main.type: LoadBalancer`) with that IP in
+  `config.webrtc.candidates`.
+
+### Hardware transcoding
+
+Use the `<version>-hardware` image tag (amd64) and mount the GPU, e.g.
+`/dev/dri` through a `hostPath` persistence item, or use a device plugin.
+{{- end -}}

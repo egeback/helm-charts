@@ -1,0 +1,6 @@
+{{- include "egeback.common.lib.chart.notes" . }}
+{{- if not .Values.persistence.config.enabled }}
+
+go2rtc.yaml comes from the `config` value and is mounted read-only: changes made
+in the web UI are not saved. Enable persistence.config to keep them.
+{{- end }}

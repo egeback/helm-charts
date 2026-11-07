@@ -1,0 +1,97 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from the bjw-s common library chart. You can check the default values/options here:
+# https://github.com/bjw-s-labs/helm-charts/blob/main/charts/library/common/values.yaml
+#
+
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: alexxit/go2rtc
+          # -- image tag. Use `<version>-hardware` for Intel/AMD/NVIDIA transcoding (amd64)
+          # @default -- chart.appVersion
+          tag: "{{ .Chart.AppVersion }}"
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+
+        # -- environment variables
+        # @default -- See below
+        env:
+          # -- Set the container timezone (used in logs)
+          TZ: UTC
+
+        # -- Probes against the API
+        # @default -- See values.yaml
+        probes:
+          startup:
+            enabled: true
+            type: HTTP
+            path: /api
+            spec:
+              periodSeconds: 5
+              failureThreshold: 30
+          readiness:
+            enabled: true
+            type: HTTP
+            path: /api
+          liveness:
+            enabled: true
+            type: HTTP
+            path: /api
+
+# -- go2rtc.yaml, see the [go2rtc configuration](https://github.com/AlexxIT/go2rtc#configuration).
+#    Without `persistence.config` it is mounted read-only (edits in the web UI are not saved);
+#    with it, it seeds /config/go2rtc.yaml only when the file does not exist yet.
+# @default -- See values.yaml
+config:
+  api:
+    listen: ":1984"
+  rtsp:
+    listen: ":8554"
+  webrtc:
+    listen: ":8555"
+    # -- Addresses clients can reach go2rtc on for WebRTC, e.g. the node or LoadBalancer IP
+    # candidates:
+    #   - 192.168.1.20:8555
+    #   - stun:8555
+  streams: {}
+    # front_door: rtsp://user:password@192.168.1.30:554/stream1
+
+# -- Configures service settings for the chart.
+# @default -- See values.yaml
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 1984
+      rtsp:
+        port: 8554
+      webrtc-tcp:
+        port: 8555
+        protocol: TCP
+      webrtc-udp:
+        port: 8555
+        protocol: UDP
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: false
+
+# -- Configure persistence settings for the chart under this key.
+# @default -- See values.yaml
+persistence:
+  # -- /config, so changes made in the web UI survive restarts
+  config:
+    enabled: false
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 64Mi
+    globalMounts:
+      - path: /config
