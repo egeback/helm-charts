@@ -3351,6 +3351,42 @@ entries:
   teslamate:
   - annotations:
       artifacthub.io/changes: |2
+          - kind: fixed
+            description: Container env was nested under image and never applied; DATABASE_*, MQTT_*, ENCRYPTION_KEY and TZ now reach TeslaMate.
+          - kind: fixed
+            description: DATABASE_USER rendered as a literal string; sidecars referenced non-existent DATABASE_HOST/MQTT_HOST paths and postgresPassword.
+          - kind: fixed
+            description: Chart failed to render with default values or with postgresql enabled (subchart values are now excluded from template evaluation).
+    apiVersion: v2
+    appVersion: 4.4.0
+    created: "2026-11-07T06:43:38.079392388Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.5
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 510afde0eff189e5c61b8c11c50c4d2689cad42513616166e8a3f7b883930ee6
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-2.2.0/teslamate-2.2.0.tgz
+    version: 2.2.0
+  - annotations:
+      artifacthub.io/changes: |2
           - kind: changed
             description: Update image tags or configuration in values.yaml
     apiVersion: v2
@@ -4527,4 +4563,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-11-06T09:58:11.18120536Z"
+generated: "2026-11-07T06:43:38.079787775Z"
