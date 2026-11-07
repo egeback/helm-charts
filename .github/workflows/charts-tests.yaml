@@ -129,7 +129,7 @@ jobs:
           # Helm 4 verifies plugins by default; the git source has no provenance
           helm plugin install https://github.com/helm-unittest/helm-unittest --version v1.2.1 --verify=false
           helm dep update "charts/${{ matrix.chart }}"
-          helm unittest --color -f "tests/**/*_test.yaml" "charts/${{ matrix.chart }}"
+          helm unittest -f "tests/**/*_test.yaml" "charts/${{ matrix.chart }}"
 
   # Summarize matrix https://github.community/t/status-check-for-a-matrix-jobs/127354/7
   unittest_success:
