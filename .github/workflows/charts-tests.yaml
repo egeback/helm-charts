@@ -60,6 +60,8 @@ jobs:
         uses: nolar/setup-k3d-k3s@v1
         with:
           version: ${{ matrix.k3s_version }}
+          # Unauthenticated release lookups hit the shared-runner API rate limit (403)
+          github-token: ${{ github.token }}
 
       - name: Remove node taints
         run: |

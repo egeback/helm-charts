@@ -1,6 +1,10 @@
 ---
-env:
-  DISABLE_MQTT: "true"
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          DISABLE_MQTT: "true"
 
 postgresql:
   enabled: true
