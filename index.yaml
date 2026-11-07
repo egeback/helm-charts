@@ -4372,6 +4372,36 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/teslamate-2.0.12/teslamate-2.0.12.tgz
     version: 2.0.12
+  teslamate-abrp:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: added
+            description: Initial version
+    apiVersion: v2
+    appVersion: 4.0.2
+    created: "2026-11-07T08:23:16.783042058Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: Sends TeslaMate data from MQTT to A Better Route Planner (ABRP)
+    digest: 76127453e0df54a6eb0e899fe62142630cd8b2cc7166dfb1409b57e8be58eafc
+    home: https://github.com/egeback/helm-charts/tree/main/charts/teslamate-abrp
+    icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+    keywords:
+    - teslamate
+    - abrp
+    - tesla
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate-abrp
+    sources:
+    - https://github.com/fetzu/teslamate-abrp
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-abrp-1.0.0/teslamate-abrp-1.0.0.tgz
+    version: 1.0.0
   unifi:
   - annotations:
       artifacthub.io/changes: |2
@@ -5021,4 +5051,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/zwave-js-ui-1.0.0/zwave-js-ui-1.0.0.tgz
     version: 1.0.0
-generated: "2026-11-07T08:22:54.892500243Z"
+generated: "2026-11-07T08:23:16.783362144Z"
