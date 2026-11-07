@@ -114,7 +114,7 @@ mariadb:
     repository: docker.io/library/mariadb
     # -- Keep to a MariaDB LTS series Home Assistant supports (10.11, 11.4, 11.8, 12.3)
     # renovate: datasource=docker depName=mariadb
-    tag: 12.3.3
+    tag: 13.0.2
   auth:
     database: homeassistant
     username: homeassistant
