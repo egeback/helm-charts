@@ -1595,6 +1595,37 @@ entries:
   ha-tn-reporter:
   - annotations:
       artifacthub.io/changes: |2
+          - kind: changed
+            description: Upgrade application to 1.4.12, which keeps state.json in REPORTER_STATE_FILE (/data/state.json).
+          - kind: changed
+            description: persistence.data is mounted at /data instead of running from /app/data (workingDir removed).
+    apiVersion: v2
+    appVersion: 1.4.12
+    created: "2026-11-07T13:56:13.792740103Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: Reports Home Assistant temperature sensors to temperatur.nu
+    digest: 47714714587d250095003b1d5e38e397f7663a5bacd990f3096b2094fcd80ac7
+    home: https://github.com/egeback/helm-charts/tree/main/charts/ha-tn-reporter
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    - temperatur.nu
+    - temperature
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: ha-tn-reporter
+    sources:
+    - https://github.com/egeback/ha-to-tn-reporter
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/ha-tn-reporter-1.1.0/ha-tn-reporter-1.1.0.tgz
+    version: 1.1.0
+  - annotations:
+      artifacthub.io/changes: |2
           - kind: added
             description: Initial version
     apiVersion: v2
@@ -5051,4 +5082,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/zwave-js-ui-1.0.0/zwave-js-ui-1.0.0.tgz
     version: 1.0.0
-generated: "2026-11-07T08:23:16.783362144Z"
+generated: "2026-11-07T13:56:13.792990361Z"
