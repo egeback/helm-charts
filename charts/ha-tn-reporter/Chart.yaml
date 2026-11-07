@@ -24,4 +24,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |2
       - kind: changed
-        description: Update application to 1.4.12
+        description: Update image tags or configuration in values.yaml
