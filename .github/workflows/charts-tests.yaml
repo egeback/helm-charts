@@ -19,7 +19,8 @@ on:
         default: '[]'
 
 env:
-  HELM_VERSION: 3.22.1
+  # renovate: datasource=github-releases depName=helm/helm
+  HELM_VERSION: 4.3.1
 
 jobs:
   install-chart:
@@ -125,7 +126,8 @@ jobs:
             echo "No unit tests for ${{ matrix.chart }}"
             exit 0
           fi
-          helm plugin install https://github.com/helm-unittest/helm-unittest --version v1.2.1
+          # Helm 4 verifies plugins by default; the git source has no provenance
+          helm plugin install https://github.com/helm-unittest/helm-unittest --version v1.2.1 --verify=false
           helm dep update "charts/${{ matrix.chart }}"
           helm unittest --color -f "tests/**/*_test.yaml" "charts/${{ matrix.chart }}"
 

@@ -24,6 +24,17 @@
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[^\\s]+?) depName=(?<depName>[^\\s]+?)(?:\\s+versioning=(?<versioning>[^\\s]+?))?\\s+tag:\\s*[\"']?(?<currentValue>[^\\s\"']+)[\"']?"
       ]
+    },
+    {
+      "customType": "regex",
+      "description": "Helm version used in the chart CI",
+      "managerFilePatterns": [
+        "/(^|/)\\.github/workflows/[^/]+\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[^\\s]+?) depName=(?<depName>[^\\s]+?)\\s+HELM_VERSION:\\s*[\"']?(?<currentValue>[^\\s\"']+)[\"']?"
+      ],
+      "extractVersionTemplate": "^v?(?<version>.*)$"
     }
   ],
   "packageRules": [
