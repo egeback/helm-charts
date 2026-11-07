@@ -30,6 +30,25 @@ images within MariaDB 12.3 and PostgreSQL 18; moving to a new PostgreSQL major
 needs a dump and restore. The password is embedded in `RECORDER_DB_URL`, so it
 must be URL-safe.
 
+### InfluxDB
+
+The chart no longer bundles InfluxDB. Run it as its own release, for example
+with InfluxData's chart, pinning the image to a current 2.x release (the
+chart's default image is older):
+
+```bash
+helm repo add influxdata https://helm.influxdata.com
+helm install influxdb influxdata/influxdb2 --set image.tag=2.9.1
+```
+
+Then configure Home Assistant's [InfluxDB integration](https://www.home-assistant.io/integrations/influxdb/)
+against that service (`api_version: 2`, organization, bucket and token).
+
+**Upgrading from 3.x:** the `influxdb` values were removed together with the
+Bitnami subchart. An existing InfluxDB release from the subchart is deleted on
+upgrade; export its data first (`influx backup`) and restore it into the new
+release.
+
 **Upgrading from 2.x:** the Bitnami `mariadb` and `postgresql` subcharts were
 removed (Bitnami's free images are only published as `latest`). Their values
 and data layout are not compatible; dump the database before upgrading and

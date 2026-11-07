@@ -5,13 +5,6 @@
 # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
 #
 
-global:
-  templateEvaluation:
-    # -- The influxdb subchart's values contain its own templates; leave them
-    # for the subchart instead of evaluating them against this chart.
-    excludePaths:
-      - [influxdb]
-
 controllers:
   main:
     containers:
@@ -151,19 +144,6 @@ postgresql:
     # -- StorageClass for the data volume ("-" for none, empty for the cluster default)
     storageClass: ""
   resources: {}
-
-# -- Enable and configure influxdb database subchart under this key.
-#    For more options see [influxdb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/influxdb)
-# @default -- See values.yaml
-influxdb:
-  enabled: false
-  architecture: standalone
-  database: home_assistant
-  authEnabled: false
-  persistence:
-    enabled: false
-    # storageClass: ""
-    # size: 8Gi
 
 metrics:
   # -- Enable and configure a Prometheus serviceMonitor for the chart under this key.
