@@ -3159,6 +3159,38 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/home-assistant-2.0.2/home-assistant-2.0.2.tgz
     version: 2.0.2
+  matterjs-server:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: added
+            description: Initial version
+    apiVersion: v2
+    appVersion: 1.5.5
+    created: "2026-11-07T08:22:02.368078693Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: Open Home Foundation Matter Server (matter.js) for Home Assistant,
+      the successor of python-matter-server
+    digest: 4c23c7275577d9a93ed1a15487b1bc47d0132c70b6b584125cb979aa5a1624c4
+    home: https://github.com/egeback/helm-charts/tree/main/charts/matterjs-server
+    icon: https://raw.githubusercontent.com/matter-js/matterjs-server/main/docs/matter_logo.svg
+    keywords:
+    - matter
+    - thread
+    - home-assistant
+    - matter-server
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: matterjs-server
+    sources:
+    - https://github.com/matter-js/matterjs-server
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/matterjs-server-1.0.0/matterjs-server-1.0.0.tgz
+    version: 1.0.0
   node-red:
   - annotations:
       artifacthub.io/changes: |2
@@ -4895,4 +4927,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-11-07T07:40:15.914894309Z"
+generated: "2026-11-07T08:22:02.36840744Z"
