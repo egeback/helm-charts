@@ -1,6 +1,6 @@
 # ha-tn-reporter
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: 1.4.11](https://img.shields.io/badge/AppVersion-1.4.11-informational?style=flat-square)
+![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![AppVersion: 1.4.12](https://img.shields.io/badge/AppVersion-1.4.12-informational?style=flat-square)
 
 Reports Home Assistant temperature sensors to temperatur.nu
 
@@ -33,6 +33,7 @@ Kubernetes: `>=1.16.0-0`
 | controllers.main.containers.main.env.REPORTER_INTERVAL | string | `"180"` | Seconds between reports |
 | controllers.main.containers.main.env.REPORTER_MQTT_HOST | string | `""` | MQTT broker for Home Assistant discovery; empty disables MQTT |
 | controllers.main.containers.main.env.REPORTER_SENSOR_MAPPING | string | `""` | temperatur.nu station to HA sensor(s): `station=sensor.a|sensor.b,station2=sensor.c`    (several sensors per station are aggregated) |
+| controllers.main.containers.main.env.REPORTER_STATE_FILE | string | `"/data/state.json"` | Lifetime counters, on the data volume (`persistence.data`) |
 | controllers.main.containers.main.image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | controllers.main.containers.main.image.repository | string | `"egeback/ha-tn-reporter"` | image repository |
 | controllers.main.containers.main.image.tag | string | chart.appVersion | image tag |
@@ -40,7 +41,6 @@ Kubernetes: `>=1.16.0-0`
 | controllers.main.containers.main.securityContext.allowPrivilegeEscalation | bool | `false` |  |
 | controllers.main.containers.main.securityContext.capabilities.drop[0] | string | `"ALL"` |  |
 | controllers.main.containers.main.securityContext.readOnlyRootFilesystem | bool | `true` |  |
-| controllers.main.containers.main.workingDir | string | `"/app/data"` | state.json (lifetime counters) is written to the working directory,    so run from the data volume to keep it across restarts |
 | defaultPodOptions.securityContext.fsGroup | int | `1000` |  |
 | defaultPodOptions.securityContext.fsGroupChangePolicy | string | `"OnRootMismatch"` |  |
 | defaultPodOptions.securityContext.runAsGroup | int | `1000` |  |

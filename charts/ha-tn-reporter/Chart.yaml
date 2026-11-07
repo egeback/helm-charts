@@ -1,10 +1,10 @@
 ---
 apiVersion: v2
 # renovate: datasource=docker depName=egeback/ha-tn-reporter
-appVersion: 1.4.11
+appVersion: 1.4.12
 description: Reports Home Assistant temperature sensors to temperatur.nu
 name: ha-tn-reporter
-version: 1.0.0
+version: 1.1.0
 kubeVersion: ">=1.16.0-0"
 keywords:
   - home-assistant
@@ -23,5 +23,7 @@ dependencies:
     version: 5.3.0
 annotations:
   artifacthub.io/changes: |2
-      - kind: added
-        description: Initial version
+      - kind: changed
+        description: Upgrade application to 1.4.12, which keeps state.json in REPORTER_STATE_FILE (/data/state.json).
+      - kind: changed
+        description: persistence.data is mounted at /data instead of running from /app/data (workingDir removed).
