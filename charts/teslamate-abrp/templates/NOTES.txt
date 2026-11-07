@@ -1,0 +1,5 @@
+teslamate-abrp forwards TeslaMate car {{ .Values.controllers.main.containers.main.env.CAR_NUMBER }} from MQTT broker
+{{ .Values.controllers.main.containers.main.env.MQTT_SERVER }}:{{ .Values.controllers.main.containers.main.env.MQTT_PORT }} to ABRP.
+
+Check the connection with:
+  kubectl logs --namespace {{ .Release.Namespace }} deploy/{{ include "bjw-s.common.lib.chart.names.fullname" . }}

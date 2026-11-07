@@ -1,0 +1,15 @@
+---
+# CI only: a local broker in the same pod so the bridge has something to connect to
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          MQTT_SERVER: localhost
+      mosquitto:
+        image:
+          repository: eclipse-mosquitto
+          tag: "2.0.22"
+
+abrp:
+  userToken: ct-install-only

@@ -1,0 +1,51 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from the bjw-s common library chart. You can check the default values/options here:
+# https://github.com/bjw-s-labs/helm-charts/blob/main/charts/library/common/values.yaml
+#
+
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: fetzu/teslamate-abrp
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: "{{ .Chart.AppVersion }}"
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+
+        # -- Environment variables. See the [teslamate-abrp documentation](https://github.com/fetzu/teslamate-abrp#configuration).
+        #    USER_TOKEN and MQTT_PASSWORD come from the Secret, see `abrp`.
+        # @default -- See below
+        env:
+          # -- MQTT broker that TeslaMate publishes to
+          MQTT_SERVER: mosquitto
+          # -- MQTT broker port
+          MQTT_PORT: "1883"
+          # -- TeslaMate car number
+          CAR_NUMBER: "1"
+          # -- Set the container timezone
+          TZ: UTC
+          # -- ABRP car model, auto-detected when unset (list: https://api.iternio.com/1/tlm/get_carmodels_list)
+          # CAR_MODEL: tesla:m3:20:bt37:heatpump
+          # MQTT_USERNAME: teslamate
+          # MQTT_TLS: "True"
+          # -- Topic to publish the bridge's status to
+          # STATUS_TOPIC: teslamate-abrp
+          # -- Don't send location data to ABRP
+          # SKIP_LOCATION: "True"
+          # TM2ABRP_DEBUG: "True"
+
+# -- Credentials, stored in a Secret and passed to the container as env vars
+# @default -- See below
+abrp:
+  # -- ABRP user token (ABRP app: Settings → Car model → Link TeslaMate). Required unless `existingSecret` is set.
+  userToken: ""
+  # -- MQTT password, if the broker needs one
+  mqttPassword: ""
+  # -- Existing Secret with the key `USER_TOKEN` (and optionally `MQTT_PASSWORD`); used instead of the values above
+  existingSecret: ""
