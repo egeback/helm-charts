@@ -1623,6 +1623,39 @@ entries:
   home-assistant:
   - annotations:
       artifacthub.io/changes: |2
+          - kind: fixed
+            description: Home Assistant crashed at start with default values (uid 1000 cannot write the image's /config); without persistence.config an emptyDir is mounted and NOTES warns.
+          - kind: added
+            description: HTTP startup, readiness and liveness probes on the web UI.
+          - kind: removed
+            description: Values that were never rendered (metrics.serviceMonitor/prometheusRule, top-level securityContext, defaultPodOptions.podSecurityContext); use serviceMonitor and per-container securityContext instead (see README).
+          - kind: added
+            description: README sections on persistence, Multus networking and Prometheus scraping.
+    apiVersion: v2
+    appVersion: 2026.11.0
+    created: "2026-11-07T07:20:12.80764335Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: Home Assistant helm package
+    digest: 63df5c53cd15c9fce0c5969472f4f4591dfccf1d6d7bc261e6125142cd97c281
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-4.1.0/home-assistant-4.1.0.tgz
+    version: 4.1.0
+  - annotations:
+      artifacthub.io/changes: |2
           - kind: removed
             description: Bitnami influxdb subchart (Bitnami's free images are only published as latest). Run InfluxDB separately, e.g. with the influxdata/influxdb2 chart; see the README.
     apiVersion: v2
@@ -4657,4 +4690,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-11-07T07:08:35.543676766Z"
+generated: "2026-11-07T07:20:12.808235946Z"
