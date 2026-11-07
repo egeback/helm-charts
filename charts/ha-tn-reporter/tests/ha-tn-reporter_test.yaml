@@ -55,21 +55,25 @@ tests:
           path: kind
           value: Deployment
 
-  - it: runs from the data volume so state.json is kept
+  - it: keeps state.json on the data volume
     set:
       reporter.existingSecret: tn-credentials
     documentSelector:
       path: kind
       value: Deployment
     asserts:
-      - equal:
-          path: spec.template.spec.containers[?(@.name == "main")].workingDir
-          value: /app/data
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].env
+          content:
+            name: REPORTER_STATE_FILE
+            value: /data/state.json
       - contains:
           path: spec.template.spec.containers[?(@.name == "main")].volumeMounts
           content:
             name: data
-            mountPath: /app/data
+            mountPath: /data
+      - notExists:
+          path: spec.template.spec.containers[?(@.name == "main")].workingDir
       - contains:
           path: spec.template.spec.volumes
           content:
