@@ -1,6 +1,6 @@
 # home-assistant
 
-![Version: 2.0.40](https://img.shields.io/badge/Version-2.0.40-informational?style=flat-square) ![AppVersion: 2026.11.0](https://img.shields.io/badge/AppVersion-2026.11.0-informational?style=flat-square)
+![Version: 3.0.0](https://img.shields.io/badge/Version-3.0.0-informational?style=flat-square) ![AppVersion: 2026.11.0](https://img.shields.io/badge/AppVersion-2026.11.0-informational?style=flat-square)
 
 Home Assistant helm package
 
@@ -24,8 +24,6 @@ Kubernetes: `>=1.16.0-0`
 |------------|------|---------|
 | https://bjw-s-labs.github.io/helm-charts | common | 5.3.0 |
 | https://charts.bitnami.com/bitnami | influxdb | 7.1.20 |
-| https://charts.bitnami.com/bitnami | mariadb | 27.0.2 |
-| https://charts.bitnami.com/bitnami | postgresql | 18.8.6 |
 
 ## Values
 
@@ -48,9 +46,16 @@ Kubernetes: `>=1.16.0-0`
 | defaultPodOptions.securityContext.fsGroupChangePolicy | string | `"OnRootMismatch"` |  |
 | defaultPodOptions.securityContext.runAsGroup | int | `1000` |  |
 | defaultPodOptions.securityContext.runAsUser | int | `1000` |  |
+| global.templateEvaluation.excludePaths | list | `[["influxdb"]]` | The influxdb subchart's values contain its own templates; leave them for the subchart instead of evaluating them against this chart. |
 | influxdb | object | See values.yaml | Enable and configure influxdb database subchart under this key.    For more options see [influxdb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/influxdb) |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
-| mariadb | object | See values.yaml | Enable and configure mariadb database subchart under this key.    For more options see [mariadb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/mariadb) |
+| mariadb | object | See values.yaml | Bundled MariaDB for the recorder, on the official `mariadb` image. When    enabled the chart sets `RECORDER_DB_URL` on Home Assistant; use it with    `recorder: {db_url: !env_var RECORDER_DB_URL}` in configuration.yaml. |
+| mariadb.auth.existingSecret | string | `""` | Existing Secret with the keys `password` and `root-password` |
+| mariadb.auth.password | string | `""` | Password for `username`; required unless `existingSecret` is set. Must be URL-safe (it is embedded in RECORDER_DB_URL). |
+| mariadb.auth.rootPassword | string | `""` | Root password; required unless `existingSecret` is set |
+| mariadb.enabled | bool | `false` | Deploy a MariaDB StatefulSet (mutually exclusive with `postgresql.enabled`) |
+| mariadb.image.tag | string | `"12.3.3"` | Keep to a MariaDB LTS series Home Assistant supports (10.11, 11.4, 11.8, 12.3) renovate: datasource=docker depName=mariadb |
+| mariadb.persistence.storageClass | string | `""` | StorageClass for the data volume ("-" for none, empty for the cluster default) |
 | metrics.enabled | bool | See values.yaml | Enable and configure a Prometheus serviceMonitor for the chart under this key. |
 | metrics.prometheusRule | object | See values.yaml | Enable and configure Prometheus Rules for the chart under this key. |
 | metrics.prometheusRule.rules | list | See prometheusrules.yaml | Configure additionial rules for the chart under this key. |
@@ -59,7 +64,12 @@ Kubernetes: `>=1.16.0-0`
 | metrics.serviceMonitor.scrapeTimeout | string | `"30s"` |  |
 | persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
 | persistence.usb | object | See values.yaml | Configure a hostPathMount to mount a USB device in the container. |
-| postgresql | object | See values.yaml | Enable and configure postgresql database subchart under this key.    For more options see [postgresql chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/postgresql) |
+| postgresql | object | See values.yaml | Bundled PostgreSQL for the recorder, on the official `postgres` image. When    enabled the chart sets `RECORDER_DB_URL` on Home Assistant; use it with    `recorder: {db_url: !env_var RECORDER_DB_URL}` in configuration.yaml. |
+| postgresql.auth.existingSecret | string | `""` | Existing Secret with the key `password` |
+| postgresql.auth.password | string | `""` | Password for `username`; required unless `existingSecret` is set. Must be URL-safe (it is embedded in RECORDER_DB_URL). |
+| postgresql.enabled | bool | `false` | Deploy a PostgreSQL StatefulSet (mutually exclusive with `mariadb.enabled`) |
+| postgresql.image.tag | string | `"18.6"` | Home Assistant requires PostgreSQL 15 or newer from 2027.3; major upgrades need a dump/restore renovate: datasource=docker depName=postgres |
+| postgresql.persistence.storageClass | string | `""` | StorageClass for the data volume ("-" for none, empty for the cluster default) |
 | securityContext | object | `{"privileged":null}` | When hostNetwork is true set dnsPolicy to ClusterFirstWithHostNet dnsPolicy: ClusterFirstWithHostNet |
 | securityContext.privileged | bool | `nil` | Privileged securityContext may be required if USB devics are accessed directly through the host machine |
 | service | object | See values.yaml | Configures service settings for the chart. |

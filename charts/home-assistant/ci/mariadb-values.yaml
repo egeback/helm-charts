@@ -1,0 +1,7 @@
+---
+mariadb:
+  enabled: true
+  auth:
+    # CI-only throwaway passwords
+    password: ct-install-only
+    rootPassword: ct-install-only-root

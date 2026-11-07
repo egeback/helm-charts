@@ -49,6 +49,27 @@
       ],
       "versioning": "docker",
       "separateMajorMinor": false
+    },
+    {
+      "description": "Bundled recorder DB: stay on the MariaDB 12.3 LTS series (HA supports LTS only)",
+      "matchFileNames": [
+        "charts/home-assistant/values.yaml"
+      ],
+      "matchPackageNames": [
+        "mariadb"
+      ],
+      "allowedVersions": "/^12\\.3\\./"
+    },
+    {
+      "description": "Bundled PostgreSQL: major upgrades need a dump/restore, stay on 18.x",
+      "matchFileNames": [
+        "charts/home-assistant/values.yaml",
+        "charts/teslamate/values.yaml"
+      ],
+      "matchPackageNames": [
+        "postgres"
+      ],
+      "allowedVersions": "/^18\\./"
     }
   ]
 }

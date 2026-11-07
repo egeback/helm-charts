@@ -10,5 +10,17 @@ global:
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
 
+{{- /* Bundled PostgreSQL: add its resources and read DATABASE_PASS from its Secret */ -}}
+{{- if .Values.postgresql.enabled -}}
+  {{- $args := dict "ctx" $ "engine" "postgresql" -}}
+  {{- $_ := mergeOverwrite .Values (include "egeback.database.keepAppNames" . | fromYaml) -}}
+  {{- include "egeback.database.scopeAppPersistence" . -}}
+  {{- $_ := mergeOverwrite .Values (include "egeback.database.values" $args | fromYaml) -}}
+  {{- $passwordEnv := include "egeback.database.passwordEnv" $args | fromYaml -}}
+  {{- range $id := list "main" "teslamateapi" "teslamateagile" -}}
+    {{- $_ := set (get $.Values.controllers.main.containers $id).env "DATABASE_PASS" $passwordEnv -}}
+  {{- end -}}
+{{- end -}}
+
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.generate" . }}

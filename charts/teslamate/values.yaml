@@ -5,13 +5,6 @@
 # https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
-global:
-  templateEvaluation:
-    # -- The postgresql subchart's values contain its own templates; leave them
-    # for the subchart instead of evaluating them against this chart.
-    excludePaths:
-      - [postgresql]
-
 controllers:
   main:
     containers:
@@ -149,18 +142,30 @@ persistence:
     enabled: false
     mountPath: /opt/app/import
 
-# -- Enable and configure postgresql database subchart under this key.
-#    For more options see [postgresql chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/postgresql)
+# -- Bundled PostgreSQL on the official `postgres` image. When enabled the
+#    chart creates a StatefulSet, Service and Secret, and TeslaMate (and the
+#    API/Agile sidecars) read DATABASE_PASS from that Secret.
 # @default -- See values.yaml
 postgresql:
+  # -- Deploy a PostgreSQL StatefulSet; disable to use an external database (set DATABASE_* env yourself)
   enabled: false
+  image:
+    repository: docker.io/library/postgres
+    # -- TeslaMate's reference setup uses PostgreSQL 18; major upgrades need a dump/restore
+    # renovate: datasource=docker depName=postgres
+    tag: "18.6"
   auth:
-    postgresPassword: teslamate-pass
-    password: teslamate-pass
     database: teslamate
     username: teslamate
-  primary:
-    persistence:
-      enabled: false
+    # -- Password for `username`; required unless `existingSecret` is set
+    password: ""
+    # -- Existing Secret with the key `password`
+    existingSecret: ""
+  persistence:
+    size: 8Gi
+    accessMode: ReadWriteOnce
+    # -- StorageClass for the data volume ("-" for none, empty for the cluster default)
+    storageClass: ""
+  resources: {}
 # Initial v2 release
 # Force rebuild v2

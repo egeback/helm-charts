@@ -5,5 +5,33 @@
 {{- define "custom.custom.configuration" -}}
 {{ template "custom.custom.configuration.header" . }}
 
-N/A
+### Recorder database
+
+The chart can run the recorder database next to Home Assistant on the official
+`mariadb` or `postgres` image (enable one of them). It creates a StatefulSet,
+a Service and a Secret, and sets `RECORDER_DB_URL` on the Home Assistant
+container. Point the recorder at it in `configuration.yaml`:
+
+```yaml
+recorder:
+  db_url: !env_var RECORDER_DB_URL
+```
+
+```yaml
+mariadb:
+  enabled: true
+  auth:
+    existingSecret: home-assistant-db   # keys: password, root-password
+```
+
+Pinned versions follow what Home Assistant supports: MariaDB on an LTS series
+(10.11, 11.4, 11.8 or 12.3) and PostgreSQL 15 or newer. Renovate keeps the
+images within MariaDB 12.3 and PostgreSQL 18; moving to a new PostgreSQL major
+needs a dump and restore. The password is embedded in `RECORDER_DB_URL`, so it
+must be URL-safe.
+
+**Upgrading from 2.x:** the Bitnami `mariadb` and `postgresql` subcharts were
+removed (Bitnami's free images are only published as `latest`). Their values
+and data layout are not compatible; dump the database before upgrading and
+restore it into the new StatefulSet.
 {{- end -}}

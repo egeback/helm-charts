@@ -10,5 +10,32 @@ global:
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
 
+{{- /* Bundled recorder database: add its resources and point Home Assistant at it */ -}}
+{{- if and .Values.mariadb.enabled .Values.postgresql.enabled -}}
+  {{- fail "Enable only one of mariadb.enabled and postgresql.enabled" -}}
+{{- end -}}
+{{- if or .Values.mariadb.enabled .Values.postgresql.enabled -}}
+  {{- $_ := mergeOverwrite .Values (include "egeback.database.keepAppNames" . | fromYaml) -}}
+  {{- include "egeback.database.scopeAppPersistence" . -}}
+{{- end -}}
+{{- range $engine := list "mariadb" "postgresql" -}}
+  {{- if (get $.Values $engine).enabled -}}
+    {{- $args := dict "ctx" $ "engine" $engine -}}
+    {{- $_ := mergeOverwrite $.Values (include "egeback.database.values" $args | fromYaml) -}}
+    {{- $db := get $.Values $engine -}}
+    {{- $url := printf "%s://%s:$(RECORDER_DB_PASSWORD)@%s:%s/%s%s"
+          (ternary "mysql" "postgresql" (eq $engine "mariadb"))
+          $db.auth.username
+          (include "egeback.database.name" $args)
+          (include "egeback.database.port" $args)
+          $db.auth.database
+          (ternary "?charset=utf8mb4" "" (eq $engine "mariadb")) -}}
+    {{- $env := dict
+          "RECORDER_DB_PASSWORD" (include "egeback.database.passwordEnv" $args | fromYaml)
+          "RECORDER_DB_URL" (dict "value" $url "dependsOn" "RECORDER_DB_PASSWORD") -}}
+    {{- $_ := mergeOverwrite $.Values (dict "controllers" (dict "main" (dict "containers" (dict "main" (dict "env" $env))))) -}}
+  {{- end -}}
+{{- end -}}
+
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.generate" . }}
