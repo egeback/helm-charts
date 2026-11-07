@@ -1,0 +1,28 @@
+---
+apiVersion: v2
+# renovate: datasource=docker depName=ghcr.io/matter-js/matterjs-server
+appVersion: 1.5.5
+description: Open Home Foundation Matter Server (matter.js) for Home Assistant, the successor of python-matter-server
+name: matterjs-server
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - matter
+  - thread
+  - home-assistant
+  - matter-server
+home: https://github.com/egeback/helm-charts/tree/main/charts/matterjs-server
+icon: https://raw.githubusercontent.com/matter-js/matterjs-server/main/docs/matter_logo.svg
+sources:
+  - https://github.com/matter-js/matterjs-server
+maintainers:
+  - name: egeback
+    email: marky@egeback.se
+dependencies:
+  - name: common
+    repository: https://bjw-s-labs.github.io/helm-charts
+    version: 5.3.0
+annotations:
+  artifacthub.io/changes: |2
+      - kind: added
+        description: Initial version

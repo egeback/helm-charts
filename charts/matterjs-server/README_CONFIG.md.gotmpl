@@ -1,0 +1,60 @@
+{{- define "custom.custom.configuration.header" -}}
+## Custom configuration
+{{- end -}}
+
+{{- define "custom.custom.configuration" -}}
+{{ template "custom.custom.configuration.header" . }}
+
+[matterjs-server](https://github.com/matter-js/matterjs-server) is the Open
+Home Foundation Matter Server built on matter.js, and the successor of the
+archived python-matter-server. It is a drop-in replacement with the same
+WebSocket API: point Home Assistant's Matter integration at
+`ws://<release>.<namespace>.svc:5580/ws`.
+
+### Moving from python-matter-server
+
+Use the same data directory: the first start migrates it (see the upstream
+[migration guide](https://github.com/matter-js/matterjs-server/blob/main/docs/migration.md)).
+The new image runs as uid 1000, not root, so the files must be owned by
+1000:1000. `fsGroup` handles group access on most volume types; otherwise run
+`chown -R 1000:1000` on the volume once.
+
+### Networking
+
+Matter devices and Thread border routers are reached over IPv6 (link-local
+and ULA) and discovered with mDNS, so the server must be on the same LAN as
+the devices.
+
+**Host network (default):** simplest; set `PRIMARY_INTERFACE` if the node has
+several interfaces.
+
+**Multus:** to give the server its own address on the LAN, attach a macvlan
+interface, turn host networking off and select that interface. Thread devices
+are reached through the border router, so the pod also needs a route to the
+Thread prefix (taken from the router advertisements, or added explicitly).
+
+```yaml
+defaultPodOptions:
+  hostNetwork: false
+  dnsPolicy: ClusterFirst
+  annotations:
+    k8s.v1.cni.cncf.io/networks: |
+      [{"name": "lan", "namespace": "kube-system",
+        "ips": ["192.168.1.22/24"], "mac": "c6:5e:a4:00:00:22"}]
+
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          PRIMARY_INTERFACE: net1
+```
+
+### Bluetooth commissioning
+
+Set `bluetooth.adapter` (e.g. `0` for hci0). The chart then mounts the host's
+`/run/dbus` read-only and uses the BlueZ D-Bus backend, which keeps the
+container unprivileged. The node must run `bluetoothd` with the adapter powered,
+so pin the pod to that node. Commissioning through the Home Assistant
+companion app needs no Bluetooth on the server at all.
+{{- end -}}
