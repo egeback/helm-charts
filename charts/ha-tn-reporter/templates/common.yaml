@@ -10,7 +10,7 @@ global:
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
 
-{{- /* Without persistence, keep /app/data writable (the root filesystem is read-only) */ -}}
+{{- /* Without persistence, keep /data writable (the root filesystem is read-only) */ -}}
 {{- if not .Values.persistence.data.enabled -}}
   {{- $_ := set .Values.persistence "data" (dict "enabled" true "type" "emptyDir" "globalMounts" .Values.persistence.data.globalMounts) -}}
 {{- end -}}
