@@ -1623,6 +1623,33 @@ entries:
   home-assistant:
   - annotations:
       artifacthub.io/changes: |2
+          - kind: added
+            description: Unit tests (helm-unittest); not part of the packaged chart.
+    apiVersion: v2
+    appVersion: 2026.11.0
+    created: "2026-11-07T07:32:41.478862083Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: Home Assistant helm package
+    digest: 3e2290ce38540f182920bd83c68e4689dad0096e8e87238254f0081a516bc542
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-4.1.1/home-assistant-4.1.1.tgz
+    version: 4.1.1
+  - annotations:
+      artifacthub.io/changes: |2
           - kind: fixed
             description: Home Assistant crashed at start with default values (uid 1000 cannot write the image's /config); without persistence.config an emptyDir is mounted and NOTES warns.
           - kind: added
@@ -3446,6 +3473,34 @@ entries:
   teslamate:
   - annotations:
       artifacthub.io/changes: |2
+          - kind: added
+            description: Unit tests (helm-unittest); not part of the packaged chart.
+    apiVersion: v2
+    appVersion: 4.4.0
+    created: "2026-11-07T07:32:41.67176061Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: "A self-hosted data logger for your Tesla \U0001F698"
+    digest: 03e89e1d67c6ebad6be3247743ab3407aa6ea2430b34d593e1520154d2124ec0
+    home: https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    icon: https://raw.githubusercontent.com/teslamate-org/teslamate/master/website/static/img/logo.svg
+    keywords:
+    - teslamate
+    - tesla
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: teslamate
+    sources:
+    - https://github.com/adriankumpf/teslamate
+    - https://github.com/egeback/helm-charts/blob/main/charts/teslamate
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/teslamate-3.0.1/teslamate-3.0.1.tgz
+    version: 3.0.1
+  - annotations:
+      artifacthub.io/changes: |2
           - kind: removed
             description: Bitnami postgresql subchart (Bitnami's free images are only published as latest).
           - kind: added
@@ -4690,4 +4745,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-11-07T07:20:12.808235946Z"
+generated: "2026-11-07T07:32:41.672142157Z"
