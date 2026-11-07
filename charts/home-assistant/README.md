@@ -1,6 +1,6 @@
 # home-assistant
 
-![Version: 3.0.0](https://img.shields.io/badge/Version-3.0.0-informational?style=flat-square) ![AppVersion: 2026.11.0](https://img.shields.io/badge/AppVersion-2026.11.0-informational?style=flat-square)
+![Version: 4.0.0](https://img.shields.io/badge/Version-4.0.0-informational?style=flat-square) ![AppVersion: 2026.11.0](https://img.shields.io/badge/AppVersion-2026.11.0-informational?style=flat-square)
 
 Home Assistant helm package
 
@@ -23,7 +23,6 @@ Kubernetes: `>=1.16.0-0`
 | Repository | Name | Version |
 |------------|------|---------|
 | https://bjw-s-labs.github.io/helm-charts | common | 5.3.0 |
-| https://charts.bitnami.com/bitnami | influxdb | 7.1.20 |
 
 ## Values
 
@@ -46,8 +45,6 @@ Kubernetes: `>=1.16.0-0`
 | defaultPodOptions.securityContext.fsGroupChangePolicy | string | `"OnRootMismatch"` |  |
 | defaultPodOptions.securityContext.runAsGroup | int | `1000` |  |
 | defaultPodOptions.securityContext.runAsUser | int | `1000` |  |
-| global.templateEvaluation.excludePaths | list | `[["influxdb"]]` | The influxdb subchart's values contain its own templates; leave them for the subchart instead of evaluating them against this chart. |
-| influxdb | object | See values.yaml | Enable and configure influxdb database subchart under this key.    For more options see [influxdb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/influxdb) |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | mariadb | object | See values.yaml | Bundled MariaDB for the recorder, on the official `mariadb` image. When    enabled the chart sets `RECORDER_DB_URL` on Home Assistant; use it with    `recorder: {db_url: !env_var RECORDER_DB_URL}` in configuration.yaml. |
 | mariadb.auth.existingSecret | string | `""` | Existing Secret with the keys `password` and `root-password` |
