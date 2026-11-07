@@ -1,0 +1,18 @@
+suite: home-assistant notes
+templates:
+  - templates/NOTES.txt
+release:
+  name: ha
+tests:
+  - it: warns that /config is ephemeral without persistence
+    asserts:
+      - matchRegexRaw:
+          pattern: "WARNING: /config is an emptyDir"
+
+  - it: does not warn with a persistent /config
+    set:
+      persistence.config.enabled: true
+      persistence.config.existingClaim: ha-config
+    asserts:
+      - notMatchRegexRaw:
+          pattern: "WARNING: /config is an emptyDir"

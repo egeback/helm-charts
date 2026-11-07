@@ -22,3 +22,5 @@
 .vscode/
 # OWNERS file for Kubernetes
 OWNERS
+# Unit tests are not part of the packaged chart
+tests/
