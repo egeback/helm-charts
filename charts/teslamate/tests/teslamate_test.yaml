@@ -7,7 +7,7 @@ tests:
   - it: renders with default values and passes env to the container
     asserts:
       - hasDocuments:
-          count: 2
+          count: 3
       - contains:
           path: spec.template.spec.containers[?(@.name == "main")].env
           content:
@@ -39,7 +39,7 @@ tests:
       postgresql.auth.password: test-password
     asserts:
       - hasDocuments:
-          count: 5
+          count: 6
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^docker\.io/library/postgres:18\.
@@ -129,7 +129,7 @@ tests:
       postgresql.auth.existingSecret: tm-db
     asserts:
       - hasDocuments:
-          count: 4
+          count: 5
 
   - it: fails without a password or existingSecret
     set:

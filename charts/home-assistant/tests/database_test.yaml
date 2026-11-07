@@ -122,7 +122,7 @@ tests:
       postgresql.auth.existingSecret: ha-db
     asserts:
       - hasDocuments:
-          count: 4
+          count: 5
 
   - it: keeps the app's volumes out of the database pod
     set:
