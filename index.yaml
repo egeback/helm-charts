@@ -431,6 +431,37 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Upgraded `cert-manager` chart dependency to version v1.21.3
+    apiVersion: v2
+    appVersion: v0.3.0
+    created: "2026-11-07T07:40:14.830299637Z"
+    dependencies:
+    - condition: cert-manager.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.21.3
+    description: Cert-manager webhook plugin to support ACME DNS challenges for CPanel
+      DNS zones
+    digest: 466944709f7d8e7cd209be53b10aed613522d9e798c0832b13c73bb3a476081e
+    home: https://github.com/egeback/helm-charts/blob/main/charts/cert-manager-cpanel-dns-webhook
+    icon: https://raw.githubusercontent.com/cert-manager/community/4d35a69437d21b76322157e6284be4cd64e6d2b7/logo/logo-small.png
+    keywords:
+    - cert-manager-webbook
+    - dns
+    - cpanel
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: cert-manager-cpanel-dns-webhook
+    sources:
+    - https://github.com/jamesorlakin/cert-manager-cpanel-dns-webhook
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/cert-manager-cpanel-dns-webhook-1.0.9/cert-manager-cpanel-dns-webhook-1.0.9.tgz
+    version: 1.0.9
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update image tags or configuration in values.yaml
           - kind: changed
             description: Upgraded `cert-manager` chart dependency to version v1.21.2
@@ -1529,6 +1560,35 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/esphome-2.0.2/esphome-2.0.2.tgz
     version: 2.0.2
   heimdall:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Upgraded `common` chart dependency to version 5.3.0
+    apiVersion: v2
+    appVersion: 2.6.3
+    created: "2026-11-07T07:40:15.041585666Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: An Application dashboard and launcher
+    digest: 468b77e8edb0fc1017d0b07a40134cff96863cc7bb1e10363dabb216a82dddf4
+    home: https://github.com/egeback/helm-charts/tree/main/charts/heimdall
+    icon: https://i.imgur.com/mM4tcO5.png
+    keywords:
+    - heimdall
+    - dashboard
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: heimdall
+    sources:
+    - https://hub.docker.com/r/linuxserver/heimdall/
+    - https://github.com/linuxserver/heimdall
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/heimdall-2.0.5/heimdall-2.0.5.tgz
+    version: 2.0.5
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
@@ -3103,6 +3163,36 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Upgrade application to 5.0.9
+          - kind: changed
+            description: Upgraded `common` chart dependency to version 5.3.0
+    apiVersion: v2
+    appVersion: 5.0.9
+    created: "2026-11-07T07:40:15.261549333Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: Node-RED is low-code programming for event-driven applications
+    digest: b2102630e640f9e063f0e63a31efb2a4c24c44dc634aefd9fe133930bc66fcc8
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red
+    icon: https://nodered.org/about/resources/media/node-red-icon-2.png
+    keywords:
+    - node-red
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: node-red
+    sources:
+    - https://github.com/node-red/node-red-docker
+    - https://github.com/egeback/charts/tree/master/charts/node-red
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/node-red-2.0.15/node-red-2.0.15.tgz
+    version: 2.0.15
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update application to 5.0.8
     apiVersion: v2
     appVersion: 5.0.8
@@ -4191,6 +4281,34 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
+            description: Upgraded `common` chart dependency to version 5.3.0
+    apiVersion: v2
+    appVersion: v10.0.162
+    created: "2026-11-07T07:40:15.665107266Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: Ubiquiti Network's Unifi Controller
+    digest: 99d66331f6d5ced4b6b93e3c95b559be4b5ff1b1910dae74ed72b1c8fef82094
+    home: https://github.com/egeback/charts/tree/master/charts/stable/unifi
+    icon: https://prd-www-cdn.ubnt.com/static/favicon-152.png
+    keywords:
+    - ubiquiti
+    - unifi
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: unifi
+    sources:
+    - https://github.com/jacobalberty/unifi-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/unifi-2.1.7/unifi-2.1.7.tgz
+    version: 2.1.7
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
             description: Update image tags or configuration in values.yaml
           - kind: changed
             description: Upgraded `common` chart dependency to version 5.1.0
@@ -4349,6 +4467,38 @@ entries:
     - https://github.com/egeback/helm-charts/releases/download/unifi-2.1.2/unifi-2.1.2.tgz
     version: 2.1.2
   uptime-kuma:
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: changed
+            description: Upgrade application to 2.5.9
+          - kind: changed
+            description: Upgraded `common` chart dependency to version 5.3.0
+    apiVersion: v2
+    appVersion: 2.5.9
+    created: "2026-11-07T07:40:15.914576164Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: A fancy self-hosted monitoring tool for your websites and applications
+    digest: 7c9e0c6356d5acb1bddeb0dc8f3d3f7e7a9368076037960367420fcca6549fb2
+    home: https://github.com/egeback/helm-charts/tree/main/charts/uptime-kuma
+    icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+    keywords:
+    - uptime-kuma
+    - status
+    - status-page
+    - monitoring
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: uptime-kuma
+    sources:
+    - https://github.com/louislam/uptime-kuma
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.15/uptime-kuma-2.0.15.tgz
+    version: 2.0.15
   - annotations:
       artifacthub.io/changes: |2
           - kind: changed
@@ -4745,4 +4895,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-11-07T07:32:41.672142157Z"
+generated: "2026-11-07T07:40:15.914894309Z"
