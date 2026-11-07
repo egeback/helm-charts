@@ -27,7 +27,8 @@ version_of() { # <ref|WORKTREE> <chart>
   if [ "$1" = WORKTREE ]; then
     awk '/^version:/ {print $2; exit}' "charts/$2/Chart.yaml"
   else
-    git show "$1:charts/$2/Chart.yaml" 2>/dev/null | awk '/^version:/ {print $2; exit}'
+    # A chart that does not exist at <ref> yet (new chart) has no version there
+    { git show "$1:charts/$2/Chart.yaml" 2>/dev/null || true; } | awk '/^version:/ {print $2; exit}'
   fi
 }
 
