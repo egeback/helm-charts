@@ -1,0 +1,37 @@
+---
+{{- include "bjw-s.common.loader.init" . }}
+
+{{- define "app-template.hardcodedValues" -}}
+# Set the nameOverride based on the release name if no override has been set
+{{ if not .Values.global.nameOverride }}
+global:
+  nameOverride: "{{ .Release.Name }}"
+{{ end }}
+{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "app-template.hardcodedValues" . | fromYaml) -}}
+
+{{- $fullname := include "bjw-s.common.lib.chart.names.fullname" . -}}
+{{- $main := .Values.controllers.main.containers.main -}}
+
+{{- /* SESSION_SECRET: given, or generated once and reused from the existing Secret on upgrade */ -}}
+{{- $secretName := .Values.existingSecret | default $fullname -}}
+{{- if not .Values.existingSecret -}}
+  {{- $sessionSecret := .Values.sessionSecret -}}
+  {{- if not $sessionSecret -}}
+    {{- $existing := lookup "v1" "Secret" .Release.Namespace $fullname -}}
+    {{- $sessionSecret = (dig "data" "SESSION_SECRET" "" $existing | b64dec) | default (randAlphaNum 48) -}}
+  {{- end -}}
+  {{- $_ := mergeOverwrite .Values (dict "secrets" (dict "session" (dict "forceRename" $fullname "stringData" (dict "SESSION_SECRET" $sessionSecret)))) -}}
+{{- end -}}
+{{- $_ := set $main "envFrom" (append ($main.envFrom | default list) (dict "secretRef" (dict "name" $secretName))) -}}
+
+{{- /* USB stick: mount the node's device at /dev/zwave; device access needs a privileged container */ -}}
+{{- with .Values.device.hostPath -}}
+  {{- $_ := mergeOverwrite $.Values (dict "persistence" (dict "zwave" (dict
+        "type" "hostPath" "hostPath" . "hostPathType" "CharDevice"
+        "globalMounts" (list (dict "path" "/dev/zwave"))))) -}}
+  {{- $_ := set $main "securityContext" (merge (dict "privileged" true) ($main.securityContext | default dict)) -}}
+{{- end -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.generate" . }}

@@ -1,0 +1,122 @@
+suite: zwave-js-ui
+templates:
+  - templates/common.yaml
+release:
+  name: zwave
+tests:
+  - it: generates a session secret when none is given
+    documentSelector:
+      path: kind
+      value: Secret
+    asserts:
+      - matchRegex:
+          path: stringData.SESSION_SECRET
+          pattern: ^[A-Za-z0-9]{48}$
+
+  - it: uses the given session secret
+    set:
+      sessionSecret: test-session-secret
+    documentSelector:
+      path: kind
+      value: Secret
+    asserts:
+      - equal:
+          path: stringData.SESSION_SECRET
+          value: test-session-secret
+
+  - it: loads the session secret into the container
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].envFrom
+          content:
+            secretRef:
+              name: zwave
+
+  - it: uses an existing Secret instead of creating one
+    set:
+      existingSecret: zwave-session
+    asserts:
+      - hasDocuments:
+          count: 4
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].envFrom
+          content:
+            secretRef:
+              name: zwave-session
+        documentSelector:
+          path: kind
+          value: Deployment
+
+  - it: keeps the store on a PVC by default and recreates instead of rolling
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - equal:
+          path: spec.strategy.type
+          value: Recreate
+      - contains:
+          path: spec.template.spec.volumes
+          content:
+            name: store
+            persistentVolumeClaim:
+              claimName: zwave
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].volumeMounts
+          content:
+            name: store
+            mountPath: /usr/src/app/store
+
+  - it: runs unprivileged without a USB stick
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - notExists:
+          path: spec.template.spec.containers[?(@.name == "main")].securityContext.privileged
+
+  - it: mounts the USB stick at /dev/zwave in a privileged container
+    set:
+      device.hostPath: /dev/serial/by-id/usb-0658_0200-if00
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - contains:
+          path: spec.template.spec.volumes
+          content:
+            name: zwave
+            hostPath:
+              path: /dev/serial/by-id/usb-0658_0200-if00
+              type: CharDevice
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].volumeMounts
+          content:
+            name: zwave
+            mountPath: /dev/zwave
+      - equal:
+          path: spec.template.spec.containers[?(@.name == "main")].securityContext.privileged
+          value: true
+
+  - it: exposes the UI and the Z-Wave JS WebSocket server
+    documentSelector:
+      path: kind
+      value: Service
+    asserts:
+      - contains:
+          path: spec.ports
+          content:
+            name: websocket
+            port: 3000
+            protocol: TCP
+            targetPort: 3000
+      - contains:
+          path: spec.ports
+          content:
+            name: http
+            port: 8091
+            protocol: TCP
+            targetPort: 8091
