@@ -1,0 +1,180 @@
+suite: teslamate
+templates:
+  - templates/common.yaml
+release:
+  name: tm
+tests:
+  - it: renders with default values and passes env to the container
+    asserts:
+      - hasDocuments:
+          count: 2
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].env
+          content:
+            name: DATABASE_USER
+            value: teslamate
+        documentSelector:
+          path: kind
+          value: Deployment
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].env
+          content:
+            name: DATABASE_HOST
+            value: tm-postgresql
+        documentSelector:
+          path: kind
+          value: Deployment
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].env
+          content:
+            name: TZ
+            value: UTC
+        documentSelector:
+          path: kind
+          value: Deployment
+
+  - it: bundled postgresql gets a StatefulSet, Service and Secret on the official image
+    set:
+      postgresql.enabled: true
+      postgresql.auth.password: test-password
+    asserts:
+      - hasDocuments:
+          count: 5
+      - matchRegex:
+          path: spec.template.spec.containers[0].image
+          pattern: ^docker\.io/library/postgres:18\.
+        documentSelector:
+          path: kind
+          value: StatefulSet
+      - equal:
+          path: spec.serviceName
+          value: tm-postgresql
+        documentSelector:
+          path: kind
+          value: StatefulSet
+      - equal:
+          path: spec.template.spec.securityContext.runAsUser
+          value: 999
+        documentSelector:
+          path: kind
+          value: StatefulSet
+      - equal:
+          path: stringData.password
+          value: test-password
+        documentSelector:
+          path: kind
+          value: Secret
+      - equal:
+          path: metadata.name
+          value: tm-postgresql
+        documentSelector:
+          path: kind
+          value: Secret
+
+  - it: keeps the app's resource names when the database is added
+    set:
+      postgresql.enabled: true
+      postgresql.auth.password: test-password
+    asserts:
+      - equal:
+          path: metadata.name
+          value: tm
+        documentSelector:
+          path: kind
+          value: Deployment
+
+  - it: reads DATABASE_PASS from the database Secret in all containers
+    set:
+      postgresql.enabled: true
+      postgresql.auth.existingSecret: tm-db
+      controllers.main.containers.teslamateapi.enabled: true
+      controllers.main.containers.teslamateagile.enabled: true
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].env
+          content:
+            name: DATABASE_PASS
+            valueFrom:
+              secretKeyRef:
+                name: tm-db
+                key: password
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "teslamateapi")].env
+          content:
+            name: DATABASE_PASS
+            valueFrom:
+              secretKeyRef:
+                name: tm-db
+                key: password
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "teslamateagile")].env
+          content:
+            name: DATABASE_PASS
+            valueFrom:
+              secretKeyRef:
+                name: tm-db
+                key: password
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "teslamateapi")].env
+          content:
+            name: DATABASE_HOST
+            value: tm-postgresql
+
+  - it: does not create a Secret when existingSecret is set
+    set:
+      postgresql.enabled: true
+      postgresql.auth.existingSecret: tm-db
+    asserts:
+      - hasDocuments:
+          count: 4
+
+  - it: fails without a password or existingSecret
+    set:
+      postgresql.enabled: true
+    asserts:
+      - failedTemplate:
+          errorPattern: postgresql\.auth\.password .* is required
+
+  - it: keeps the app's volumes out of the database pod
+    set:
+      postgresql.enabled: true
+      postgresql.auth.password: test-password
+      persistence.import.enabled: true
+      persistence.import.existingClaim: tm-import
+    asserts:
+      - notExists:
+          path: spec.template.spec.volumes
+        documentSelector:
+          path: kind
+          value: StatefulSet
+      - contains:
+          path: spec.template.spec.volumes
+          content:
+            name: import
+            persistentVolumeClaim:
+              claimName: tm-import
+        documentSelector:
+          path: kind
+          value: Deployment
+
+  - it: abrp gets the main container's MQTT settings
+    set:
+      controllers.main.containers.teslamate-abrp.enabled: true
+      controllers.main.containers.main.env.MQTT_USERNAME: mqtt-user
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "teslamate-abrp")].env
+          content:
+            name: MQTT_USERNAME
+            value: mqtt-user
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "teslamate-abrp")].env
+          content:
+            name: MQTT_SERVER
+            value: mosquitto

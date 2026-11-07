@@ -1,0 +1,168 @@
+suite: home-assistant recorder database
+templates:
+  - templates/common.yaml
+release:
+  name: ha
+tests:
+  - it: bundles MariaDB on an LTS series Home Assistant supports
+    set:
+      mariadb.enabled: true
+      mariadb.auth.password: test-password
+      mariadb.auth.rootPassword: test-root-password
+    asserts:
+      - matchRegex:
+          path: spec.template.spec.containers[0].image
+          pattern: ^docker\.io/library/mariadb:12\.3\.
+        documentSelector:
+          path: kind
+          value: StatefulSet
+      - equal:
+          path: spec.serviceName
+          value: ha-mariadb
+        documentSelector:
+          path: kind
+          value: StatefulSet
+      - equal:
+          path: spec.template.spec.hostNetwork
+          value: false
+        documentSelector:
+          path: kind
+          value: StatefulSet
+      - equal:
+          path: spec.template.spec.securityContext.runAsUser
+          value: 999
+        documentSelector:
+          path: kind
+          value: StatefulSet
+      - equal:
+          path: stringData
+          value:
+            password: test-password
+            root-password: test-root-password
+        documentSelector:
+          path: kind
+          value: Secret
+
+  - it: points Home Assistant at MariaDB through RECORDER_DB_URL
+    set:
+      mariadb.enabled: true
+      mariadb.auth.password: test-password
+      mariadb.auth.rootPassword: test-root-password
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].env
+          content:
+            name: RECORDER_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: ha-mariadb
+                key: password
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].env
+          content:
+            name: RECORDER_DB_URL
+            value: mysql://homeassistant:$(RECORDER_DB_PASSWORD)@ha-mariadb:3306/homeassistant?charset=utf8mb4
+
+  - it: keeps the app's resource names when the database is added
+    set:
+      mariadb.enabled: true
+      mariadb.auth.password: test-password
+      mariadb.auth.rootPassword: test-root-password
+    asserts:
+      - equal:
+          path: metadata.name
+          value: ha
+        documentSelector:
+          path: kind
+          value: Deployment
+      - equal:
+          path: metadata.name
+          value: ha
+        documentSelector:
+          path: spec.ports[0].port
+          value: 8123
+
+  - it: bundles PostgreSQL 18 and points Home Assistant at it
+    set:
+      postgresql.enabled: true
+      postgresql.auth.existingSecret: ha-db
+    asserts:
+      - matchRegex:
+          path: spec.template.spec.containers[0].image
+          pattern: ^docker\.io/library/postgres:18\.
+        documentSelector:
+          path: kind
+          value: StatefulSet
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].env
+          content:
+            name: RECORDER_DB_URL
+            value: postgresql://homeassistant:$(RECORDER_DB_PASSWORD)@ha-postgresql:5432/homeassistant
+        documentSelector:
+          path: kind
+          value: Deployment
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].env
+          content:
+            name: RECORDER_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: ha-db
+                key: password
+        documentSelector:
+          path: kind
+          value: Deployment
+
+  - it: does not create a Secret when existingSecret is set
+    set:
+      postgresql.enabled: true
+      postgresql.auth.existingSecret: ha-db
+    asserts:
+      - hasDocuments:
+          count: 4
+
+  - it: keeps the app's volumes out of the database pod
+    set:
+      postgresql.enabled: true
+      postgresql.auth.password: test-password
+      persistence.config.enabled: true
+      persistence.config.existingClaim: ha-config
+      persistence.usb.enabled: true
+    asserts:
+      - notExists:
+          path: spec.template.spec.volumes
+        documentSelector:
+          path: kind
+          value: StatefulSet
+      - lengthEqual:
+          path: spec.template.spec.volumes
+          count: 2
+        documentSelector:
+          path: kind
+          value: Deployment
+
+  - it: fails without a password or existingSecret
+    set:
+      mariadb.enabled: true
+    asserts:
+      - failedTemplate:
+          errorPattern: mariadb\.auth\.password .* is required
+
+  - it: fails without a MariaDB root password
+    set:
+      mariadb.enabled: true
+      mariadb.auth.password: test-password
+    asserts:
+      - failedTemplate:
+          errorPattern: mariadb\.auth\.rootPassword .* is required
+
+  - it: fails when both databases are enabled
+    set:
+      mariadb.enabled: true
+      postgresql.enabled: true
+    asserts:
+      - failedTemplate:
+          errorPattern: Enable only one of mariadb\.enabled and postgresql\.enabled

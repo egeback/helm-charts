@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 4.4.0
 description: "A self-hosted data logger for your Tesla 🚘"
 name: teslamate
-version: 3.0.0
+version: 3.0.1
 keywords:
   - teslamate
   - tesla
@@ -22,9 +22,5 @@ maintainers:
     email: marky@egeback.se
 annotations:
   artifacthub.io/changes: |2
-      - kind: removed
-        description: Bitnami postgresql subchart (Bitnami's free images are only published as latest).
       - kind: added
-        description: Bundled PostgreSQL 18 on the official postgres image; TeslaMate and sidecars read DATABASE_PASS from its Secret or postgresql.auth.existingSecret.
-      - kind: changed
-        description: postgresql.auth.password has no default; postgresql.auth.postgresPassword and primary.persistence were removed.
+        description: Unit tests (helm-unittest); not part of the packaged chart.

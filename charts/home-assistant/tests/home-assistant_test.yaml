@@ -1,0 +1,96 @@
+suite: home-assistant
+templates:
+  - templates/common.yaml
+release:
+  name: ha
+tests:
+  - it: renders with default values on the host network
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - equal:
+          path: metadata.name
+          value: ha
+      - equal:
+          path: spec.template.spec.hostNetwork
+          value: true
+      - equal:
+          path: spec.template.spec.dnsPolicy
+          value: ClusterFirstWithHostNet
+
+  - it: mounts an emptyDir at /config without persistence
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - contains:
+          path: spec.template.spec.volumes
+          content:
+            name: config
+            emptyDir: {}
+      - contains:
+          path: spec.template.spec.containers[?(@.name == "main")].volumeMounts
+          content:
+            name: config
+            mountPath: /config
+
+  - it: uses the configured claim for /config
+    set:
+      persistence.config.enabled: true
+      persistence.config.existingClaim: ha-config
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - contains:
+          path: spec.template.spec.volumes
+          content:
+            name: config
+            persistentVolumeClaim:
+              claimName: ha-config
+
+  - it: probes the web UI
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[?(@.name == "main")].readinessProbe.httpGet
+          value:
+            path: /
+            port: 8123
+            scheme: HTTP
+      - equal:
+          path: spec.template.spec.containers[?(@.name == "main")].startupProbe.httpGet.port
+          value: 8123
+      - equal:
+          path: spec.template.spec.containers[?(@.name == "main")].livenessProbe.httpGet.port
+          value: 8123
+
+  - it: puts Multus settings on the main controller only
+    set:
+      postgresql.enabled: true
+      postgresql.auth.password: test-password
+      controllers.main.pod.hostNetwork: false
+      controllers.main.pod.dnsPolicy: ClusterFirst
+      controllers.main.pod.annotations:
+        k8s.v1.cni.cncf.io/networks: '[{"name": "lan", "namespace": "kube-system", "ips": ["192.168.1.25/24"]}]'
+    asserts:
+      - equal:
+          path: spec.template.metadata.annotations["k8s.v1.cni.cncf.io/networks"]
+          value: '[{"name": "lan", "namespace": "kube-system", "ips": ["192.168.1.25/24"]}]'
+        documentSelector:
+          path: kind
+          value: Deployment
+      - equal:
+          path: spec.template.spec.hostNetwork
+          value: false
+        documentSelector:
+          path: kind
+          value: Deployment
+      - notExists:
+          path: spec.template.metadata.annotations["k8s.v1.cni.cncf.io/networks"]
+        documentSelector:
+          path: kind
+          value: StatefulSet
