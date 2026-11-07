@@ -67,7 +67,8 @@
         "charts/home-assistant/values.yaml"
       ],
       "matchPackageNames": [
-        "mariadb"
+        "mariadb",
+        "docker.io/library/mariadb"
       ],
       "allowedVersions": "/^12\\.3\\./"
     },
@@ -78,7 +79,8 @@
         "charts/teslamate/values.yaml"
       ],
       "matchPackageNames": [
-        "postgres"
+        "postgres",
+        "docker.io/library/postgres"
       ],
       "allowedVersions": "/^18\\./"
     }
