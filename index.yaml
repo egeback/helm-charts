@@ -1624,6 +1624,33 @@ entries:
   - annotations:
       artifacthub.io/changes: |2
           - kind: removed
+            description: Bitnami influxdb subchart (Bitnami's free images are only published as latest). Run InfluxDB separately, e.g. with the influxdata/influxdb2 chart; see the README.
+    apiVersion: v2
+    appVersion: 2026.11.0
+    created: "2026-11-07T07:08:35.543122871Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: Home Assistant helm package
+    digest: 3b61ef6a6dcc89ac83a7bad8cd6b23e56864384a8a1bce105f737d8422ca9db2
+    home: https://github.com/egeback/helm-charts/tree/main/charts/home-assistant
+    icon: https://brands.home-assistant.io/homeassistant/icon.png
+    keywords:
+    - home-assistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: marky@egeback.se
+      name: egeback
+    name: home-assistant
+    sources:
+    - https://github.com/home-assistant/home-assistant-docker
+    urls:
+    - https://github.com/egeback/helm-charts/releases/download/home-assistant-4.0.0/home-assistant-4.0.0.tgz
+    version: 4.0.0
+  - annotations:
+      artifacthub.io/changes: |2
+          - kind: removed
             description: Bitnami mariadb and postgresql subcharts (Bitnami's free images are only published as latest; the postgresql override pointed at a removed tag).
           - kind: added
             description: Bundled recorder database on the official mariadb (12.3 LTS) or postgres (18) image, with Secret/existingSecret and RECORDER_DB_URL on Home Assistant.
@@ -4630,4 +4657,4 @@ entries:
     urls:
     - https://github.com/egeback/helm-charts/releases/download/uptime-kuma-2.0.2/uptime-kuma-2.0.2.tgz
     version: 2.0.2
-generated: "2026-11-07T07:02:32.262364196Z"
+generated: "2026-11-07T07:08:35.543676766Z"
