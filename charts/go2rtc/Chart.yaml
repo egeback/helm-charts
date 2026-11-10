@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 1.9.15
 description: Camera streaming application (RTSP, WebRTC, HomeKit, MSE) for Home Assistant and Frigate
 name: go2rtc
-version: 1.0.0
+version: 1.0.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - go2rtc
@@ -25,5 +25,5 @@ dependencies:
     version: 5.3.0
 annotations:
   artifacthub.io/changes: |2
-      - kind: added
-        description: Initial version
+      - kind: changed
+        description: Update image tags or configuration in values.yaml
