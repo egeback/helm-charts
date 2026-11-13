@@ -1,6 +1,6 @@
 # home-assistant
 
-![Version: 4.1.1](https://img.shields.io/badge/Version-4.1.1-informational?style=flat-square) ![AppVersion: 2026.11.0](https://img.shields.io/badge/AppVersion-2026.11.0-informational?style=flat-square)
+![Version: 4.1.2](https://img.shields.io/badge/Version-4.1.2-informational?style=flat-square) ![AppVersion: 2026.11.0](https://img.shields.io/badge/AppVersion-2026.11.0-informational?style=flat-square)
 
 Home Assistant helm package
 
@@ -60,7 +60,7 @@ Kubernetes: `>=1.16.0-0`
 | postgresql.auth.existingSecret | string | `""` | Existing Secret with the key `password` |
 | postgresql.auth.password | string | `""` | Password for `username`; required unless `existingSecret` is set. Must be URL-safe (it is embedded in RECORDER_DB_URL). |
 | postgresql.enabled | bool | `false` | Deploy a PostgreSQL StatefulSet (mutually exclusive with `mariadb.enabled`) |
-| postgresql.image.tag | string | `"18.6"` | Home Assistant requires PostgreSQL 15 or newer from 2027.3; major upgrades need a dump/restore renovate: datasource=docker depName=postgres |
+| postgresql.image.tag | string | `"18.7"` | Home Assistant requires PostgreSQL 15 or newer from 2027.3; major upgrades need a dump/restore renovate: datasource=docker depName=postgres |
 | postgresql.persistence.storageClass | string | `""` | StorageClass for the data volume ("-" for none, empty for the cluster default) |
 | service | object | See values.yaml | Configures service settings for the chart. |
 
