@@ -1,6 +1,6 @@
 # go2rtc
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: 1.9.15](https://img.shields.io/badge/AppVersion-1.9.15-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![AppVersion: 1.9.15](https://img.shields.io/badge/AppVersion-1.9.15-informational?style=flat-square)
 
 Camera streaming application (RTSP, WebRTC, HomeKit, MSE) for Home Assistant and Frigate
 
