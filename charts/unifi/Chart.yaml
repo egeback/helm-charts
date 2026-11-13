@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: v10.0.162
 description: Ubiquiti Network's Unifi Controller
 name: unifi
-version: 2.1.7
+version: 2.1.8
 kubeVersion: ">=1.16.0-0"
 keywords:
   - ubiquiti
@@ -23,4 +23,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |2
       - kind: changed
-        description: Upgraded `common` chart dependency to version 5.3.0
+        description: Update image tags or configuration in values.yaml
