@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 # renovate: datasource=docker depName=ghcr.io/matter-js/matterjs-server
-appVersion: 1.5.5
+appVersion: 1.6.0
 description: Open Home Foundation Matter Server (matter.js) for Home Assistant, the successor of python-matter-server
 name: matterjs-server
 version: 1.0.0
