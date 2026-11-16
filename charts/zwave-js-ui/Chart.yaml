@@ -1,10 +1,10 @@
 ---
 apiVersion: v2
 # renovate: datasource=docker depName=zwavejs/zwave-js-ui
-appVersion: 11.25.2
+appVersion: 11.26.0
 description: Z-Wave control panel and Z-Wave JS server for Home Assistant
 name: zwave-js-ui
-version: 1.0.0
+version: 1.0.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - zwave
@@ -24,5 +24,5 @@ dependencies:
     version: 5.3.0
 annotations:
   artifacthub.io/changes: |2
-      - kind: added
-        description: Initial version
+      - kind: changed
+        description: Update application to 11.26.0
