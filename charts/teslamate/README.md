@@ -1,6 +1,6 @@
 # teslamate
 
-![Version: 3.0.1](https://img.shields.io/badge/Version-3.0.1-informational?style=flat-square) ![AppVersion: 4.4.0](https://img.shields.io/badge/AppVersion-4.4.0-informational?style=flat-square)
+![Version: 3.0.2](https://img.shields.io/badge/Version-3.0.2-informational?style=flat-square) ![AppVersion: 4.4.0](https://img.shields.io/badge/AppVersion-4.4.0-informational?style=flat-square)
 
 A self-hosted data logger for your Tesla 🚘
 
@@ -87,7 +87,7 @@ A self-hosted data logger for your Tesla 🚘
 | postgresql.auth.existingSecret | string | `""` | Existing Secret with the key `password` |
 | postgresql.auth.password | string | `""` | Password for `username`; required unless `existingSecret` is set |
 | postgresql.enabled | bool | `false` | Deploy a PostgreSQL StatefulSet; disable to use an external database (set DATABASE_* env yourself) |
-| postgresql.image.tag | string | `"18.6"` | TeslaMate's reference setup uses PostgreSQL 18; major upgrades need a dump/restore renovate: datasource=docker depName=postgres |
+| postgresql.image.tag | string | `"18.7"` | TeslaMate's reference setup uses PostgreSQL 18; major upgrades need a dump/restore renovate: datasource=docker depName=postgres |
 | postgresql.persistence.storageClass | string | `""` | StorageClass for the data volume ("-" for none, empty for the cluster default) |
 | service | object | See values.yaml | Configures service settings for the chart. |
 
