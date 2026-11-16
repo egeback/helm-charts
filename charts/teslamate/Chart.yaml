@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 4.4.0
 description: "A self-hosted data logger for your Tesla 🚘"
 name: teslamate
-version: 3.0.1
+version: 3.0.2
 keywords:
   - teslamate
   - tesla
@@ -22,5 +22,5 @@ maintainers:
     email: marky@egeback.se
 annotations:
   artifacthub.io/changes: |2
-      - kind: added
-        description: Unit tests (helm-unittest); not part of the packaged chart.
+      - kind: changed
+        description: Update image tags or configuration in values.yaml
