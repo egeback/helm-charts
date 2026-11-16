@@ -4,7 +4,7 @@ apiVersion: v2
 appVersion: 1.6.0
 description: Open Home Foundation Matter Server (matter.js) for Home Assistant, the successor of python-matter-server
 name: matterjs-server
-version: 1.0.1
+version: 1.0.2
 kubeVersion: ">=1.16.0-0"
 keywords:
   - matter
@@ -25,4 +25,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |2
       - kind: changed
-        description: Update application to 1.6.0
+        description: Update image tags or configuration in values.yaml
